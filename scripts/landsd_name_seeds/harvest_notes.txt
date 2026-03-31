@@ -1,0 +1,4 @@
+Source: LandsD GeoInfo Map locationSearch API
+Query seeds: plaza, centre, tower, garden, estate, school, hotel, hospital, market, park, city, mall, building, court, house, harbour, arcade, mansion, heights, villa, club, campus, college, bay, point, view, 中, 大, 新, 東, 西, 海, 山, 港, 九, 沙, 荃, 葵, 元, 灣, 景, 寶, 嘉, 麗, 華, 花園, 大廈, 商場, 醫院, 酒店, 學校, 邨, 苑, 廣場, 中心, 閣, 軒, 城, 酒店, 大樓, 大廈, 坊
+Generated names after cleanup: 2034
+This is a starter list for batch import and may still need manual cleanup.

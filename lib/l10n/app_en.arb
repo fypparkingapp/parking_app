@@ -1,0 +1,307 @@
+{
+  "@@locale": "en",
+  "app_title": "Parking App",
+  "parking_map_title": "Parking Map",
+  "settings_title": "Settings",
+  "map_settings_title": "Map Settings",
+  "map_style": "Map style",
+  "map_controls": "Map Controls",
+  "normal": "Normal",
+  "dark": "Dark",
+  "bright": "Bright",
+  "map_theme_default": "Default",
+  "map_theme_night_drive": "Night Drive",
+  "map_theme_clean_atlas": "Clean Atlas",
+  "dark_mode": "Dark mode",
+  "language": "Language",
+  "language_english": "English",
+  "language_traditional_chinese": "Traditional Chinese",
+  "language_simplified_chinese": "Simplified Chinese",
+  "vehicle_type": "Vehicle type",
+  "vehicle_type_private_car": "Private car",
+  "vehicle_type_motorcycle": "Motorcycle",
+  "vehicle_type_taxi": "Taxi",
+  "vacancy_type_private_car": "Private car",
+  "vacancy_type_motorcycle": "Motorcycle",
+  "vacancy_type_taxi": "Taxi",
+  "back": "Back",
+  "zoom_in": "Zoom in",
+  "zoom_out": "Zoom out",
+  "go_to_my_location": "Go to my location",
+  "cluster_nearby_carparks": "Cluster nearby car parks",
+  "reset_view": "Reset view",
+  "clear_cached_parking_data": "Clear cached parking data",
+  "clear_cached_parking_data_subtitle": "Show loading and re-download",
+  "loading": "Loading...",
+  "loading_carparks": "Loading car parks...",
+  "dismiss": "Dismiss",
+  "cancel": "Cancel",
+  "clear": "Clear",
+  "close": "Close",
+  "apply": "Apply",
+  "retry": "Retry",
+  "refresh": "Refresh",
+  "route": "Route",
+  "routing": "Routing...",
+  "route_priorities": "Route priorities",
+  "route_priorities_subtitle": "Select one or more, and choose the primary priority.",
+  "set_primary": "Set primary",
+  "route_again": "Route again",
+  "tap_map_to_set_start_point": "Tap the map to set a start point",
+  "tap_map_to_set_destination_point": "Tap the map to set a destination",
+  "tap_map_to_place_start_marker": "Tap the map to place a start marker",
+  "from_current_location": "From: current location",
+  "from_selected_start": "From: selected start",
+  "choose_start_point": "Choose start point",
+  "choose_destination": "Choose destination",
+  "use_current_location": "Use current location",
+  "pick_on_map": "Pick on map",
+  "clear_selected_start": "Clear selected start",
+  "avoid_toll_fees": "Avoid toll fees",
+  "toll_fee_title": "Toll fees",
+  "requesting_route": "Requesting route...",
+  "routing_failed": "Routing failed",
+  "no_routes_available": "No routes available.",
+  "no_route_data_yet": "No route data yet.",
+  "compare_routes": "Compare routes",
+  "roads": "Roads",
+  "more_roads_omitted": "More roads omitted…",
+  "stop": "Stop",
+  "start_navigation": "Start Navigation",
+  "eta": "ETA",
+  "distance": "Distance",
+  "time": "Time",
+  "toll_cost": "Toll cost",
+  "toll_time": "Toll time",
+  "toll_pricing_time": "Toll pricing time",
+  "toll_time_mode_now": "Now",
+  "toll_time_mode_depart_at": "Depart at",
+  "toll_time_mode_arrive_by": "Arrive by",
+  "use_current_time": "Use current time",
+  "set_departure_time": "Set departure time",
+  "set_arrival_time_estimated": "Set arrival time (estimated)",
+  "pick_date_time": "Pick date/time",
+  "change_date_time": "Change date/time",
+  "reset": "Reset",
+  "select": "Select",
+  "toll_select_tunnel": "Select tunnel",
+  "toll_select_date": "Select date  {date}",
+  "toll_select_time": "Select time  {time}",
+  "arrive_unknown": "Arrive: --",
+  "toll_unknown": "Toll: --",
+  "toll_amount_unknown": "HK$--",
+  "no_toll_fees": "No toll fees",
+  "toll_chip_unknown": "toll --",
+  "toll_chip_free": "toll HK$0",
+  "toll_short": "toll",
+  "toll_free_route_may_avoid_major_roads": "Toll-free route may avoid major roads.",
+  "toll_info_unavailable_showing_best_route": "Toll info unavailable; showing best route.",
+  "no_toll_free_route_showing_lowest_toll_route": "No toll-free route; showing lowest toll route.",
+  "coordinates": "Coordinates",
+  "free_spaces": "Free spaces",
+  "carpark_status_open": "Open",
+  "carpark_status_closed": "Closed",
+  "unknown_carpark": "Unknown carpark",
+  "carpark": "Carpark",
+  "nearby": "Nearby",
+  "search_parking": "Search carpark name or address",
+  "no_matching_car_parks": "No matching car parks",
+  "no_recent_searches": "No recent searches",
+  "favorites": "Favorites",
+  "recent": "Recent",
+  "search_results": "Search results",
+  "saved_places": "Saved places",
+  "add_place": "Add place",
+  "save_place": "Save place",
+  "place_name": "Name",
+  "place_name_hint": "Home, School",
+  "place_location": "Location",
+  "place_location_hint": "Search address or place",
+  "place_edit_name_hint": "Edit the name for this place (optional).",
+  "place_missing_info": "Please enter a name and location.",
+  "save": "Save",
+  "na": "N/A",
+  "price": "Price",
+  "vacancies": "Vacancies",
+  "updated": "Updated",
+  "rates": "Rates",
+  "navigate": "Navigate",
+  "photo_unavailable": "Photo unavailable",
+  "show_all": "Show all",
+  "show_fewer": "Show fewer",
+  "no_pricing_info": "No pricing information available for this car park.",
+  "no_price_information": "No price information",
+  "rate_type_hourly": "Hourly",
+  "rate_type_12_hour_parking": "12-hour Parking",
+  "rate_type_24_hour_parking": "24-hour Parking",
+  "rate_type_monthly": "Monthly",
+  "rate_type_night": "Night Park",
+  "rate_type_day": "Day Park",
+  "rate_type_day_and_night": "Day & Night",
+  "rate_type_day_pass": "Day Pass",
+  "excluding_public_holidays": "Excluding public holidays",
+  "weekdays": "Weekdays",
+  "weekdays_excluding_ph": "Weekdays (excl. PH)",
+  "weekends": "Weekends",
+  "weekends_and_ph": "Weekends & PH",
+  "weekends_excluding_ph": "Weekends (excl. PH)",
+  "excluding_public_holiday_suffix": "(excl. PH)",
+  "public_holiday": "PH",
+  "weekday_mon_short": "Mon",
+  "weekday_tue_short": "Tue",
+  "weekday_wed_short": "Wed",
+  "weekday_thu_short": "Thu",
+  "weekday_fri_short": "Fri",
+  "weekday_sat_short": "Sat",
+  "weekday_sun_short": "Sun",
+  "location_not_available": "Location not available",
+  "location_permission_denied": "Location permission denied",
+  "location_permission_permanently_denied": "Location permission permanently denied",
+  "route_location_not_available": "Location not available, cannot draw route",
+  "route_not_found": "Route not found",
+  "route_fetch_failed": "Route fetch failed: {error}",
+  "error_getting_location": "Error getting location: {error}",
+  "error_loading_carparks": "Error loading carparks: {error}",
+  "rate_from_price": "From {price}",
+  "vacancy_ev": "EV {count}",
+  "vacancy_disabled": "Disabled {count}",
+  "rate_minimum_hours": "Min {hours} hr",
+  "rate_valid_until": "Until {date}",
+  "route_number": "Route {number}",
+  "metered_parking": "Metered",
+  "metered_parking_title": "Metered Parking",
+  "loading_metered_parking": "Loading metered parking...",
+  "metered_no_data": "No metered parking data available.",
+  "metered_vacant": "Available",
+  "metered_occupied": "Occupied",
+  "metered_unknown": "Unknown",
+  "metered_spaces_count": "{vacant} vacant / {total} total",
+  "metered_vehicle_filter": "Vehicle types",
+  "metered_vehicle_light_goods": "Light goods vehicle",
+  "metered_vehicle_heavy_goods": "Heavy goods vehicle",
+  "metered_vehicle_coach": "Coach",
+  "metered_vehicle_special": "Special purpose vehicle",
+  "metered_status_free_now": "Free now",
+  "metered_status_metering_now": "Metering now",
+  "metered_status_no_parking_now": "No parking now",
+  "metered_status_unknown": "Hours unknown",
+  "tdas_eta": "TDAS ETA: {eta} / {speed}",
+  "duration_hours_minutes": "{hours}h {minutes}m",
+  "duration_minutes": "{minutes}m",
+  "distance_km": "{km} km",
+  "distance_m": "{m} m",
+  "arrive_at": "Arrive: {time}",
+  "depart_and_arrive": "Depart: {depart} · Arrive: {arrive}",
+  "arrive_and_est_depart": "Arrive: {arrive} · Est. depart: {depart}",
+  "est_toll": "Est. toll: {amount}",
+  "@route_fetch_failed": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "@metered_spaces_count": {
+    "placeholders": {
+      "vacant": {},
+      "total": {}
+    }
+  },
+  "@error_getting_location": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "@error_loading_carparks": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "@rate_from_price": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "@vacancy_ev": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "@vacancy_disabled": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "@rate_minimum_hours": {
+    "placeholders": {
+      "hours": {}
+    }
+  },
+  "@rate_valid_until": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "@route_number": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "@tdas_eta": {
+    "placeholders": {
+      "eta": {},
+      "speed": {}
+    }
+  },
+  "@duration_hours_minutes": {
+    "placeholders": {
+      "hours": {},
+      "minutes": {}
+    }
+  },
+  "@duration_minutes": {
+    "placeholders": {
+      "minutes": {}
+    }
+  },
+  "@distance_km": {
+    "placeholders": {
+      "km": {}
+    }
+  },
+  "@distance_m": {
+    "placeholders": {
+      "m": {}
+    }
+  },
+  "@arrive_at": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "@depart_and_arrive": {
+    "placeholders": {
+      "depart": {},
+      "arrive": {}
+    }
+  },
+  "@arrive_and_est_depart": {
+    "placeholders": {
+      "arrive": {},
+      "depart": {}
+    }
+  },
+  "@est_toll": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "@toll_select_date": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "@toll_select_time": {
+    "placeholders": {
+      "time": {}
+    }
+  }
+}

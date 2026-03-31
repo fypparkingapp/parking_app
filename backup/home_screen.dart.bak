@@ -1,0 +1,622 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:parking_app/service/parking_api.dart';
+import 'package:parking_app/service/route_api.dart' as routing;
+import 'dart:math' as math;
+
+class MapThemeConfig {
+  const MapThemeConfig({
+    required this.label,
+    required this.urlTemplate,
+    required this.subdomains,
+    required this.appBarColor,
+    required this.appBarForeground,
+    required this.accentColor,
+    this.backgroundColor = Colors.white,
+  });
+
+  final String label;
+  final String urlTemplate;
+  final List<String> subdomains;
+  final Color appBarColor;
+  final Color appBarForeground;
+  final Color accentColor;
+  final Color backgroundColor;
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  late MapController _mapController;
+  LatLng? _currentLocation;
+  String _selectedTheme = 'Standard';
+  List<Carpark> _carparks = []; // Store raw carpark data
+  double _currentZoom = 11.0;
+  bool _useClustering = true;
+  PersistentBottomSheetController? _routeSheetController;
+  late final routing.OsrmRouteApi _osrmApi;
+  List<LatLng> _routePoints = const [];
+
+  static const String _osrmBaseUrl =
+      'http://osrm.ryanpumpkin.com'; // TODO: point to your OSRM server
+
+  // Map themes with their respective tile URLs
+  final Map<String, MapThemeConfig> _mapThemes = {
+    'Standard': const MapThemeConfig(
+      label: 'Classic Streets',
+      urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      subdomains: ['a', 'b', 'c'],
+      appBarColor: Color(0xFF1565C0),
+      appBarForeground: Colors.white,
+      accentColor: Color(0xFF1976D2),
+    ),
+    'Dark': const MapThemeConfig(
+      label: 'Night Drive',
+      urlTemplate:
+          'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+      subdomains: ['a', 'b', 'c', 'd'],
+      appBarColor: Color(0xFF101820),
+      appBarForeground: Colors.white,
+      accentColor: Color(0xFF26C6DA),
+      backgroundColor: Color(0xFF0F1117),
+    ),
+    'Light': const MapThemeConfig(
+      label: 'Clean Atlas',
+      urlTemplate:
+          'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      subdomains: ['a', 'b', 'c', 'd'],
+      appBarColor: Color(0xFFF6F6F6),
+      appBarForeground: Color(0xFF1B1F24),
+      accentColor: Color(0xFFF9A825),
+      backgroundColor: Color(0xFFFDFBF7),
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    _mapController = MapController();
+    _osrmApi = routing.OsrmRouteApi(baseUrl: _osrmBaseUrl);
+    _checkAndRequestLocationPermission();
+    _loadCarparks();
+  }
+
+  // Check and request location permission
+  Future<void> _checkAndRequestLocationPermission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Location permission denied')),
+        );
+        return;
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Location permission permanently denied')),
+      );
+      return;
+    }
+    _getCurrentLocation();
+  }
+
+  // Get current location
+  Future<void> _getCurrentLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      if (!mounted) return;
+      setState(() {
+        _currentLocation = LatLng(position.latitude, position.longitude);
+      });
+      _mapController.move(_currentLocation!, 15.0);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error getting location: $e')));
+    }
+  }
+
+  // Load parking data from API
+  Future<void> _loadCarparks() async {
+    try {
+      final carparks = await ParkingApi.fetchCarparks();
+      print('Carparks loaded: ${carparks.length}');
+      if (!mounted) return;
+      setState(() {
+        _carparks = carparks;
+      });
+    } catch (e) {
+      print('Error in _loadCarparks: $e');
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error loading carparks: $e'),
+          duration: const Duration(seconds: 10),
+          action: SnackBarAction(
+            label: 'Dismiss',
+            onPressed: () =>
+                ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+          ),
+        ),
+      );
+    }
+  }
+
+  // Calculate distance between two points in degrees (approximation)
+  double _calculateDistance(LatLng p1, LatLng p2) {
+    final dx = p1.latitude - p2.latitude;
+    final dy = p1.longitude - p2.longitude;
+    return math.sqrt(dx * dx + dy * dy);
+  }
+
+  // Generate clusters or markers based on zoom level
+  List<Marker> _generateMarkersOrClusters() {
+    final accentColor = _mapThemes[_selectedTheme]?.accentColor ?? Colors.blue;
+    // Zoom threshold: show individual markers when zoom >= 14
+    if (_currentZoom >= 14 || !_useClustering) {
+      return _carparks.map((c) {
+        return Marker(
+          point: LatLng(c.latitude, c.longitude),
+          width: 80,
+          height: 80,
+          child: GestureDetector(
+            onTap: () => _showCarparkDetails(c),
+            child: Icon(Icons.local_parking, color: accentColor, size: 40),
+          ),
+        );
+      }).toList();
+    } else {
+      // Create clusters
+      return _createClusters();
+    }
+  }
+
+  // Create clusters based on proximity
+  List<Marker> _createClusters() {
+    if (_carparks.isEmpty) return [];
+
+    // Adjust cluster radius based on zoom level
+    double clusterRadius = _getClusterRadius();
+    final accentColor = _mapThemes[_selectedTheme]?.accentColor ?? Colors.blue;
+
+    List<List<Carpark>> clusters = [];
+    List<bool> clustered = List.filled(_carparks.length, false);
+
+    for (int i = 0; i < _carparks.length; i++) {
+      if (clustered[i]) continue;
+
+      List<Carpark> cluster = [_carparks[i]];
+      clustered[i] = true;
+
+      for (int j = i + 1; j < _carparks.length; j++) {
+        if (clustered[j]) continue;
+
+        double distance = _calculateDistance(
+          LatLng(_carparks[i].latitude, _carparks[i].longitude),
+          LatLng(_carparks[j].latitude, _carparks[j].longitude),
+        );
+
+        if (distance <= clusterRadius) {
+          cluster.add(_carparks[j]);
+          clustered[j] = true;
+        }
+      }
+
+      clusters.add(cluster);
+    }
+
+    // Create cluster markers
+    return clusters.map((cluster) {
+      // Calculate center of cluster
+      double avgLat =
+          cluster.map((c) => c.latitude).reduce((a, b) => a + b) /
+          cluster.length;
+      double avgLon =
+          cluster.map((c) => c.longitude).reduce((a, b) => a + b) /
+          cluster.length;
+
+      return Marker(
+        point: LatLng(avgLat, avgLon),
+        width: 80,
+        height: 80,
+        child: GestureDetector(
+          onTap: () {
+            // Zoom in to the cluster
+            _mapController.move(
+              LatLng(avgLat, avgLon),
+              math.min(_currentZoom + 2, 18),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: accentColor.withOpacity(0.72),
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Colors.white.withOpacity(0.8),
+                width: 3,
+              ),
+            ),
+            child: Center(
+              child: Text(
+                '${cluster.length}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }).toList();
+  }
+
+  // Get cluster radius based on zoom level
+  double _getClusterRadius() {
+    if (_currentZoom >= 13) return 0.01;
+    if (_currentZoom >= 12) return 0.02;
+    if (_currentZoom >= 11) return 0.04;
+    if (_currentZoom >= 10) return 0.08;
+    return 0.15;
+  }
+
+  // Show carpark details dialog
+  void _showCarparkDetails(Carpark c) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(c.nameTc.isNotEmpty ? c.nameTc : 'Unknown'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Name: ${c.nameEn.isNotEmpty ? c.nameEn : 'Unknown'}"),
+              Text("Address: ${c.fullAddress}"),
+              Text("Location: ${c.latitude}, ${c.longitude}"),
+              const SizedBox(height: 8),
+              const Text(
+                "Vacancies:",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              ...c.vacancies.entries.map((entry) {
+                final type = entry.key;
+                final data = entry.value;
+                final vacancy =
+                    (data['vacancy'] is num && data['vacancy'] != -1)
+                    ? data['vacancy'].toString()
+                    : 'Not Provided';
+                final vacancyType =
+                    data['vacancy_type']?.toString() ?? 'Unknown';
+                final vacancyEV =
+                    (data['vacancyEV'] is num && data['vacancyEV'] != -1)
+                    ? data['vacancyEV'].toString()
+                    : 'Not Provided';
+                final vacancyDIS =
+                    (data['vacancyDIS'] is num && data['vacancyDIS'] != -1)
+                    ? data['vacancyDIS'].toString()
+                    : 'Not Provided';
+                final lastUpdate = data['lastupdate']?.isNotEmpty == true
+                    ? data['lastupdate']
+                    : 'N/A';
+                return Padding(
+                  padding: const EdgeInsets.only(top: 4.0),
+                  child: Text(
+                    "$type: $vacancy ($vacancyType)\nEV: $vacancyEV, Disabled: $vacancyDIS\nUpdated: $lastUpdate",
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                );
+              }),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              _openRouteSheet(c);
+            },
+            child: const Text("Navigate"),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text("Close"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _adjustZoom(double delta) {
+    final center = _mapController.camera.center;
+    final newZoom = (_mapController.camera.zoom + delta).clamp(0.0, 18.0);
+    _mapController.move(center, newZoom);
+  }
+
+  void _openRouteSheet(Carpark carpark) {
+    try {
+      _routeSheetController?.close();
+    } catch (_) {
+      // Sheet might already be closed
+    }
+    if (!mounted) return;
+    final sheetContext = _scaffoldKey.currentContext;
+    if (sheetContext == null) return;
+
+    final sheetCarpark = routing.Carpark(
+      id: carpark.id,
+      name: carpark.nameEn.isNotEmpty ? carpark.nameEn : carpark.nameTc,
+      lat: carpark.latitude,
+      lng: carpark.longitude,
+      freeSpaces: carpark.vacancy,
+    );
+
+    _routeSheetController = routing.CarparkRouteSheet.show(
+      context: sheetContext,
+      carpark: sheetCarpark,
+      api: _osrmApi,
+      getCurrentLocation: routing.getCurrentLatLng,
+      onRoute: (routing.RouteResult res) {
+        if (!mounted) return;
+        setState(() {
+          _routePoints = res.points;
+        });
+        _fitRouteBounds(res.points);
+      },
+      onClear: () {
+        if (!mounted) return;
+        setState(() {
+          _routePoints = const [];
+        });
+      },
+    );
+
+    _routeSheetController?.closed.whenComplete(() {
+      _routeSheetController = null;
+    });
+  }
+
+  void _fitRouteBounds(List<LatLng> points) {
+    if (points.isEmpty) return;
+    final bounds = LatLngBounds.fromPoints(points);
+    final fit = CameraFit.bounds(
+      bounds: bounds,
+      padding: const EdgeInsets.all(60),
+    );
+    _mapController.fitCamera(fit);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final themeConfig = _mapThemes[_selectedTheme]!;
+
+    return Scaffold(
+      key: _scaffoldKey,
+      backgroundColor: themeConfig.backgroundColor,
+      appBar: AppBar(
+        title: const Text('Parking Map'),
+        backgroundColor: themeConfig.appBarColor,
+        foregroundColor: themeConfig.appBarForeground,
+        leading: Builder(
+          builder: (drawerContext) => IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () => Scaffold.of(drawerContext).openDrawer(),
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: SafeArea(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(color: themeConfig.appBarColor),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    'Map Settings',
+                    style: TextStyle(
+                      color: themeConfig.appBarForeground,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Text(
+                  'Theme',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
+              ),
+              ..._mapThemes.entries.map((entry) {
+                final key = entry.key;
+                final config = entry.value;
+                return RadioListTile<String>(
+                  title: Text(config.label),
+                  value: key,
+                  groupValue: _selectedTheme,
+                  onChanged: (value) {
+                    if (value == null) return;
+                    setState(() {
+                      _selectedTheme = value;
+                    });
+                  },
+                  activeColor: themeConfig.accentColor,
+                );
+              }),
+              const Divider(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Text(
+                  'Map Controls',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
+              ),
+              SwitchListTile(
+                title: const Text('Cluster nearby car parks'),
+                value: _useClustering,
+                onChanged: (value) {
+                  setState(() {
+                    _useClustering = value;
+                  });
+                },
+                activeColor: themeConfig.accentColor,
+              ),
+              ListTile(
+                leading: const Icon(Icons.zoom_in),
+                title: const Text('Zoom in'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  _adjustZoom(1.0);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.zoom_out),
+                title: const Text('Zoom out'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  _adjustZoom(-1.0);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.my_location),
+                title: const Text('Go to current location'),
+                onTap: () async {
+                  Navigator.of(context).pop();
+                  await _getCurrentLocation();
+                  if (_currentLocation != null) {
+                    _mapController.move(_currentLocation!, 15.0);
+                  }
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.refresh),
+                title: const Text('Reset view'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  _mapController.move(
+                    _currentLocation ?? const LatLng(22.3193, 114.1694),
+                    _currentLocation != null ? 15.0 : 11.0,
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: FlutterMap(
+        mapController: _mapController,
+        options: MapOptions(
+          initialCenter: _currentLocation ?? const LatLng(22.3193, 114.1694),
+          initialZoom: _currentLocation != null ? 15.0 : 11.0,
+          minZoom: 0,
+          maxZoom: 18,
+          onMapEvent: (MapEvent event) {
+            final zoom = _mapController.camera.zoom;
+            if (zoom != _currentZoom) {
+              setState(() {
+                _currentZoom = zoom;
+              });
+            }
+          },
+          interactionOptions: const InteractionOptions(
+            flags: ~InteractiveFlag.doubleTapZoom,
+          ),
+        ),
+        children: [
+          TileLayer(
+            urlTemplate: themeConfig.urlTemplate,
+            subdomains: themeConfig.subdomains,
+          ),
+          if (_routePoints.isNotEmpty)
+            PolylineLayer(
+              polylines: [
+                Polyline(
+                  points: _routePoints,
+                  strokeWidth: 4,
+                  color: themeConfig.accentColor,
+                ),
+              ],
+            ),
+          CurrentLocationLayer(
+            style: LocationMarkerStyle(
+              markerSize: const Size(20, 20),
+              markerDirection: MarkerDirection.heading,
+              headingSectorColor: themeConfig.accentColor.withOpacity(0.5),
+              headingSectorRadius: 60,
+            ),
+          ),
+          MarkerLayer(markers: _generateMarkersOrClusters()),
+          const Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: TextSourceAttribution("OpenStreetMap contributors"),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16.0, right: 16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    FloatingActionButton.small(
+                      heroTag: 'zoomInButton',
+                      backgroundColor: themeConfig.accentColor,
+                      foregroundColor: themeConfig.appBarForeground,
+                      onPressed: () => _adjustZoom(1.0),
+                      child: const Icon(Icons.add),
+                    ),
+                    const SizedBox(height: 12),
+                    FloatingActionButton.small(
+                      heroTag: 'zoomOutButton',
+                      backgroundColor: themeConfig.accentColor,
+                      foregroundColor: themeConfig.appBarForeground,
+                      onPressed: () => _adjustZoom(-1.0),
+                      child: const Icon(Icons.remove),
+                    ),
+                    const SizedBox(height: 12),
+                    FloatingActionButton.small(
+                      heroTag: 'recenterButton',
+                      backgroundColor: themeConfig.accentColor,
+                      foregroundColor: themeConfig.appBarForeground,
+                      onPressed: () async {
+                        await _getCurrentLocation();
+                        if (_currentLocation != null) {
+                          _mapController.move(_currentLocation!, 15.0);
+                        }
+                      },
+                      child: const Icon(Icons.my_location),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,0 +1,188 @@
+[
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "AKKI Bike Park",
+    "latitude": 22.451369,
+    "longitude": 114.011397,
+    "aliasesZh": [
+      "元朗屏山 蝦尾新村 髻山"
+    ],
+    "aliasesEn": [
+      "Yung Yuen Road, Ha Mei New Village, Ping Shan, Yuen Long"
+    ],
+    "nameZh": "丫髻山地單車樂園",
+    "nameEn": "AKKI Bike Park"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "Broadway Towers",
+    "latitude": 22.340486,
+    "longitude": 114.182213,
+    "aliasesZh": [
+      "廣播道 6號"
+    ],
+    "aliasesEn": [
+      "6 BROADCAST DRIVE"
+    ],
+    "nameZh": "百樂園",
+    "nameEn": "Broadway Towers"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "Gala Garden",
+    "latitude": 22.29014,
+    "longitude": 114.197922,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "嘉樂園",
+    "nameEn": "Gala Garden"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "Hong Kong Disneyland",
+    "latitude": 22.31297,
+    "longitude": 114.04132,
+    "aliasesZh": [
+      "迪士尼"
+    ],
+    "aliasesEn": [
+      "disneyland",
+      "hong kong disneyland"
+    ],
+    "nameZh": "香港迪士尼",
+    "nameEn": "Hong Kong Disneyland"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "HONG SHUI GARDEN OF AGED",
+    "latitude": 22.40107,
+    "longitude": 113.97752,
+    "aliasesZh": [
+      "新界屯門井財街23號祥隆大廈1字樓A室及B室"
+    ],
+    "aliasesEn": [
+      "FLAT A AND FLAT B, ON 1/F, CHEUNG LUNG BUILDING, NO. 23 TSENG CHOI STREET, TUEN MUN, NEW TERRITORIES"
+    ],
+    "nameZh": "康瑞敬老樂園",
+    "nameEn": "HONG SHUI GARDEN OF AGED"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "NEW FUNLAND @ SAI KUNG WATERFRONT",
+    "latitude": 22.385708,
+    "longitude": 114.275844,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "西貢海濱樂園",
+    "nameEn": "NEW FUNLAND @ SAI KUNG WATERFRONT"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "Ngong Ping 360",
+    "latitude": 22.25592,
+    "longitude": 113.90534,
+    "aliasesZh": [
+      "昂坪360"
+    ],
+    "aliasesEn": [
+      "ngong ping 360"
+    ],
+    "nameZh": "昂坪",
+    "nameEn": "Ngong Ping 360"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "Noah's Ark Hong Kong",
+    "latitude": 22.35246,
+    "longitude": 114.06089,
+    "aliasesZh": [],
+    "aliasesEn": [
+      "noahs ark",
+      "noahs ark hong kong"
+    ],
+    "nameZh": "挪亞方舟",
+    "nameEn": "Noah's Ark Hong Kong"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "Ocean Park Hong Kong",
+    "latitude": 22.24666,
+    "longitude": 114.17503,
+    "aliasesZh": [],
+    "aliasesEn": [
+      "ocean park",
+      "hong kong ocean park"
+    ],
+    "nameZh": "海洋公園",
+    "nameEn": "Ocean Park Hong Kong"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "Ocean Park Hong Kong",
+    "latitude": 22.234133,
+    "longitude": 114.171452,
+    "aliasesZh": [
+      "黃竹坑道 180號"
+    ],
+    "aliasesEn": [
+      "180 WONG CHUK HANG ROAD"
+    ],
+    "nameZh": "香港海洋公園",
+    "nameEn": "Ocean Park Hong Kong"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "The Women's Welfare Club (Eastern District) Hong Kong Ng Siu Mui Home Joyful Garden",
+    "latitude": 22.277175,
+    "longitude": 114.225076,
+    "aliasesZh": [
+      "香港筲箕灣耀東邨4期2號停車場7樓"
+    ],
+    "aliasesEn": [
+      "7/F., Car Park Building No.2, Yiu Tung Estate, Phase 4, Shau kei Wan, Hong Kong"
+    ],
+    "nameZh": "香港東區婦女福利會伍少梅悠樂園",
+    "nameEn": "The Women's Welfare Club (Eastern District) Hong Kong Ng Siu Mui Home Joyful Garden"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Applause Pavilion, Ocean Park",
+    "latitude": 22.246923,
+    "longitude": 114.175514,
+    "aliasesZh": [
+      "香港 香港仔黃竹坑"
+    ],
+    "aliasesEn": [
+      "Wong Chuk Hang, Aberdeen, Hong Kong"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 海洋公園 - 怡慶坊",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Applause Pavilion, Ocean Park"
+  },
+  {
+    "category": "cultureLeisure",
+    "subcategory": "themePark",
+    "displayName": "William International Play School",
+    "latitude": 22.304354,
+    "longitude": 114.192315,
+    "aliasesZh": [
+      "香港九龍紅磡黃埔花園第七期地下G3C(1)號舖"
+    ],
+    "aliasesEn": [
+      "Shop No. G3C(1) on the Ground Floor, Site 7, Whampoa Garden, Hunghom, Kowloon, Hong Kong"
+    ],
+    "nameZh": "威廉國際幼兒樂園",
+    "nameEn": "William International Play School"
+  }
+]

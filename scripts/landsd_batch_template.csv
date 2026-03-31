@@ -1,0 +1,4 @@
+label,query,subcategory,exact_name,name_contains,district,aliases_en,aliases_zh,append_to,limit,enabled
+Festival Walk,Festival Walk,mall,Festival Walk,,,festival walk,kowloon tong 又一城,,1,true
+One Island East,太古,officeTower,,One Island East,,,港島東中心,,5,true
+Whampoa Garden,黃埔花園,housingEstate,黃埔花園,,,whampoa garden,黃埔,,3,true

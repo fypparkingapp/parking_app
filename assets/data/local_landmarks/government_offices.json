@@ -1,0 +1,2319 @@
+[
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Aberdeen Division",
+    "latitude": 22.248244,
+    "longitude": 114.161326,
+    "aliasesZh": [
+      "黃竹坑道4號"
+    ],
+    "aliasesEn": [
+      "4 Wong Chuk Hang Road"
+    ],
+    "nameZh": "香港仔分區警署",
+    "nameEn": "Aberdeen Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "AP LEI CHAU FIRE STATION",
+    "latitude": 22.243423,
+    "longitude": 114.152108,
+    "aliasesZh": [
+      "鴨脷洲橋道 300號"
+    ],
+    "aliasesEn": [
+      "300 AP LEI CHAU BRIDGE ROAD"
+    ],
+    "nameZh": "鴨脷洲消防局",
+    "nameEn": "AP LEI CHAU FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Car Park of North District Government Offices",
+    "latitude": 22.494642,
+    "longitude": 114.138268,
+    "aliasesZh": [
+      "香港新界粉嶺璧峰路3號"
+    ],
+    "aliasesEn": [
+      "No. 3 Pik Fung Road, Fanling, New Territories, Hong Kong"
+    ],
+    "nameZh": "北區政府合署停車場",
+    "nameEn": "Car Park of North District Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Census and Statistics Department Headquarters",
+    "latitude": 22.280205,
+    "longitude": 114.172416,
+    "aliasesZh": [
+      "香港灣仔港灣道12號灣仔政府大樓16樓至22樓及25樓"
+    ],
+    "aliasesEn": [
+      "16/F - 22/F & 25/F, Wanchai Tower, 12 Harbour Road, Wan Chai, Hong Kong"
+    ],
+    "nameZh": "政府統計處辦事處總部",
+    "nameEn": "Census and Statistics Department Headquarters"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Census and Statistics Department, Trade and Industry Tower Sub-office",
+    "latitude": 22.332768,
+    "longitude": 114.197784,
+    "aliasesZh": [
+      "香港九龍協調道3號工業貿易大樓9樓至12樓"
+    ],
+    "aliasesEn": [
+      "9/F - 12/F, Trade and Industry Tower, 3 Concorde Road, Kowloon, Hong Kong"
+    ],
+    "nameZh": "政府統計處辦事處工業貿易大樓分處",
+    "nameEn": "Census and Statistics Department, Trade and Industry Tower Sub-office"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Central District",
+    "latitude": 22.28875,
+    "longitude": 114.149417,
+    "aliasesZh": [
+      "上環中港道2號"
+    ],
+    "aliasesEn": [
+      "2 Chung Kong Road, Sheung Wan"
+    ],
+    "nameZh": "中區警署",
+    "nameEn": "Central District"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "CENTRAL FIRE STATION",
+    "latitude": 22.278175,
+    "longitude": 114.161475,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "中區消防局",
+    "nameEn": "CENTRAL FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Central Fireboat Station",
+    "latitude": 22.288547,
+    "longitude": 114.155687,
+    "aliasesZh": [
+      "香港中環民輝街32號 中區政府碼頭"
+    ],
+    "aliasesEn": [
+      "Central Government Pier, 32 Man Fai Street, Central, Hong Kong"
+    ],
+    "nameZh": "中區滅火輪消防局",
+    "nameEn": "Central Fireboat Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Central Government Complex",
+    "latitude": 22.27947,
+    "longitude": 114.16106,
+    "aliasesZh": [
+      "政府總部"
+    ],
+    "aliasesEn": [
+      "central government complex",
+      "cgc",
+      "government hq",
+      "government headquarters"
+    ],
+    "nameZh": "添馬政府總部",
+    "nameEn": "Central Government Complex"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Central Government Offices",
+    "latitude": 22.28046,
+    "longitude": 114.165366,
+    "aliasesZh": [
+      "添美道 2號"
+    ],
+    "aliasesEn": [
+      "2 TIM MEI AVENUE"
+    ],
+    "nameZh": "政府總部",
+    "nameEn": "Central Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Central Government Offices",
+    "latitude": 22.2803,
+    "longitude": 114.1659,
+    "aliasesZh": [
+      "中環添美道 2號"
+    ],
+    "aliasesEn": [
+      "2 Tim Mei Avenue , Central"
+    ],
+    "nameZh": "政府總部(添馬)",
+    "nameEn": "Central Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Central Government Offices East Wing (Previous Name)",
+    "latitude": 22.278382,
+    "longitude": 114.159448,
+    "aliasesZh": [
+      "下亞厘畢道 18號"
+    ],
+    "aliasesEn": [
+      "18 LOWER ALBERT ROAD"
+    ],
+    "nameZh": "中區政府合署東座 (前稱)",
+    "nameEn": "Central Government Offices East Wing (Previous Name)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Central Government Offices West Wing (Previous Name)",
+    "latitude": 22.279944,
+    "longitude": 114.15771,
+    "aliasesZh": [
+      "雪廠街 11號"
+    ],
+    "aliasesEn": [
+      "11 ICE HOUSE STREET"
+    ],
+    "nameZh": "中區政府合署西座 (前稱)",
+    "nameEn": "Central Government Offices West Wing (Previous Name)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Central Government Pier",
+    "latitude": 22.288388,
+    "longitude": 114.15538,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "中區政府碼頭",
+    "nameEn": "Central Government Pier"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Court of Final Appeal",
+    "latitude": 22.280911,
+    "longitude": 114.160359,
+    "aliasesZh": [
+      "香港中環昃臣道八號"
+    ],
+    "aliasesEn": [
+      "8 Jackson Road, Central, Hong Kong"
+    ],
+    "nameZh": "終審法院",
+    "nameEn": "Court of Final Appeal"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Customs And Excise Department Harbour And River Trade Division",
+    "latitude": 22.366013,
+    "longitude": 113.945709,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "香港海關海港及內河貿易組",
+    "nameEn": "Customs And Excise Department Harbour And River Trade Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Discovery Bay Fire Station",
+    "latitude": 22.294505,
+    "longitude": 114.016589,
+    "aliasesZh": [
+      "愉景灣道 1號"
+    ],
+    "aliasesEn": [
+      "1 DISCOVERY BAY ROAD"
+    ],
+    "nameZh": "愉景灣消防局",
+    "nameEn": "Discovery Bay Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "District Court",
+    "latitude": 22.371178,
+    "longitude": 114.113025,
+    "aliasesZh": [
+      "新界荃灣大河道70號"
+    ],
+    "aliasesEn": [
+      "70 Tai Ho Road, Tsuen Wan, New Territories"
+    ],
+    "nameZh": "區域法院",
+    "nameEn": "District Court"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "East Kowloon Office (Immigration Branch Offices)",
+    "latitude": 22.306954,
+    "longitude": 114.233264,
+    "aliasesZh": [
+      "藍田匯景道8號匯景花園匯景廣場第2層"
+    ],
+    "aliasesEn": [
+      "Level 2, Sceneway Plaza, Sceneway Garden, 8 Sceneway Road, Lam Tin"
+    ],
+    "nameZh": "東九龍辦事處 (入境事務處分區辦事處)",
+    "nameEn": "East Kowloon Office (Immigration Branch Offices)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Eastern Magistrates' Courts",
+    "latitude": 22.284336,
+    "longitude": 114.224131,
+    "aliasesZh": [
+      "香港西灣河太安街29號東區法院大樓7樓"
+    ],
+    "aliasesEn": [
+      "7/F, Eastern Law Courts Building, 29 Tai On Street, Sai Wan Ho, Hong Kong"
+    ],
+    "nameZh": "東區裁判法院",
+    "nameEn": "Eastern Magistrates' Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Fanling Fire Station",
+    "latitude": 22.494272,
+    "longitude": 114.140227,
+    "aliasesZh": [
+      "新界粉嶺沙頭角公路-龍躍頭段2號"
+    ],
+    "aliasesEn": [
+      "2 Sha Tau Kok Road - Lung Yeuk Tau, Fanling, New Territories"
+    ],
+    "nameZh": "粉嶺消防局",
+    "nameEn": "Fanling Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Fanling Magistrates' Courts",
+    "latitude": 22.495463,
+    "longitude": 114.138944,
+    "aliasesZh": [
+      "新界粉嶺璧峰路一號"
+    ],
+    "aliasesEn": [
+      "1 Pik Fung Road, Fanling, New Territories"
+    ],
+    "nameZh": "粉嶺裁判法院",
+    "nameEn": "Fanling Magistrates' Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Fanling South Government Complex",
+    "latitude": 22.485043,
+    "longitude": 114.142572,
+    "aliasesZh": [
+      "和鳴里 7號"
+    ],
+    "aliasesEn": [
+      "7 WO MING LANE"
+    ],
+    "nameZh": "粉嶺南政府綜合大樓",
+    "nameEn": "Fanling South Government Complex"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Fire Services Department Kowloon South Divisional HQ and Tsim Sha Tsui Fire Station",
+    "latitude": 22.301348,
+    "longitude": 114.167713,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "消防處九龍南區總部暨尖沙咀消防局",
+    "nameEn": "Fire Services Department Kowloon South Divisional HQ and Tsim Sha Tsui Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Former Central Government Offices East Wing (Previous Name)",
+    "latitude": 22.278382,
+    "longitude": 114.159448,
+    "aliasesZh": [
+      "下亞厘畢道 18號"
+    ],
+    "aliasesEn": [
+      "18 LOWER ALBERT ROAD"
+    ],
+    "nameZh": "前中區政府合署東座 (前稱)",
+    "nameEn": "Former Central Government Offices East Wing (Previous Name)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Former Central Government Offices West Wing (Previous Name)",
+    "latitude": 22.279944,
+    "longitude": 114.15771,
+    "aliasesZh": [
+      "雪廠街 11號"
+    ],
+    "aliasesEn": [
+      "11 ICE HOUSE STREET"
+    ],
+    "nameZh": "前中區政府合署西座 (前稱)",
+    "nameEn": "Former Central Government Offices West Wing (Previous Name)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "FORMER FANLING MAGISTRACY",
+    "latitude": 22.494858,
+    "longitude": 114.139868,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "前粉嶺裁判法院",
+    "nameEn": "FORMER FANLING MAGISTRACY"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Former Yau Ma Tei Police Station",
+    "latitude": 22.309457,
+    "longitude": 114.168547,
+    "aliasesZh": [
+      "廣東道 627號"
+    ],
+    "aliasesEn": [
+      "627 CANTON ROAD"
+    ],
+    "nameZh": "前油麻地警署",
+    "nameEn": "Former Yau Ma Tei Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "FU TEI FIRE STATION",
+    "latitude": 22.410741,
+    "longitude": 113.979569,
+    "aliasesZh": [
+      "屯富路 21號"
+    ],
+    "aliasesEn": [
+      "21 TUEN FU ROAD"
+    ],
+    "nameZh": "虎地消防局",
+    "nameEn": "FU TEI FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Government Logistics Department",
+    "latitude": 22.272852,
+    "longitude": 114.243785,
+    "aliasesZh": [
+      "香港柴灣創富道11號政府物料營運中心10樓"
+    ],
+    "aliasesEn": [
+      "10/F, Government Logistics Centre, 11 Chong Fu Road, Chai Wan, Hong Kong"
+    ],
+    "nameZh": "政府物料營運中心",
+    "nameEn": "Government Logistics Department"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Harbour Building",
+    "latitude": 22.286608,
+    "longitude": 114.155012,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "海港政府大樓",
+    "nameEn": "Harbour Building"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Helicopter Landing Site - JB11 - SHATIN MARINE POLICE NORTH DIV",
+    "latitude": 22.410351,
+    "longitude": 114.214228,
+    "aliasesZh": [
+      "新界沙田"
+    ],
+    "aliasesEn": [
+      "Sha Tin, NT"
+    ],
+    "nameZh": "Helicopter Landing Site - JB11 - SHATIN MARINE POLICE NORTH DIV",
+    "nameEn": "Helicopter Landing Site - JB11 - SHATIN MARINE POLICE NORTH DIV"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "High Court & District Court Probation Office",
+    "latitude": 22.280221,
+    "longitude": 114.172429,
+    "aliasesZh": [
+      "香港灣仔港灣道12號灣仔政府大樓3樓335室"
+    ],
+    "aliasesEn": [
+      "Room 335, 3/F, Wan Chai Tower, 12 Harbour Road, Wan Chai, Hong Kong"
+    ],
+    "nameZh": "高等及區域法院感化辦事處",
+    "nameEn": "High Court & District Court Probation Office"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Ho Man Tin Government Offices",
+    "latitude": 22.314668,
+    "longitude": 114.179951,
+    "aliasesZh": [
+      "忠孝街 88號"
+    ],
+    "aliasesEn": [
+      "88 CHUNG HAU STREET"
+    ],
+    "nameZh": "何文田政府合署",
+    "nameEn": "Ho Man Tin Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Hong Kong City Hall",
+    "latitude": 22.28108,
+    "longitude": 114.1599,
+    "aliasesZh": [],
+    "aliasesEn": [
+      "city hall",
+      "hong kong city hall"
+    ],
+    "nameZh": "大會堂",
+    "nameEn": "Hong Kong City Hall"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Hong Kong Island Travel Documents Issuing Office (Immigration Branch Offices)",
+    "latitude": 22.286588,
+    "longitude": 114.154994,
+    "aliasesZh": [
+      "中環統一碼頭道38號海港政府大樓2樓"
+    ],
+    "aliasesEn": [
+      "2/F, Harbour Building, 38 Pier Road, Central"
+    ],
+    "nameZh": "港島區簽發旅行證件辦事處 (入境事務處分區辦事處)",
+    "nameEn": "Hong Kong Island Travel Documents Issuing Office (Immigration Branch Offices)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Immigration Tower",
+    "latitude": 22.28059,
+    "longitude": 114.17341,
+    "aliasesZh": [
+      "入境處"
+    ],
+    "aliasesEn": [
+      "immigration tower"
+    ],
+    "nameZh": "入境事務大樓",
+    "nameEn": "Immigration Tower"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kennedy Town Fire Station",
+    "latitude": 22.283839,
+    "longitude": 114.128075,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "堅尼地城消防局",
+    "nameEn": "Kennedy Town Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kowloon Bay Fire Station",
+    "latitude": 22.324346,
+    "longitude": 114.205712,
+    "aliasesZh": [
+      "九龍九龍灣臨興街5號"
+    ],
+    "aliasesEn": [
+      "5 Lam Hing Street, Kowloon Bay, Kowloon"
+    ],
+    "nameZh": "九龍灣消防局",
+    "nameEn": "Kowloon Bay Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kowloon City Division",
+    "latitude": 22.324386,
+    "longitude": 114.185298,
+    "aliasesZh": [
+      "亞皆老街202號"
+    ],
+    "aliasesEn": [
+      "202 Argyle Street"
+    ],
+    "nameZh": "九龍城分區警署",
+    "nameEn": "Kowloon City Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kowloon City Government Offices",
+    "latitude": 22.311877,
+    "longitude": 114.189724,
+    "aliasesZh": [
+      "庇利街 42號"
+    ],
+    "aliasesEn": [
+      "42 BAILEY STREET"
+    ],
+    "nameZh": "九龍城政府合署",
+    "nameEn": "Kowloon City Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kowloon City Magistrates' Courts",
+    "latitude": 22.325207,
+    "longitude": 114.18527,
+    "aliasesZh": [
+      "九龍九龍城亞皆老街147M號"
+    ],
+    "aliasesEn": [
+      "147M, Argyle Street, Kowloon City, Kowloon"
+    ],
+    "nameZh": "九龍城裁判法院",
+    "nameEn": "Kowloon City Magistrates' Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kowloon East Government Offices",
+    "latitude": 22.309548,
+    "longitude": 114.229836,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "東九龍政府合署",
+    "nameEn": "Kowloon East Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kowloon East Regional Headquarters and Tseung Kwan O Police Station (Other Name)",
+    "latitude": 22.323082,
+    "longitude": 114.25961,
+    "aliasesZh": [
+      "寶琳北路 110號"
+    ],
+    "aliasesEn": [
+      "110 PO LAM ROAD NORTH"
+    ],
+    "nameZh": "東九龍總區總部暨將軍澳警署 (別稱)",
+    "nameEn": "Kowloon East Regional Headquarters and Tseung Kwan O Police Station (Other Name)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kowloon Tong Fire Station",
+    "latitude": 22.334689,
+    "longitude": 114.182631,
+    "aliasesZh": [
+      "九龍九龍塘浸會大學道3號"
+    ],
+    "aliasesEn": [
+      "3 Baptist University Road, Kowloon Tong, Kowloon"
+    ],
+    "nameZh": "九龍塘消防局",
+    "nameEn": "Kowloon Tong Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwai Chung Customhouse",
+    "latitude": 22.332398,
+    "longitude": 114.133591,
+    "aliasesZh": [
+      "海關驗貨場"
+    ],
+    "aliasesEn": [
+      "Customs Cargo Examination Compound"
+    ],
+    "nameZh": "葵涌海關大樓",
+    "nameEn": "Kwai Chung Customhouse"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwai Chung Division",
+    "latitude": 22.356825,
+    "longitude": 114.129401,
+    "aliasesZh": [
+      "葵涌葵涌道999號"
+    ],
+    "aliasesEn": [
+      "999 Kwai Chung Road, Kwai Chung"
+    ],
+    "nameZh": "葵涌分區警署",
+    "nameEn": "Kwai Chung Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwai Chung Fire Station",
+    "latitude": 22.361665,
+    "longitude": 114.12833,
+    "aliasesZh": [
+      "新界葵涌興盛路77-79號"
+    ],
+    "aliasesEn": [
+      "77-79 Hing Shing Road, Kwai Chung, New Territories"
+    ],
+    "nameZh": "葵涌消防局",
+    "nameEn": "Kwai Chung Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwai Chung Police Station",
+    "latitude": 22.357114,
+    "longitude": 114.129273,
+    "aliasesZh": [
+      "葵涌道 999號"
+    ],
+    "aliasesEn": [
+      "999 KWAI CHUNG ROAD"
+    ],
+    "nameZh": "葵涌警署",
+    "nameEn": "Kwai Chung Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwun Tong District",
+    "latitude": 22.309694,
+    "longitude": 114.231161,
+    "aliasesZh": [
+      "觀塘鯉魚門道1號"
+    ],
+    "aliasesEn": [
+      "9 Lei Yue Mun Road, Kwun Tong"
+    ],
+    "nameZh": "觀塘區警署",
+    "nameEn": "Kwun Tong District"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwun Tong Fire Station",
+    "latitude": 22.312067,
+    "longitude": 114.225951,
+    "aliasesZh": [
+      "九龍觀塘道426號"
+    ],
+    "aliasesEn": [
+      "426 Kwun Tong Road, Kwun Tong, Kowloon"
+    ],
+    "nameZh": "觀塘消防局",
+    "nameEn": "Kwun Tong Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwun Tong Law Courts",
+    "latitude": 22.30972,
+    "longitude": 114.229351,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "觀塘法院",
+    "nameEn": "Kwun Tong Law Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwun Tong Magistrates' Courts",
+    "latitude": 22.30972,
+    "longitude": 114.229351,
+    "aliasesZh": [
+      "九龍觀塘鯉魚門道10號"
+    ],
+    "aliasesEn": [
+      "10 Lei Yue Mun Road, Kwun Tong, Kowloon"
+    ],
+    "nameZh": "觀塘裁判法院",
+    "nameEn": "Kwun Tong Magistrates' Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Kwun Tong Police Station",
+    "latitude": 22.309809,
+    "longitude": 114.231515,
+    "aliasesZh": [
+      "鯉魚門道 9號"
+    ],
+    "aliasesEn": [
+      "9 LEI YUE MUN ROAD"
+    ],
+    "nameZh": "觀塘警署",
+    "nameEn": "Kwun Tong Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Liaison Office of the Central People's Government in the Hong Kong Special Administrative Region",
+    "latitude": 22.28806,
+    "longitude": 114.139796,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "中央人民政府駐香港特別行政區聯絡辦公室",
+    "nameEn": "Liaison Office of the Central People's Government in the Hong Kong Special Administrative Region"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Lok Ma Chau Division",
+    "latitude": 22.511651,
+    "longitude": 114.080267,
+    "aliasesZh": [
+      "元朗落馬洲落馬洲路100號"
+    ],
+    "aliasesEn": [
+      "100 Lok Ma Chau Road, Lok Ma Chau, Yuen Long"
+    ],
+    "nameZh": "落馬洲分區警署",
+    "nameEn": "Lok Ma Chau Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Ma On Shan Division",
+    "latitude": 22.422134,
+    "longitude": 114.23317,
+    "aliasesZh": [
+      "馬鞍山路200號"
+    ],
+    "aliasesEn": [
+      "200 Ma On Shan Road, Sha Tin"
+    ],
+    "nameZh": "馬鞍山分區警署",
+    "nameEn": "Ma On Shan Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Ma On Shan Fire Station",
+    "latitude": 22.419223,
+    "longitude": 114.232908,
+    "aliasesZh": [
+      "新界馬鞍山鞍山里1號"
+    ],
+    "aliasesEn": [
+      "1 On Shan Lane, Ma On Shan, New Territories"
+    ],
+    "nameZh": "馬鞍山消防局",
+    "nameEn": "Ma On Shan Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Ma Wan Fire Station",
+    "latitude": 22.347646,
+    "longitude": 114.059998,
+    "aliasesZh": [
+      "新界馬灣島珀欣路36號"
+    ],
+    "aliasesEn": [
+      "36 Pak Yan Road, Ma Wan Island, NT"
+    ],
+    "nameZh": "馬灣消防局",
+    "nameEn": "Ma Wan Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Mong Kok District",
+    "latitude": 22.324393,
+    "longitude": 114.168949,
+    "aliasesZh": [
+      "太子道西142號"
+    ],
+    "aliasesEn": [
+      "142 Prince Edward Road West"
+    ],
+    "nameZh": "旺角區警署",
+    "nameEn": "Mong Kok District"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "MONG KOK DIVISIONAL POLICE STATION AND KOWLOON POLICE HEADQUARTERS (Previous Name)",
+    "latitude": 22.324999,
+    "longitude": 114.168867,
+    "aliasesZh": [
+      "太子道西 142號"
+    ],
+    "aliasesEn": [
+      "142 PRINCE EDWARD ROAD WEST"
+    ],
+    "nameZh": "旺角分區警署及九龍警察總部 (前稱)",
+    "nameEn": "MONG KOK DIVISIONAL POLICE STATION AND KOWLOON POLICE HEADQUARTERS (Previous Name)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "MONG KOK FIRE STATION",
+    "latitude": 22.323834,
+    "longitude": 114.164683,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "旺角消防局",
+    "nameEn": "MONG KOK FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Mong Kok Police Station",
+    "latitude": 22.324999,
+    "longitude": 114.168867,
+    "aliasesZh": [
+      "太子道西 142號"
+    ],
+    "aliasesEn": [
+      "142 PRINCE EDWARD ROAD WEST"
+    ],
+    "nameZh": "旺角警署",
+    "nameEn": "Mong Kok Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Mongkok Government Offices",
+    "latitude": 22.32136,
+    "longitude": 114.172623,
+    "aliasesZh": [
+      "聯運街 30號"
+    ],
+    "aliasesEn": [
+      "30 LUEN WAN STREET"
+    ],
+    "nameZh": "旺角政府合署",
+    "nameEn": "Mongkok Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "New Yaumati District Police Headquarters and Tsim Sha Tsui Divisional Police Station (Previous Name)",
+    "latitude": 22.302648,
+    "longitude": 114.171139,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "油尖區警察總部及尖沙咀分區警署 (前稱)",
+    "nameEn": "New Yaumati District Police Headquarters and Tsim Sha Tsui Divisional Police Station (Previous Name)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "NORTH DISTRICT GOVERNMENT OFFICES",
+    "latitude": 22.494732,
+    "longitude": 114.138439,
+    "aliasesZh": [
+      "璧峰路 3號"
+    ],
+    "aliasesEn": [
+      "3 PIK FUNG ROAD"
+    ],
+    "nameZh": "北區政府合署",
+    "nameEn": "NORTH DISTRICT GOVERNMENT OFFICES"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "North Kowloon Magistracy (Previous Name)",
+    "latitude": 22.335004,
+    "longitude": 114.162877,
+    "aliasesZh": [
+      "大埔道 292號"
+    ],
+    "aliasesEn": [
+      "292 TAI PO ROAD"
+    ],
+    "nameZh": "北九龍裁判法院 (前稱)",
+    "nameEn": "North Kowloon Magistracy (Previous Name)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "North Point Fire Station",
+    "latitude": 22.292594,
+    "longitude": 114.207578,
+    "aliasesZh": [
+      "香港北角健康東街38號"
+    ],
+    "aliasesEn": [
+      "38 Healthy Street East, North Point, Hong Kong"
+    ],
+    "nameZh": "北角消防局",
+    "nameEn": "North Point Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "North Point Government Offices",
+    "latitude": 22.29217,
+    "longitude": 114.208345,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "北角政府合署",
+    "nameEn": "North Point Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "North Point Police Station",
+    "latitude": 22.292061,
+    "longitude": 114.209024,
+    "aliasesZh": [
+      "渣華道 343號"
+    ],
+    "aliasesEn": [
+      "343 JAVA ROAD"
+    ],
+    "nameZh": "北角警署",
+    "nameEn": "North Point Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "PEAK POLICE STATION",
+    "latitude": 22.264321,
+    "longitude": 114.155268,
+    "aliasesZh": [
+      "山頂道 92號"
+    ],
+    "aliasesEn": [
+      "92 PEAK ROAD"
+    ],
+    "nameZh": "山頂警署",
+    "nameEn": "PEAK POLICE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Peak Sub-Division",
+    "latitude": 22.264319,
+    "longitude": 114.155167,
+    "aliasesZh": [
+      "山頂道92號"
+    ],
+    "aliasesEn": [
+      "92 Peak Road"
+    ],
+    "nameZh": "山頂分區警署",
+    "nameEn": "Peak Sub-Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "POK FU LAM FIRE STATION",
+    "latitude": 22.25302,
+    "longitude": 114.138748,
+    "aliasesZh": [
+      "薄扶林道 789號"
+    ],
+    "aliasesEn": [
+      "789 POK FU LAM ROAD"
+    ],
+    "nameZh": "薄扶林消防局",
+    "nameEn": "POK FU LAM FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Queensway Government Offices",
+    "latitude": 22.27776,
+    "longitude": 114.16444,
+    "aliasesZh": [],
+    "aliasesEn": [
+      "queensway government offices",
+      "qgo"
+    ],
+    "nameZh": "金鐘道政府合署",
+    "nameEn": "Queensway Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Recycling Organisations and Collection Points: Buildings Department General Enquiry and Receipt Counter",
+    "latitude": 22.312496,
+    "longitude": 114.16352,
+    "aliasesZh": [
+      "油麻地海庭道11號西九龍政府合署北座屋宇署總部地下"
+    ],
+    "aliasesEn": [
+      "G/F, Buildings Department Headquarters, North Tower,West Kowloon Government Offices,11 Hoi Ting Road, Yau Ma Tei"
+    ],
+    "nameZh": "回收機構及收集點： 西九龍政府合署北座屋宇署總部地下一般查詢及收件處",
+    "nameEn": "Recycling Organisations and Collection Points: Buildings Department General Enquiry and Receipt Counter"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Recycling Organisations and Collection Points: Kowloon East Government Offices",
+    "latitude": 22.309548,
+    "longitude": 114.229836,
+    "aliasesZh": [
+      "觀塘鯉魚門道12號"
+    ],
+    "aliasesEn": [
+      "12 Lei Yue Mun Road, Kwun Tong"
+    ],
+    "nameZh": "回收機構及收集點： 東九龍政府合署",
+    "nameEn": "Recycling Organisations and Collection Points: Kowloon East Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Recycling Organisations and Collection Points: North District Government Offices",
+    "latitude": 22.494705,
+    "longitude": 114.138206,
+    "aliasesZh": [
+      "粉嶺壁峰路3號"
+    ],
+    "aliasesEn": [
+      "3 Pik Fung Road, Fanling"
+    ],
+    "nameZh": "回收機構及收集點： 北區政府合署",
+    "nameEn": "Recycling Organisations and Collection Points: North District Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Recycling Organisations and Collection Points: Wanchai Tower",
+    "latitude": 22.280334,
+    "longitude": 114.172391,
+    "aliasesZh": [
+      "灣仔港灣道12號"
+    ],
+    "aliasesEn": [
+      "12 Harbour Road, Wan Chai"
+    ],
+    "nameZh": "回收機構及收集點： 灣仔政府大樓",
+    "nameEn": "Recycling Organisations and Collection Points: Wanchai Tower"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Revenue Tower",
+    "latitude": 22.28145,
+    "longitude": 114.17347,
+    "aliasesZh": [],
+    "aliasesEn": [
+      "revenue tower"
+    ],
+    "nameZh": "稅務大樓",
+    "nameEn": "Revenue Tower"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sai Kung Division",
+    "latitude": 22.383702,
+    "longitude": 114.272209,
+    "aliasesZh": [
+      "西貢普通道1號"
+    ],
+    "aliasesEn": [
+      "1 Po Tung Road, Sai Kung"
+    ],
+    "nameZh": "西貢分區警署",
+    "nameEn": "Sai Kung Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sai Kung Fire Station",
+    "latitude": 22.377127,
+    "longitude": 114.264963,
+    "aliasesZh": [
+      "新界西貢康健路1號"
+    ],
+    "aliasesEn": [
+      "1 Hong Kin Road, Sai Kung, New Territories"
+    ],
+    "nameZh": "西貢消防局",
+    "nameEn": "Sai Kung Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sai Kung Government Offices",
+    "latitude": 22.382234,
+    "longitude": 114.272327,
+    "aliasesZh": [
+      "親民街 34號"
+    ],
+    "aliasesEn": [
+      "34 CHAN MAN STREET"
+    ],
+    "nameZh": "西貢政府合署",
+    "nameEn": "Sai Kung Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "SAI KUNG POLICE STATION",
+    "latitude": 22.383624,
+    "longitude": 114.27225,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "西貢警署",
+    "nameEn": "SAI KUNG POLICE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sai Wan Ho Fire Station",
+    "latitude": 22.282911,
+    "longitude": 114.219414,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "西灣河消防局",
+    "nameEn": "Sai Wan Ho Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sha Tin Division",
+    "latitude": 22.386878,
+    "longitude": 114.19243,
+    "aliasesZh": [
+      "沙田禾輋街1號"
+    ],
+    "aliasesEn": [
+      "1 Wo Che Street, Sha Tin"
+    ],
+    "nameZh": "沙田分區警署",
+    "nameEn": "Sha Tin Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sha Tin Government Offices",
+    "latitude": 22.385549,
+    "longitude": 114.186905,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "沙田政府合署",
+    "nameEn": "Sha Tin Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sham Shui Po Division",
+    "latitude": 22.330021,
+    "longitude": 114.159177,
+    "aliasesZh": [
+      "欽州街37號A"
+    ],
+    "aliasesEn": [
+      "37A Yen chow Street"
+    ],
+    "nameZh": "深水埗分區警署",
+    "nameEn": "Sham Shui Po Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sham Shui Po Government Offices",
+    "latitude": 22.331862,
+    "longitude": 114.163537,
+    "aliasesZh": [
+      "元州街 55號"
+    ],
+    "aliasesEn": [
+      "55 UN CHAU STREET"
+    ],
+    "nameZh": "深水埗政府合署",
+    "nameEn": "Sham Shui Po Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "SHAM SHUI PO POLICE STATION",
+    "latitude": 22.330516,
+    "longitude": 114.158878,
+    "aliasesZh": [
+      "欽州街 37A號"
+    ],
+    "aliasesEn": [
+      "37A YEN CHOW STREET"
+    ],
+    "nameZh": "深水埗警署",
+    "nameEn": "SHAM SHUI PO POLICE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Shatin Fire Station",
+    "latitude": 22.39064,
+    "longitude": 114.200035,
+    "aliasesZh": [
+      "新界沙田源禾路26-28號"
+    ],
+    "aliasesEn": [
+      "26-28 Yuen Wo Road, Shatin, New Territories"
+    ],
+    "nameZh": "沙田消防局",
+    "nameEn": "Shatin Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Shatin Magistrates' Courts",
+    "latitude": 22.380076,
+    "longitude": 114.18909,
+    "aliasesZh": [
+      "新界沙田宜正里1號"
+    ],
+    "aliasesEn": [
+      "1 Yi Ching Lane, Shatin, New Territories"
+    ],
+    "nameZh": "沙田裁判法院",
+    "nameEn": "Shatin Magistrates' Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Sheung Shui Division",
+    "latitude": 22.495015,
+    "longitude": 114.141302,
+    "aliasesZh": [
+      "沙頭角公路龍躍頭段8號"
+    ],
+    "aliasesEn": [
+      "8 Sha Tau Kok Road, Lung Yeuk Tau, Fanling"
+    ],
+    "nameZh": "上水分區警署",
+    "nameEn": "Sheung Shui Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "SHEUNG SHUI FIRE STATION",
+    "latitude": 22.509105,
+    "longitude": 114.127316,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "上水消防局",
+    "nameEn": "SHEUNG SHUI FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "SHEUNG SHUI POLICE STATION",
+    "latitude": 22.495012,
+    "longitude": 114.141743,
+    "aliasesZh": [
+      "沙頭角公路 － 龍躍頭段 8號"
+    ],
+    "aliasesEn": [
+      "8 SHA TAU KOK ROAD - LUNG YEUK TAU"
+    ],
+    "nameZh": "上水警署",
+    "nameEn": "SHEUNG SHUI POLICE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "SHEUNG WAN FIRE STATION",
+    "latitude": 22.289055,
+    "longitude": 114.147792,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "上環消防局",
+    "nameEn": "SHEUNG WAN FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tai O (Old) Fire Station",
+    "latitude": 22.25514,
+    "longitude": 113.860374,
+    "aliasesZh": [
+      "大澳石仔埗街102號"
+    ],
+    "aliasesEn": [
+      "102 Shek Tsai Po Street, Tai O, Lautau Island"
+    ],
+    "nameZh": "舊大澳消防局",
+    "nameEn": "Tai O (Old) Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "TAI O FIRE STATION",
+    "latitude": 22.252404,
+    "longitude": 113.866704,
+    "aliasesZh": [
+      "大澳道 120號"
+    ],
+    "aliasesEn": [
+      "120 TAI O ROAD"
+    ],
+    "nameZh": "大澳消防局",
+    "nameEn": "TAI O FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tai O Government Offices Building",
+    "latitude": 22.255227,
+    "longitude": 113.860275,
+    "aliasesZh": [
+      "新界大嶼山大澳大澳政府合署"
+    ],
+    "aliasesEn": [
+      "Tai O Government Offices, Tai O, Lantau Island, NT"
+    ],
+    "nameZh": "大澳政府合署",
+    "nameEn": "Tai O Government Offices Building"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tai Po Division",
+    "latitude": 22.452243,
+    "longitude": 114.173129,
+    "aliasesZh": [
+      "大埔安埔里4號"
+    ],
+    "aliasesEn": [
+      "4 On Po Lane, Tai Po"
+    ],
+    "nameZh": "大埔分區警署",
+    "nameEn": "Tai Po Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tai Po East Fire Station",
+    "latitude": 22.461937,
+    "longitude": 114.190564,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "大埔東消防局",
+    "nameEn": "Tai Po East Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tai Po Fire Station",
+    "latitude": 22.451317,
+    "longitude": 114.164701,
+    "aliasesZh": [
+      "新界大埔汀角路3號"
+    ],
+    "aliasesEn": [
+      "3 Ting Kok Road, Tai Po, New Territories"
+    ],
+    "nameZh": "大埔消防局",
+    "nameEn": "Tai Po Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "TAI PO GOVERNMENT OFFICES",
+    "latitude": 22.451209,
+    "longitude": 114.164148,
+    "aliasesZh": [
+      "汀角路 1號"
+    ],
+    "aliasesEn": [
+      "1 TING KOK ROAD"
+    ],
+    "nameZh": "大埔政府合署",
+    "nameEn": "TAI PO GOVERNMENT OFFICES"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "The High Court",
+    "latitude": 22.27859,
+    "longitude": 114.163465,
+    "aliasesZh": [
+      "金鐘道 38號"
+    ],
+    "aliasesEn": [
+      "38 QUEENSWAY"
+    ],
+    "nameZh": "高等法院",
+    "nameEn": "The High Court"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tin Shui Wai Division",
+    "latitude": 22.449887,
+    "longitude": 114.002334,
+    "aliasesZh": [
+      "天水圍天耀路11號"
+    ],
+    "aliasesEn": [
+      "11 Tin Yiu Road, Tin Shui Wai"
+    ],
+    "nameZh": "天水圍分區警署",
+    "nameEn": "Tin Shui Wai Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tin Shui Wai Fire Station",
+    "latitude": 22.450338,
+    "longitude": 114.001887,
+    "aliasesZh": [
+      "新界天水圍天河路1號"
+    ],
+    "aliasesEn": [
+      "1 Tin Ho Road, Tin Shui Wai, New Territories"
+    ],
+    "nameZh": "天水圍消防局",
+    "nameEn": "Tin Shui Wai Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tseung Kwan O District",
+    "latitude": 22.323072,
+    "longitude": 114.259464,
+    "aliasesZh": [
+      "將軍澳寶琳北路110號"
+    ],
+    "aliasesEn": [
+      "110 Po Lam Road North, Tseung Kwan O"
+    ],
+    "nameZh": "將軍澳區警署",
+    "nameEn": "Tseung Kwan O District"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tseung Kwan O Government Offices",
+    "latitude": 22.304399,
+    "longitude": 114.25661,
+    "aliasesZh": [
+      "唐賢街 30號"
+    ],
+    "aliasesEn": [
+      "30 TONG YIN STREET"
+    ],
+    "nameZh": "將軍澳政府合署",
+    "nameEn": "Tseung Kwan O Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tseung Kwan O Government Offices North Tower",
+    "latitude": 22.304588,
+    "longitude": 114.256465,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "將軍澳政府合署北座",
+    "nameEn": "Tseung Kwan O Government Offices North Tower"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tseung Kwan O Government Offices South Tower",
+    "latitude": 22.304209,
+    "longitude": 114.25694,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "將軍澳政府合署南座",
+    "nameEn": "Tseung Kwan O Government Offices South Tower"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tseung Kwan O Police Station",
+    "latitude": 22.323082,
+    "longitude": 114.25961,
+    "aliasesZh": [
+      "寶琳北路 110號"
+    ],
+    "aliasesEn": [
+      "110 PO LAM ROAD NORTH"
+    ],
+    "nameZh": "將軍澳警署",
+    "nameEn": "Tseung Kwan O Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsim Sha Tsui Division",
+    "latitude": 22.302662,
+    "longitude": 114.171336,
+    "aliasesZh": [
+      "彌敦道213號"
+    ],
+    "aliasesEn": [
+      "213 Nathan Road"
+    ],
+    "nameZh": "尖沙咀分區警署",
+    "nameEn": "Tsim Sha Tsui Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsim Sha Tsui Division Police Station",
+    "latitude": 22.302649,
+    "longitude": 114.171412,
+    "aliasesZh": [
+      "九龍彌敦道213號"
+    ],
+    "aliasesEn": [
+      "213 Nathan Road, Kowloon"
+    ],
+    "nameZh": "尖沙咀分局警署",
+    "nameEn": "Tsim Sha Tsui Division Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsim Sha Tsui Fire Station",
+    "latitude": 22.301402,
+    "longitude": 114.167616,
+    "aliasesZh": [
+      "九龍尖沙咀廣東道333號"
+    ],
+    "aliasesEn": [
+      "333 Canton Road, Tsim Sha Tsui, Kowloon"
+    ],
+    "nameZh": "尖沙咀消防局",
+    "nameEn": "Tsim Sha Tsui Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "TSIM SHA TSUI POLICE STATION",
+    "latitude": 22.302422,
+    "longitude": 114.170984,
+    "aliasesZh": [
+      "彌敦道 213號"
+    ],
+    "aliasesEn": [
+      "213 NATHAN ROAD"
+    ],
+    "nameZh": "尖沙咀警署",
+    "nameEn": "TSIM SHA TSUI POLICE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsim Tung Fire Station",
+    "latitude": 22.300291,
+    "longitude": 114.180048,
+    "aliasesZh": [
+      "九龍康莊道1號"
+    ],
+    "aliasesEn": [
+      "1 Hong Chong Road, Tsim Sha Tsui East, Kowloon"
+    ],
+    "nameZh": "尖東消防局",
+    "nameEn": "Tsim Tung Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsing Yi Division",
+    "latitude": 22.351265,
+    "longitude": 114.107544,
+    "aliasesZh": [
+      "青衣島青衣鄉事會路13號"
+    ],
+    "aliasesEn": [
+      "13 Tsing Yi Heung Sze Wui Road, Tsing Yi Island"
+    ],
+    "nameZh": "青衣分區警署",
+    "nameEn": "Tsing Yi Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsing Yi Fire Station",
+    "latitude": 22.350992,
+    "longitude": 114.107966,
+    "aliasesZh": [
+      "新界青衣青衣鄉事會路11號"
+    ],
+    "aliasesEn": [
+      "11 Tsing Yi Heung Sze Wui Road, Tsing Yi, New Territories"
+    ],
+    "nameZh": "青衣消防局",
+    "nameEn": "Tsing Yi Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsing Yi Fireboat Station",
+    "latitude": 22.350679,
+    "longitude": 114.110933,
+    "aliasesZh": [
+      "新界青衣長輝路"
+    ],
+    "aliasesEn": [
+      "Cheung Fai Road, Tsing Yi, NT"
+    ],
+    "nameZh": "青衣滅火輪消防局",
+    "nameEn": "Tsing Yi Fireboat Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "TSING YI SOUTH FIRE STATION",
+    "latitude": 22.336853,
+    "longitude": 114.093927,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "青衣南消防局",
+    "nameEn": "TSING YI SOUTH FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsuen Wan District",
+    "latitude": 22.376818,
+    "longitude": 114.110105,
+    "aliasesZh": [
+      "荃灣荃景圍23 - 27號"
+    ],
+    "aliasesEn": [
+      "23-27 Tsuen King Circuit, Tsuen Wan"
+    ],
+    "nameZh": "荃灣區警署",
+    "nameEn": "Tsuen Wan District"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsuen Wan Fire Station",
+    "latitude": 22.375115,
+    "longitude": 114.111537,
+    "aliasesZh": [
+      "新界荃灣青山公路-荃灣段453號"
+    ],
+    "aliasesEn": [
+      "453 Castle Peak Road - Tsuen Wan, Tsuen Wan, New Territories"
+    ],
+    "nameZh": "荃灣消防局",
+    "nameEn": "Tsuen Wan Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tsuen Wan Government Offices",
+    "latitude": 22.37439,
+    "longitude": 114.115447,
+    "aliasesZh": [
+      "荃灣西樓角路38號2樓"
+    ],
+    "aliasesEn": [
+      "2/F, 38 Sai Lau Kok Road, Tsuen Wan"
+    ],
+    "nameZh": "荃灣政府合署",
+    "nameEn": "Tsuen Wan Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "TSUEN WAN POLICE STATION",
+    "latitude": 22.377001,
+    "longitude": 114.109982,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "荃灣警署",
+    "nameEn": "TSUEN WAN POLICE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tuen Mun Division",
+    "latitude": 22.394747,
+    "longitude": 113.971735,
+    "aliasesZh": [
+      "屯門杯渡路100號"
+    ],
+    "aliasesEn": [
+      "100 Pui To Road, Tuen Mun"
+    ],
+    "nameZh": "屯門分區警署",
+    "nameEn": "Tuen Mun Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tuen Mun Fire Station",
+    "latitude": 22.394966,
+    "longitude": 113.970793,
+    "aliasesZh": [
+      "新界屯門杯渡路102號"
+    ],
+    "aliasesEn": [
+      "102 Pui To Road, Tuen Mun, NT"
+    ],
+    "nameZh": "屯門消防局",
+    "nameEn": "Tuen Mun Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tuen Mun Fireboat Station",
+    "latitude": 22.361501,
+    "longitude": 113.948027,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "屯門滅火輪消防局",
+    "nameEn": "Tuen Mun Fireboat Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tuen Mun Government Offices",
+    "latitude": 22.390274,
+    "longitude": 113.976267,
+    "aliasesZh": [
+      "屯喜路 1號"
+    ],
+    "aliasesEn": [
+      "1 TUEN HI ROAD"
+    ],
+    "nameZh": "屯門政府合署",
+    "nameEn": "Tuen Mun Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tuen Mun Government Storage Centre",
+    "latitude": 22.394562,
+    "longitude": 113.96824,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "屯門政府貯物中心",
+    "nameEn": "Tuen Mun Government Storage Centre"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Tuen Mun Magistrates' Courts",
+    "latitude": 22.390273,
+    "longitude": 113.975685,
+    "aliasesZh": [
+      "新界屯門屯喜路1號"
+    ],
+    "aliasesEn": [
+      "1 Tuen Hi Road, Tuen Mun, New Territories"
+    ],
+    "nameZh": "屯門裁判法院",
+    "nameEn": "Tuen Mun Magistrates' Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "TUNG LO WAN FIRE STATION",
+    "latitude": 22.285535,
+    "longitude": 114.190159,
+    "aliasesZh": [
+      "維園道 111號"
+    ],
+    "aliasesEn": [
+      "111 VICTORIA PARK ROAD"
+    ],
+    "nameZh": "銅鑼灣消防局",
+    "nameEn": "TUNG LO WAN FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "VICTORIA PEAK FIRE STATION",
+    "latitude": 22.265242,
+    "longitude": 114.152386,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "山頂消防局",
+    "nameEn": "VICTORIA PEAK FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wan Chai Division",
+    "latitude": 22.27879,
+    "longitude": 114.168512,
+    "aliasesZh": [
+      "灣仔軍器廠街1號"
+    ],
+    "aliasesEn": [
+      "No. 1 Arsenal Street, Wanchai"
+    ],
+    "nameZh": "灣仔分區警署",
+    "nameEn": "Wan Chai Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "WAN CHAI FIRE STATION",
+    "latitude": 22.279756,
+    "longitude": 114.181348,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "灣仔消防局",
+    "nameEn": "WAN CHAI FIRE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wanchai Tower",
+    "latitude": 22.280334,
+    "longitude": 114.172391,
+    "aliasesZh": [],
+    "aliasesEn": [],
+    "nameZh": "灣仔政府大樓",
+    "nameEn": "Wanchai Tower"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "West Kowloon Government Offices",
+    "latitude": 22.3125,
+    "longitude": 114.163393,
+    "aliasesZh": [
+      "海庭道 11號"
+    ],
+    "aliasesEn": [
+      "11 HOI TING ROAD"
+    ],
+    "nameZh": "西九龍政府合署",
+    "nameEn": "West Kowloon Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "West Kowloon Government Offices (North Tower)",
+    "latitude": 22.312851,
+    "longitude": 114.16321,
+    "aliasesZh": [
+      "油麻地海庭道11號"
+    ],
+    "aliasesEn": [
+      "11 Hoi Ting Road, Yaumatei"
+    ],
+    "nameZh": "西九龍政府合署 (北座)",
+    "nameEn": "West Kowloon Government Offices (North Tower)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "West Kowloon Government Offices (South Tower)",
+    "latitude": 22.312523,
+    "longitude": 114.163593,
+    "aliasesZh": [
+      "油麻地海庭道11號"
+    ],
+    "aliasesEn": [
+      "11 Hoi Ting Road, Yaumatei"
+    ],
+    "nameZh": "西九龍政府合署 (南座)",
+    "nameEn": "West Kowloon Government Offices (South Tower)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "West Kowloon Government Offices Student Health Service Centre cum Special Assessment Centre",
+    "latitude": 22.312456,
+    "longitude": 114.163667,
+    "aliasesZh": [
+      "九龍油麻地海庭道11號 西九龍政府合署南座2樓"
+    ],
+    "aliasesEn": [
+      "2/F, South Tower,West Kowloon Government Offices,11 Hoi Ting Road, Yau Ma Tei, Kowloon"
+    ],
+    "nameZh": "西九龍政府合署學生健康服務中心及評估中心",
+    "nameEn": "West Kowloon Government Offices Student Health Service Centre cum Special Assessment Centre"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "West Kowloon Magistrates' Courts",
+    "latitude": 22.331181,
+    "longitude": 114.153177,
+    "aliasesZh": [
+      "香港九龍深水埗通州街501號西九龍法院大樓A座3樓至7樓"
+    ],
+    "aliasesEn": [
+      "3/F-7/F, Tower A, West Kowloon Law Courts Building, 501 Tung Chau Street, Sham Shui Po, Kowloon"
+    ],
+    "nameZh": "西九龍裁判法院",
+    "nameEn": "West Kowloon Magistrates' Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "West Kowloon Office (Immigration Branch Offices)",
+    "latitude": 22.300445,
+    "longitude": 114.173837,
+    "aliasesZh": [
+      "九龍尖沙咀金巴利街二十八號地下"
+    ],
+    "aliasesEn": [
+      "Ground Floor, 28 Kimberley Street, Tsim Sha Tsui, Kowloon"
+    ],
+    "nameZh": "西九龍辦事處 (入境事務處分區辦事處)",
+    "nameEn": "West Kowloon Office (Immigration Branch Offices)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Harbour Building",
+    "latitude": 22.28661,
+    "longitude": 114.155,
+    "aliasesZh": [
+      "香港中環統一碼頭道38號地下及1樓"
+    ],
+    "aliasesEn": [
+      "G/F, 1/F, 38 Pier Road, Central, Hong Kong"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 海港政府大樓",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Harbour Building"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Immigration - East Kowloon Office (Sceneway Plaza 2/F)",
+    "latitude": 22.30771,
+    "longitude": 114.23291,
+    "aliasesZh": [
+      "九龍藍田匯景道8號匯景花園匯景廣場第2層"
+    ],
+    "aliasesEn": [
+      "Level 2, Sceneway Plaza, Sceneway Garden, 8 Sceneway Road, Lam Tin, Kowloon"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 入境事務處 - 東九龍辦事處(匯景廣場第2層)",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Immigration - East Kowloon Office (Sceneway Plaza 2/F)"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Immigration - Hong Kong Island Travel Documents Issuing Office",
+    "latitude": 22.28661,
+    "longitude": 114.155,
+    "aliasesZh": [
+      "香港中環統一碼頭道38號海港政府大樓2樓"
+    ],
+    "aliasesEn": [
+      "2/F, Harbour Building, 38 Pier Road, Central, Hong Kong"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 入境事務處-港島區簽發旅行證件辦事處",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Immigration - Hong Kong Island Travel Documents Issuing Office"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Immigration - West Kowloon Office",
+    "latitude": 22.30056,
+    "longitude": 114.1739,
+    "aliasesZh": [
+      "九龍尖沙咀金巴利街28號地下"
+    ],
+    "aliasesEn": [
+      "Ground Floor, 28 Kimberley Street, Tsim Sha Tsui, Kowloon"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 入境事務處 - 西九龍辦事處",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Immigration - West Kowloon Office"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Information Services Department",
+    "latitude": 22.29212,
+    "longitude": 114.2082,
+    "aliasesZh": [
+      "香港北角渣華道333號北角政府合署11樓"
+    ],
+    "aliasesEn": [
+      "11/F, North Point Government Offices, 333 Java Road North Point, Hong Kong"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 政府新聞處",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Information Services Department"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Kowloon East Government Offices",
+    "latitude": 22.30955,
+    "longitude": 114.2298,
+    "aliasesZh": [
+      "九龍觀塘鯉魚門道12號地下"
+    ],
+    "aliasesEn": [
+      "G/F, 12 Lei Yue Mun Road, Kwun Tong, Kowloon"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 東九龍政府合署",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Kowloon East Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Mong Kok Police Station",
+    "latitude": 22.32429,
+    "longitude": 114.169,
+    "aliasesZh": [
+      "九龍太子道西142號"
+    ],
+    "aliasesEn": [
+      "142 Prince Edward Road West, Mong Kok, Kowloon"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 旺角警署",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Mong Kok Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Wanchai Law Courts",
+    "latitude": 22.28,
+    "longitude": 114.1725,
+    "aliasesZh": [
+      "香港灣仔港灣道12號灣仔政府大樓"
+    ],
+    "aliasesEn": [
+      "Wanchai Tower, 12 Harbour Road, Wan Chai, Hong Kong"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 灣仔法院",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Wanchai Law Courts"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: Wanchai Tower",
+    "latitude": 22.28034,
+    "longitude": 114.1724,
+    "aliasesZh": [
+      "香港灣仔港灣道12號地下"
+    ],
+    "aliasesEn": [
+      "G/F, 12 Harbour Road, Wan Chai, Hong Kong"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 灣仔政府大樓",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: Wanchai Tower"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wi-Fi.HK Hotspot Locations: West Kowloon Government Offices - BD",
+    "latitude": 22.31294,
+    "longitude": 114.16307,
+    "aliasesZh": [
+      "九龍旺角海庭道11號"
+    ],
+    "aliasesEn": [
+      "11 Hoi Ting Road, Yau Ma Tei, Kowloon, Hong Kong"
+    ],
+    "nameZh": "Wi-Fi.HK 熱點位置: 西九龍政府合署 -屋宇署",
+    "nameEn": "Wi-Fi.HK Hotspot Locations: West Kowloon Government Offices - BD"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wong Tai Sin District",
+    "latitude": 22.339129,
+    "longitude": 114.19647,
+    "aliasesZh": [
+      "黃大仙沙田坳道2號"
+    ],
+    "aliasesEn": [
+      "2 Shatin Pass Road, Wong Tai Sin"
+    ],
+    "nameZh": "黃大仙區警署",
+    "nameEn": "Wong Tai Sin District"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wong Tai Sin District Headquarters And Wong Tai Sin Police Station",
+    "latitude": 22.339131,
+    "longitude": 114.196066,
+    "aliasesZh": [
+      "沙田㘭道 2號"
+    ],
+    "aliasesEn": [
+      "2 SHATIN PASS ROAD"
+    ],
+    "nameZh": "黃大仙區總部及黃大仙警署",
+    "nameEn": "Wong Tai Sin District Headquarters And Wong Tai Sin Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wong Tai Sin Fire Station",
+    "latitude": 22.342992,
+    "longitude": 114.196929,
+    "aliasesZh": [
+      "九龍鳳德道28號"
+    ],
+    "aliasesEn": [
+      "28 Fung Tak Road, Wong Tai Sin, Kowloon"
+    ],
+    "nameZh": "黃大仙消防局",
+    "nameEn": "Wong Tai Sin Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Wong Tai Sin Police Station",
+    "latitude": 22.339136,
+    "longitude": 114.196462,
+    "aliasesZh": [
+      "九龍黃大仙沙田㘭道2號"
+    ],
+    "aliasesEn": [
+      "2 Shatin Pass Road, Wong Tai Sin, Kowloon"
+    ],
+    "nameZh": "黃大仙警署",
+    "nameEn": "Wong Tai Sin Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Yau Ma Tei Division",
+    "latitude": 22.310165,
+    "longitude": 114.165746,
+    "aliasesZh": [
+      "油麻地友翔道3號"
+    ],
+    "aliasesEn": [
+      "3 Yau Cheung Road, Yau Ma Tei"
+    ],
+    "nameZh": "油麻地分區警署",
+    "nameEn": "Yau Ma Tei Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Yau Ma Tei Fire Station",
+    "latitude": 22.312835,
+    "longitude": 114.171294,
+    "aliasesZh": [
+      "窩打老道 42號"
+    ],
+    "aliasesEn": [
+      "42 WATERLOO ROAD"
+    ],
+    "nameZh": "油麻地消防局",
+    "nameEn": "Yau Ma Tei Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Yau Ma Tei Police Station",
+    "latitude": 22.310216,
+    "longitude": 114.165742,
+    "aliasesZh": [
+      "友翔道 3號"
+    ],
+    "aliasesEn": [
+      "3 YAU CHEUNG ROAD"
+    ],
+    "nameZh": "油麻地警署",
+    "nameEn": "Yau Ma Tei Police Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Yuen Long Division",
+    "latitude": 22.444087,
+    "longitude": 114.023134,
+    "aliasesZh": [
+      "元朗青山公路(元朗段)246號"
+    ],
+    "aliasesEn": [
+      "246 Castle Peak Road - Yuen Long, Yuen Long"
+    ],
+    "nameZh": "元朗分區警署",
+    "nameEn": "Yuen Long Division"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Yuen Long Fire Station",
+    "latitude": 22.441085,
+    "longitude": 114.032528,
+    "aliasesZh": [
+      "新界元朗鳳琴街2號"
+    ],
+    "aliasesEn": [
+      "2 Fung Kam Street, Yuen Long, New Territories"
+    ],
+    "nameZh": "元朗消防局",
+    "nameEn": "Yuen Long Fire Station"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "Yuen Long Government Offices",
+    "latitude": 22.445425,
+    "longitude": 114.027151,
+    "aliasesZh": [
+      "元朗橋樂坊2號"
+    ],
+    "aliasesEn": [
+      "2 Kiu Lok Square, Yuen Long"
+    ],
+    "nameZh": "元朗政府合署",
+    "nameEn": "Yuen Long Government Offices"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "YUEN LONG POLICE STATION",
+    "latitude": 22.444011,
+    "longitude": 114.02283,
+    "aliasesZh": [
+      "元朗體育路 1號|青山公路 － 元朗段 246號"
+    ],
+    "aliasesEn": [
+      "1 YUEN LONG TAI YUK ROAD|246 CASTLE PEAK ROAD - YUEN LONG"
+    ],
+    "nameZh": "元朗警署",
+    "nameEn": "YUEN LONG POLICE STATION"
+  },
+  {
+    "category": "governmentPublic",
+    "subcategory": "governmentOffice",
+    "displayName": "西貢將軍澳政府綜合大樓",
+    "latitude": 22.317334,
+    "longitude": 114.268497,
+    "aliasesZh": [
+      "將軍澳培成路38號西貢將軍澳政府綜合大樓"
+    ],
+    "aliasesEn": [
+      "將軍澳培成路38號西貢將軍澳政府綜合大樓地下"
+    ],
+    "nameZh": "西貢將軍澳政府綜合大樓",
+    "nameEn": "西貢將軍澳政府綜合大樓"
+  }
+]

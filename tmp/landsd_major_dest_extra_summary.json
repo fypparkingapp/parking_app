@@ -1,0 +1,14 @@
+{
+  "totalRows": 7,
+  "skippedExistingRows": 993,
+  "skippedBatchRows": 0,
+  "subcategoryCounts": {
+    "majorDestination": 7
+  },
+  "writtenFiles": [
+    {
+      "path": "tmp/landsd_major_dest_extra.csv",
+      "rows": 7
+    }
+  ]
+}

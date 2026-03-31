@@ -1,0 +1,47 @@
+{
+  "processed": 3,
+  "succeeded": 3,
+  "failed": 0,
+  "writtenFiles": [
+    {
+      "path": "assets/data/local_landmarks/major_destinations.json",
+      "newCandidates": 3,
+      "totalItems": 8
+    }
+  ],
+  "rows": [
+    {
+      "index": 1,
+      "query": "88廣場",
+      "label": "88廣場",
+      "subcategory": "majorDestination",
+      "appendTo": "assets/data/local_landmarks/major_destinations.json",
+      "fetched": 50,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 2,
+      "query": "9號大樓",
+      "label": "9號大樓",
+      "subcategory": "majorDestination",
+      "appendTo": "assets/data/local_landmarks/major_destinations.json",
+      "fetched": 50,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 3,
+      "query": "Administration Building",
+      "label": "Administration Building",
+      "subcategory": "majorDestination",
+      "appendTo": "assets/data/local_landmarks/major_destinations.json",
+      "fetched": 50,
+      "filtered": 5,
+      "emitted": 1,
+      "status": "ok"
+    }
+  ]
+}

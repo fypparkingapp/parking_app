@@ -1,0 +1,192 @@
+{
+  "profile": "phase2",
+  "seedsProcessed": 20,
+  "totalActual": 5,
+  "skippedExisting": 820,
+  "counts": {
+    "housing_estates.txt": {
+      "target": 3200,
+      "actual": 3
+    },
+    "malls.txt": {
+      "target": 1600,
+      "actual": 0
+    },
+    "office_towers.txt": {
+      "target": 2200,
+      "actual": 0
+    },
+    "industrial_areas.txt": {
+      "target": 320,
+      "actual": 0
+    },
+    "campuses.txt": {
+      "target": 220,
+      "actual": 0
+    },
+    "schools.txt": {
+      "target": 900,
+      "actual": 0
+    },
+    "hospitals.txt": {
+      "target": 220,
+      "actual": 0
+    },
+    "government_offices.txt": {
+      "target": 600,
+      "actual": 0
+    },
+    "hotels.txt": {
+      "target": 650,
+      "actual": 0
+    },
+    "arts_venues.txt": {
+      "target": 320,
+      "actual": 0
+    },
+    "theme_parks.txt": {
+      "target": 80,
+      "actual": 0
+    },
+    "major_destinations.txt": {
+      "target": 500,
+      "actual": 2
+    }
+  },
+  "deficits": {
+    "housing_estates.txt": 3197,
+    "malls.txt": 1600,
+    "office_towers.txt": 2200,
+    "industrial_areas.txt": 320,
+    "campuses.txt": 220,
+    "schools.txt": 900,
+    "hospitals.txt": 220,
+    "government_offices.txt": 600,
+    "hotels.txt": 650,
+    "arts_venues.txt": 320,
+    "theme_parks.txt": 80,
+    "major_destinations.txt": 498
+  },
+  "seedProgress": [
+    {
+      "seed": "a",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 37
+    },
+    {
+      "seed": "b",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 49
+    },
+    {
+      "seed": "c",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 47
+    },
+    {
+      "seed": "d",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "e",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "f",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 31
+    },
+    {
+      "seed": "g",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "h",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "i",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "j",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "k",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "l",
+      "hits": 46,
+      "accepted": 0,
+      "skippedExisting": 22
+    },
+    {
+      "seed": "m",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 33
+    },
+    {
+      "seed": "n",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "o",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 38
+    },
+    {
+      "seed": "p",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 37
+    },
+    {
+      "seed": "q",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 47
+    },
+    {
+      "seed": "r",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 47
+    },
+    {
+      "seed": "s",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "t",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "totalRows": 7,
+  "skippedExistingRows": 993,
+  "skippedBatchRows": 0,
+  "subcategoryCounts": {
+    "majorDestination": 6,
+    "school": 1
+  },
+  "writtenFiles": [
+    {
+      "path": "tmp/landsd_batch_from_classified.csv",
+      "rows": 7
+    }
+  ]
+}

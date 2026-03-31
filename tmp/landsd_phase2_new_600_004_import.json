@@ -1,0 +1,146 @@
+{
+  "processed": 12,
+  "succeeded": 12,
+  "failed": 0,
+  "writtenFiles": [
+    {
+      "path": "assets/data/local_landmarks/housing_estates.json",
+      "newCandidates": 12,
+      "totalItems": 2368
+    }
+  ],
+  "rows": [
+    {
+      "index": 1,
+      "query": "香港導盲犬學苑",
+      "label": "香港導盲犬學苑",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 1,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 2,
+      "query": "香港村",
+      "label": "香港村",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 1,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 3,
+      "query": "香港聖公會東涌綜合服務-消閒閣",
+      "label": "香港聖公會東涌綜合服務-消閒閣",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 2,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 4,
+      "query": "馬灣新村",
+      "label": "馬灣新村",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 50,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 5,
+      "query": "馬鞍山村",
+      "label": "馬鞍山村",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 32,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 6,
+      "query": "馬鞍山村食水缸",
+      "label": "馬鞍山村食水缸",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 1,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 7,
+      "query": "駿景閣",
+      "label": "駿景閣",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 1,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 8,
+      "query": "高埔新村",
+      "label": "高埔新村",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 11,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 9,
+      "query": "高山村",
+      "label": "高山村",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 50,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 10,
+      "query": "高景臺",
+      "label": "高景臺",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 1,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 11,
+      "query": "鳳凰新村",
+      "label": "鳳凰新村",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 28,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    },
+    {
+      "index": 12,
+      "query": "鹹田新村",
+      "label": "鹹田新村",
+      "subcategory": "housingEstate",
+      "appendTo": "assets/data/local_landmarks/housing_estates.json",
+      "fetched": 50,
+      "filtered": 1,
+      "emitted": 1,
+      "status": "ok"
+    }
+  ]
+}

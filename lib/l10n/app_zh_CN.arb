@@ -1,0 +1,307 @@
+{
+  "@@locale": "zh_CN",
+  "app_title": "停车App",
+  "parking_map_title": "停车地图",
+  "settings_title": "设置",
+  "map_settings_title": "地图设置",
+  "map_style": "地图样式",
+  "map_controls": "地图控制",
+  "normal": "正常",
+  "dark": "深色",
+  "bright": "明亮",
+  "map_theme_default": "默认",
+  "map_theme_night_drive": "夜间驾驶",
+  "map_theme_clean_atlas": "清爽地图",
+  "dark_mode": "深色模式",
+  "language": "语言",
+  "language_english": "英文",
+  "language_traditional_chinese": "繁体中文",
+  "language_simplified_chinese": "简体中文",
+  "vehicle_type": "车辆类型",
+  "vehicle_type_private_car": "私家车",
+  "vehicle_type_motorcycle": "摩托车",
+  "vehicle_type_taxi": "出租车",
+  "vacancy_type_private_car": "私家车",
+  "vacancy_type_motorcycle": "摩托车",
+  "vacancy_type_taxi": "出租车",
+  "back": "返回",
+  "zoom_in": "放大",
+  "zoom_out": "缩小",
+  "go_to_my_location": "前往我的位置",
+  "cluster_nearby_carparks": "聚合附近停车场",
+  "reset_view": "重置视图",
+  "clear_cached_parking_data": "清除缓存停车数据",
+  "clear_cached_parking_data_subtitle": "显示加载并重新下载",
+  "loading": "加载中...",
+  "loading_carparks": "正在加载停车场...",
+  "dismiss": "关闭",
+  "cancel": "取消",
+  "clear": "清除",
+  "close": "关闭",
+  "apply": "应用",
+  "retry": "重试",
+  "refresh": "刷新",
+  "route": "路线",
+  "routing": "正在规划路线...",
+  "route_priorities": "路线优先项",
+  "route_priorities_subtitle": "可选择一个或多个，并设置主要优先项。",
+  "set_primary": "设为主要",
+  "route_again": "重新规划",
+  "tap_map_to_set_start_point": "点击地图设置起点",
+  "tap_map_to_set_destination_point": "点击地图设置目的地",
+  "tap_map_to_place_start_marker": "点击地图放置起点标记",
+  "from_current_location": "从：当前位置",
+  "from_selected_start": "从：已选起点",
+  "choose_start_point": "选择起点",
+  "choose_destination": "选择目的地",
+  "use_current_location": "使用当前位置",
+  "pick_on_map": "在地图上选择",
+  "clear_selected_start": "清除已选起点",
+  "avoid_toll_fees": "避免过路费",
+  "toll_fee_title": "过路费",
+  "requesting_route": "正在获取路线...",
+  "routing_failed": "规划路线失败",
+  "no_routes_available": "没有可用路线。",
+  "no_route_data_yet": "尚无路线数据。",
+  "compare_routes": "比较路线",
+  "roads": "道路",
+  "more_roads_omitted": "更多道路已省略…",
+  "stop": "停止",
+  "start_navigation": "开始导航",
+  "eta": "ETA",
+  "distance": "距离",
+  "time": "时间",
+  "toll_cost": "过路费",
+  "toll_time": "收费时间",
+  "toll_pricing_time": "过路费计算时间",
+  "toll_time_mode_now": "现在",
+  "toll_time_mode_depart_at": "出发时间",
+  "toll_time_mode_arrive_by": "到达时间",
+  "use_current_time": "使用当前时间",
+  "set_departure_time": "设置出发时间",
+  "set_arrival_time_estimated": "设置到达时间（估算）",
+  "pick_date_time": "选择日期/时间",
+  "change_date_time": "更改日期/时间",
+  "reset": "重置",
+  "select": "选择",
+  "toll_select_tunnel": "选择隧道",
+  "toll_select_date": "选择日期  {date}",
+  "toll_select_time": "选择时间  {time}",
+  "arrive_unknown": "到达：--",
+  "toll_unknown": "过路费：--",
+  "toll_amount_unknown": "HK$--",
+  "no_toll_fees": "无过路费",
+  "toll_chip_unknown": "过路费 --",
+  "toll_chip_free": "过路费 HK$0",
+  "toll_short": "过路费",
+  "toll_free_route_may_avoid_major_roads": "免过路费路线可能会避开主要道路。",
+  "toll_info_unavailable_showing_best_route": "过路费信息无法获取；显示最佳路线。",
+  "no_toll_free_route_showing_lowest_toll_route": "没有免过路费路线；显示最低过路费路线。",
+  "coordinates": "坐标",
+  "free_spaces": "空位",
+  "carpark_status_open": "开放",
+  "carpark_status_closed": "关闭",
+  "unknown_carpark": "未知停车场",
+  "carpark": "停车场",
+  "nearby": "附近",
+  "search_parking": "搜索停车场名称或地址",
+  "no_matching_car_parks": "没有匹配的停车场",
+  "no_recent_searches": "没有最近搜索",
+  "favorites": "收藏",
+  "recent": "最近",
+  "search_results": "搜索结果",
+  "saved_places": "已保存地点",
+  "add_place": "添加地点",
+  "save_place": "保存地点",
+  "place_name": "名称",
+  "place_name_hint": "家、学校",
+  "place_location": "位置",
+  "place_location_hint": "搜索地址或地点",
+  "place_edit_name_hint": "可编辑地点名称（选填）。",
+  "place_missing_info": "请输入名称和位置。",
+  "save": "保存",
+  "na": "不适用",
+  "price": "价格",
+  "vacancies": "空位",
+  "updated": "更新",
+  "rates": "费率",
+  "navigate": "导航",
+  "photo_unavailable": "无法显示图片",
+  "show_all": "显示全部",
+  "show_fewer": "显示更少",
+  "no_pricing_info": "此停车场没有可用的收费信息。",
+  "no_price_information": "没有收费信息",
+  "rate_type_hourly": "每小时",
+  "rate_type_12_hour_parking": "12小时停车",
+  "rate_type_24_hour_parking": "24小时停车",
+  "rate_type_monthly": "月租",
+  "rate_type_night": "夜间停车",
+  "rate_type_day": "日间停车",
+  "rate_type_day_and_night": "日夜",
+  "rate_type_day_pass": "日票",
+  "excluding_public_holidays": "不包括公众假期",
+  "weekdays": "工作日",
+  "weekdays_excluding_ph": "工作日（不含公假）",
+  "weekends": "周末",
+  "weekends_and_ph": "周末及公假",
+  "weekends_excluding_ph": "周末（不含公假）",
+  "excluding_public_holiday_suffix": "(不含公假)",
+  "public_holiday": "公假",
+  "weekday_mon_short": "一",
+  "weekday_tue_short": "二",
+  "weekday_wed_short": "三",
+  "weekday_thu_short": "四",
+  "weekday_fri_short": "五",
+  "weekday_sat_short": "六",
+  "weekday_sun_short": "日",
+  "location_not_available": "无法获取定位",
+  "location_permission_denied": "位置权限被拒绝",
+  "location_permission_permanently_denied": "位置权限被永久拒绝",
+  "route_location_not_available": "无法获取定位，无法绘制路线",
+  "route_not_found": "找不到路线",
+  "route_fetch_failed": "路线获取失败：{error}",
+  "error_getting_location": "获取定位出错：{error}",
+  "error_loading_carparks": "加载停车场出错：{error}",
+  "rate_from_price": "从 {price} 起",
+  "vacancy_ev": "EV {count}",
+  "vacancy_disabled": "无障碍 {count}",
+  "rate_minimum_hours": "最少 {hours} 小时",
+  "rate_valid_until": "至 {date}",
+  "route_number": "路线 {number}",
+  "metered_parking": "咪表车位",
+  "metered_parking_title": "咪表车位",
+  "loading_metered_parking": "正在加载咪表车位...",
+  "metered_no_data": "没有咪表车位数据。",
+  "metered_vacant": "可用",
+  "metered_occupied": "已占用",
+  "metered_unknown": "未知",
+  "metered_spaces_count": "{vacant} 空 / 共 {total}",
+  "metered_vehicle_filter": "车辆类型",
+  "metered_vehicle_light_goods": "轻型货车",
+  "metered_vehicle_heavy_goods": "重型货车",
+  "metered_vehicle_coach": "巴士",
+  "metered_vehicle_special": "特种用途车辆",
+  "metered_status_free_now": "当前免费",
+  "metered_status_metering_now": "当前收费",
+  "metered_status_no_parking_now": "当前禁停",
+  "metered_status_unknown": "开放时间不明",
+  "tdas_eta": "TDAS ETA：{eta} / {speed}",
+  "duration_hours_minutes": "{hours}小时 {minutes}分钟",
+  "duration_minutes": "{minutes}分钟",
+  "distance_km": "{km} 公里",
+  "distance_m": "{m} 米",
+  "arrive_at": "到达：{time}",
+  "depart_and_arrive": "出发：{depart} · 到达：{arrive}",
+  "arrive_and_est_depart": "到达：{arrive} · 预计出发：{depart}",
+  "est_toll": "预计过路费：{amount}",
+  "@route_fetch_failed": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "@metered_spaces_count": {
+    "placeholders": {
+      "vacant": {},
+      "total": {}
+    }
+  },
+  "@error_getting_location": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "@error_loading_carparks": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "@rate_from_price": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "@vacancy_ev": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "@vacancy_disabled": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "@rate_minimum_hours": {
+    "placeholders": {
+      "hours": {}
+    }
+  },
+  "@rate_valid_until": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "@route_number": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "@tdas_eta": {
+    "placeholders": {
+      "eta": {},
+      "speed": {}
+    }
+  },
+  "@duration_hours_minutes": {
+    "placeholders": {
+      "hours": {},
+      "minutes": {}
+    }
+  },
+  "@duration_minutes": {
+    "placeholders": {
+      "minutes": {}
+    }
+  },
+  "@distance_km": {
+    "placeholders": {
+      "km": {}
+    }
+  },
+  "@distance_m": {
+    "placeholders": {
+      "m": {}
+    }
+  },
+  "@arrive_at": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "@depart_and_arrive": {
+    "placeholders": {
+      "depart": {},
+      "arrive": {}
+    }
+  },
+  "@arrive_and_est_depart": {
+    "placeholders": {
+      "arrive": {},
+      "depart": {}
+    }
+  },
+  "@est_toll": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "@toll_select_date": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "@toll_select_time": {
+    "placeholders": {
+      "time": {}
+    }
+  }
+}

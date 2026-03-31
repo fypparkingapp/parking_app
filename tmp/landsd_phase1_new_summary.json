@@ -1,0 +1,38 @@
+{
+  "totalRows": 1896,
+  "skippedExistingRows": 3102,
+  "subcategoryCounts": {
+    "artsVenue": 2,
+    "campus": 43,
+    "hotel": 163,
+    "housingEstate": 724,
+    "industrialArea": 4,
+    "majorDestination": 2,
+    "mall": 144,
+    "officeTower": 559,
+    "school": 254,
+    "themePark": 1
+  },
+  "writtenFiles": [
+    {
+      "path": "tmp/landsd_phase1_new_001.csv",
+      "rows": 400
+    },
+    {
+      "path": "tmp/landsd_phase1_new_002.csv",
+      "rows": 400
+    },
+    {
+      "path": "tmp/landsd_phase1_new_003.csv",
+      "rows": 400
+    },
+    {
+      "path": "tmp/landsd_phase1_new_004.csv",
+      "rows": 400
+    },
+    {
+      "path": "tmp/landsd_phase1_new_005.csv",
+      "rows": 296
+    }
+  ]
+}

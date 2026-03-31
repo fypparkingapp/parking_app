@@ -1,0 +1,10 @@
+services:
+  landmarks-api:
+    build:
+      context: ../..
+      dockerfile: deploy/landmarks_api/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DEFAULT_LIMIT=100
+      - MAX_LIMIT=5000

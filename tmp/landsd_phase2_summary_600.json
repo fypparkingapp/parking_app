@@ -1,0 +1,3672 @@
+{
+  "profile": "phase2",
+  "seedsProcessed": 600,
+  "totalActual": 2332,
+  "skippedExisting": 11748,
+  "counts": {
+    "housing_estates.txt": {
+      "target": 3200,
+      "actual": 1105
+    },
+    "malls.txt": {
+      "target": 1600,
+      "actual": 19
+    },
+    "office_towers.txt": {
+      "target": 2200,
+      "actual": 83
+    },
+    "industrial_areas.txt": {
+      "target": 320,
+      "actual": 5
+    },
+    "campuses.txt": {
+      "target": 220,
+      "actual": 84
+    },
+    "schools.txt": {
+      "target": 900,
+      "actual": 265
+    },
+    "hospitals.txt": {
+      "target": 220,
+      "actual": 167
+    },
+    "government_offices.txt": {
+      "target": 600,
+      "actual": 5
+    },
+    "hotels.txt": {
+      "target": 650,
+      "actual": 81
+    },
+    "arts_venues.txt": {
+      "target": 320,
+      "actual": 16
+    },
+    "theme_parks.txt": {
+      "target": 80,
+      "actual": 2
+    },
+    "major_destinations.txt": {
+      "target": 500,
+      "actual": 500
+    }
+  },
+  "deficits": {
+    "housing_estates.txt": 2095,
+    "malls.txt": 1581,
+    "office_towers.txt": 2117,
+    "industrial_areas.txt": 315,
+    "campuses.txt": 136,
+    "schools.txt": 635,
+    "hospitals.txt": 53,
+    "government_offices.txt": 595,
+    "hotels.txt": 569,
+    "arts_venues.txt": 304,
+    "theme_parks.txt": 78,
+    "major_destinations.txt": 0
+  },
+  "seedProgress": [
+    {
+      "seed": "a",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 37
+    },
+    {
+      "seed": "b",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 49
+    },
+    {
+      "seed": "c",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 47
+    },
+    {
+      "seed": "d",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "e",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "f",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 31
+    },
+    {
+      "seed": "g",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "h",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "i",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "j",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "k",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "l",
+      "hits": 46,
+      "accepted": 0,
+      "skippedExisting": 22
+    },
+    {
+      "seed": "m",
+      "hits": 50,
+      "accepted": 7,
+      "skippedExisting": 27
+    },
+    {
+      "seed": "n",
+      "hits": 50,
+      "accepted": 15,
+      "skippedExisting": 35
+    },
+    {
+      "seed": "o",
+      "hits": 50,
+      "accepted": 11,
+      "skippedExisting": 25
+    },
+    {
+      "seed": "p",
+      "hits": 50,
+      "accepted": 11,
+      "skippedExisting": 24
+    },
+    {
+      "seed": "q",
+      "hits": 50,
+      "accepted": 14,
+      "skippedExisting": 31
+    },
+    {
+      "seed": "r",
+      "hits": 50,
+      "accepted": 15,
+      "skippedExisting": 31
+    },
+    {
+      "seed": "s",
+      "hits": 50,
+      "accepted": 43,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "t",
+      "hits": 50,
+      "accepted": 18,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "u",
+      "hits": 50,
+      "accepted": 13,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "v",
+      "hits": 50,
+      "accepted": 18,
+      "skippedExisting": 23
+    },
+    {
+      "seed": "w",
+      "hits": 50,
+      "accepted": 8,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "x",
+      "hits": 50,
+      "accepted": 29,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "y",
+      "hits": 50,
+      "accepted": 9,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "z",
+      "hits": 7,
+      "accepted": 2,
+      "skippedExisting": 5
+    },
+    {
+      "seed": "0",
+      "hits": 14,
+      "accepted": 8,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "1",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "2",
+      "hits": 50,
+      "accepted": 21,
+      "skippedExisting": 19
+    },
+    {
+      "seed": "3",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "4",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "5",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 23
+    },
+    {
+      "seed": "6",
+      "hits": 50,
+      "accepted": 21,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "7",
+      "hits": 50,
+      "accepted": 20,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "8",
+      "hits": 50,
+      "accepted": 20,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "9",
+      "hits": 50,
+      "accepted": 16,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 47
+    },
+    {
+      "seed": "mall",
+      "hits": 50,
+      "accepted": 7,
+      "skippedExisting": 41
+    },
+    {
+      "seed": "centre",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "center",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "tower",
+      "hits": 50,
+      "accepted": 18,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "building",
+      "hits": 50,
+      "accepted": 2,
+      "skippedExisting": 47
+    },
+    {
+      "seed": "house",
+      "hits": 47,
+      "accepted": 11,
+      "skippedExisting": 35
+    },
+    {
+      "seed": "estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "garden",
+      "hits": 50,
+      "accepted": 4,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "court",
+      "hits": 50,
+      "accepted": 12,
+      "skippedExisting": 29
+    },
+    {
+      "seed": "villa",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "mansion",
+      "hits": 50,
+      "accepted": 8,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "school",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 48
+    },
+    {
+      "seed": "college",
+      "hits": 50,
+      "accepted": 2,
+      "skippedExisting": 46
+    },
+    {
+      "seed": "university",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 37
+    },
+    {
+      "seed": "hospital",
+      "hits": 50,
+      "accepted": 4,
+      "skippedExisting": 46
+    },
+    {
+      "seed": "clinic",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 49
+    },
+    {
+      "seed": "government",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 39
+    },
+    {
+      "seed": "hotel",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 47
+    },
+    {
+      "seed": "museum",
+      "hits": 18,
+      "accepted": 7,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "theatre",
+      "hits": 50,
+      "accepted": 9,
+      "skippedExisting": 39
+    },
+    {
+      "seed": "stadium",
+      "hits": 50,
+      "accepted": 30,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "park",
+      "hits": 50,
+      "accepted": 18,
+      "skippedExisting": 22
+    },
+    {
+      "seed": "arcade",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 49
+    },
+    {
+      "seed": "harbour",
+      "hits": 50,
+      "accepted": 12,
+      "skippedExisting": 31
+    },
+    {
+      "seed": "industrial",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 49
+    },
+    {
+      "seed": "commercial",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 49
+    },
+    {
+      "seed": "central",
+      "hits": 50,
+      "accepted": 17,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "admiralty",
+      "hits": 50,
+      "accepted": 11,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "wan chai",
+      "hits": 50,
+      "accepted": 6,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "causeway bay",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "north point",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "quarry bay",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "tai koo",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "kennedy town",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "sheung wan",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "tsim sha tsui",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 10
+    },
+    {
+      "seed": "mong kok",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "jordan",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "yau ma tei",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "sham shui po",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "kwun tong",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 19
+    },
+    {
+      "seed": "kowloon bay",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "wong tai sin",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 24
+    },
+    {
+      "seed": "kowloon tong",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "sha tin",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 13
+    },
+    {
+      "seed": "tai wai",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "tsuen wan",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "kwai chung",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 26
+    },
+    {
+      "seed": "tuen mun",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "yuen long",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 23
+    },
+    {
+      "seed": "tai po",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "fanling",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 33
+    },
+    {
+      "seed": "sheung shui",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "tseung kwan o",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 25
+    },
+    {
+      "seed": "sai kung",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 16
+    },
+    {
+      "seed": "中環",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "金鐘",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "灣仔",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "銅鑼灣",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "北角",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "鰂魚涌",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "太古",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 22
+    },
+    {
+      "seed": "堅尼地城",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 16
+    },
+    {
+      "seed": "上環",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "尖沙咀",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 22
+    },
+    {
+      "seed": "旺角",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "佐敦",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "油麻地",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "深水埗",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "觀塘",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 19
+    },
+    {
+      "seed": "九龍灣",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "黃大仙",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 24
+    },
+    {
+      "seed": "九龍塘",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 19
+    },
+    {
+      "seed": "沙田",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "大圍",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "荃灣",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "葵涌",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 25
+    },
+    {
+      "seed": "屯門",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "元朗",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "大埔",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 13
+    },
+    {
+      "seed": "粉嶺",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 29
+    },
+    {
+      "seed": "上水",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 19
+    },
+    {
+      "seed": "將軍澳",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 35
+    },
+    {
+      "seed": "西貢",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 26
+    },
+    {
+      "seed": "中",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "大",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 33
+    },
+    {
+      "seed": "新",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "東",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "西",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "南",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "北",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "港",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 10
+    },
+    {
+      "seed": "九",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "沙",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 5
+    },
+    {
+      "seed": "荃",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "葵",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "青",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 28
+    },
+    {
+      "seed": "元",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 35
+    },
+    {
+      "seed": "旺",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "深",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "灣",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "山",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "海",
+      "hits": 30,
+      "accepted": 0,
+      "skippedExisting": 5
+    },
+    {
+      "seed": "天",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 29
+    },
+    {
+      "seed": "嘉",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "麗",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "寶",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "華",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 33
+    },
+    {
+      "seed": "金",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "銀",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "德",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "樂",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 29
+    },
+    {
+      "seed": "景",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "偉",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 22
+    },
+    {
+      "seed": "宏",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "康",
+      "hits": 50,
+      "accepted": 16,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "雅",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 36
+    },
+    {
+      "seed": "豪",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 31
+    },
+    {
+      "seed": "富",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "美",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 23
+    },
+    {
+      "seed": "翠",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "盈",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "昌",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "安",
+      "hits": 50,
+      "accepted": 5,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "盛",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 19
+    },
+    {
+      "seed": "榮",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "峰",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "城",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 34
+    },
+    {
+      "seed": "園",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "苑",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "軒",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "閣",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "邨",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "居",
+      "hits": 50,
+      "accepted": 2,
+      "skippedExisting": 48
+    },
+    {
+      "seed": "廣",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "場",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 48
+    },
+    {
+      "seed": "心",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "商",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "廈",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 38
+    },
+    {
+      "seed": "酒",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "店",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 33
+    },
+    {
+      "seed": "醫",
+      "hits": 50,
+      "accepted": 4,
+      "skippedExisting": 38
+    },
+    {
+      "seed": "院",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "學",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "校",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 44
+    },
+    {
+      "seed": "書",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "工",
+      "hits": 42,
+      "accepted": 1,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "業",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 46
+    },
+    {
+      "seed": "a tower",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "b tower",
+      "hits": 3,
+      "accepted": 0,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "c tower",
+      "hits": 6,
+      "accepted": 0,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "d tower",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "e tower",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "f tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "g tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "h tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "i tower",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "j tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "k tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "l tower",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "m tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "n tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "o tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "p tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "q tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "r tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "s tower",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "t tower",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "u tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "v tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 28
+    },
+    {
+      "seed": "w tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "x tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 19
+    },
+    {
+      "seed": "y tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "z tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "a estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "b estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "c estate",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "d estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "e estate",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "f estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "g estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "h estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "i estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 37
+    },
+    {
+      "seed": "j estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "k estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "l estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "m estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "n estate",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "o estate",
+      "hits": 50,
+      "accepted": 13,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "p estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "q estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "r estate",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "s estate",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "t estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "u estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "v estate",
+      "hits": 50,
+      "accepted": 39,
+      "skippedExisting": 5
+    },
+    {
+      "seed": "w estate",
+      "hits": 3,
+      "accepted": 3,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "x estate",
+      "hits": 50,
+      "accepted": 34,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "y estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "z estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "a garden",
+      "hits": 50,
+      "accepted": 24,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "b garden",
+      "hits": 2,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "c garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "d garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "e garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "f garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "g garden",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "h garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "i garden",
+      "hits": 50,
+      "accepted": 43,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "j garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "k garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "l garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "m garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "n garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "o garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "p garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "q garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "r garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "s garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "t garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "u garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "v garden",
+      "hits": 50,
+      "accepted": 44,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "w garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "x garden",
+      "hits": 50,
+      "accepted": 40,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "y garden",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "z garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "a plaza",
+      "hits": 50,
+      "accepted": 2,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "b plaza",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "c plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "d plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "e plaza",
+      "hits": 5,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "f plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "g plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "h plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "i plaza",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "j plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "k plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "l plaza",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "m plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "n plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "o plaza",
+      "hits": 44,
+      "accepted": 1,
+      "skippedExisting": 27
+    },
+    {
+      "seed": "p plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "q plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "r plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "s plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "t plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "u plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "v plaza",
+      "hits": 50,
+      "accepted": 6,
+      "skippedExisting": 33
+    },
+    {
+      "seed": "w plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "x plaza",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 29
+    },
+    {
+      "seed": "y plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "z plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 45
+    },
+    {
+      "seed": "a hotel",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "b hotel",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "c hotel",
+      "hits": 50,
+      "accepted": 2,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "d hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "e hotel",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "f hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "g hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "h hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "i hotel",
+      "hits": 50,
+      "accepted": 9,
+      "skippedExisting": 35
+    },
+    {
+      "seed": "j hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "k hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "l hotel",
+      "hits": 6,
+      "accepted": 2,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "m hotel",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "n hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "o hotel",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "p hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "q hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "r hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "s hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "t hotel",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "u hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "v hotel",
+      "hits": 50,
+      "accepted": 6,
+      "skippedExisting": 34
+    },
+    {
+      "seed": "w hotel",
+      "hits": 2,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "x hotel",
+      "hits": 12,
+      "accepted": 1,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "y hotel",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "z hotel",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "a school",
+      "hits": 50,
+      "accepted": 24,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "b school",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "c school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "d school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "e school",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "f school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "g school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "h school",
+      "hits": 45,
+      "accepted": 35,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "i school",
+      "hits": 50,
+      "accepted": 28,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "j school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "k school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "l school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "m school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "n school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "o school",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "p school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "q school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "r school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "s school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "t school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "u school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "v school",
+      "hits": 50,
+      "accepted": 36,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "w school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "x school",
+      "hits": 50,
+      "accepted": 31,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "y school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "z school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "a mall",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "b mall",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "c mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "d mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "e mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "f mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "g mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "h mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "i mall",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 19
+    },
+    {
+      "seed": "j mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "k mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "l mall",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "m mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "n mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "o mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "p mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "q mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "r mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "s mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "t mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "u mall",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "v mall",
+      "hits": 50,
+      "accepted": 6,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "w mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "x mall",
+      "hits": 45,
+      "accepted": 1,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "y mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "z mall",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 30
+    },
+    {
+      "seed": "a house",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "b house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "c house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "d house",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "e house",
+      "hits": 8,
+      "accepted": 0,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "f house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "g house",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "h house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "i house",
+      "hits": 50,
+      "accepted": 4,
+      "skippedExisting": 22
+    },
+    {
+      "seed": "j house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "k house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "l house",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "m house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "n house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "o house",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "p house",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "q house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "r house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "s house",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "t house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "u house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "v house",
+      "hits": 50,
+      "accepted": 9,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "w house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "x house",
+      "hits": 50,
+      "accepted": 10,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "y house",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "z house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "中花園",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "大花園",
+      "hits": 46,
+      "accepted": 16,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "新花園",
+      "hits": 3,
+      "accepted": 2,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "東花園",
+      "hits": 5,
+      "accepted": 4,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "西花園",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "海花園",
+      "hits": 14,
+      "accepted": 10,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "山花園",
+      "hits": 50,
+      "accepted": 48,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "嘉花園",
+      "hits": 10,
+      "accepted": 4,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "華花園",
+      "hits": 50,
+      "accepted": 48,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "麗花園",
+      "hits": 50,
+      "accepted": 43,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "寶花園",
+      "hits": 50,
+      "accepted": 43,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "富花園",
+      "hits": 50,
+      "accepted": 46,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "美花園",
+      "hits": 7,
+      "accepted": 4,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "翠花園",
+      "hits": 50,
+      "accepted": 42,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "景花園",
+      "hits": 50,
+      "accepted": 34,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "中苑",
+      "hits": 2,
+      "accepted": 2,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "大苑",
+      "hits": 6,
+      "accepted": 2,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "新苑",
+      "hits": 7,
+      "accepted": 1,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "東苑",
+      "hits": 16,
+      "accepted": 10,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "西苑",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "海苑",
+      "hits": 3,
+      "accepted": 2,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "山苑",
+      "hits": 50,
+      "accepted": 47,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "嘉苑",
+      "hits": 10,
+      "accepted": 5,
+      "skippedExisting": 5
+    },
+    {
+      "seed": "華苑",
+      "hits": 48,
+      "accepted": 25,
+      "skippedExisting": 13
+    },
+    {
+      "seed": "麗苑",
+      "hits": 50,
+      "accepted": 40,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "寶苑",
+      "hits": 7,
+      "accepted": 2,
+      "skippedExisting": 5
+    },
+    {
+      "seed": "富苑",
+      "hits": 50,
+      "accepted": 41,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "美苑",
+      "hits": 15,
+      "accepted": 8,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "翠苑",
+      "hits": 50,
+      "accepted": 41,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "景苑",
+      "hits": 7,
+      "accepted": 6,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "中邨",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "大邨",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 13
+    },
+    {
+      "seed": "新邨",
+      "hits": 50,
+      "accepted": 38,
+      "skippedExisting": 10
+    },
+    {
+      "seed": "東邨",
+      "hits": 50,
+      "accepted": 30,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "西邨",
+      "hits": 50,
+      "accepted": 20,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "海邨",
+      "hits": 50,
+      "accepted": 5,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "山邨",
+      "hits": 50,
+      "accepted": 34,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "嘉邨",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "華邨",
+      "hits": 50,
+      "accepted": 13,
+      "skippedExisting": 10
+    },
+    {
+      "seed": "麗邨",
+      "hits": 50,
+      "accepted": 16,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "寶邨",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "富邨",
+      "hits": 50,
+      "accepted": 14,
+      "skippedExisting": 13
+    },
+    {
+      "seed": "美邨",
+      "hits": 22,
+      "accepted": 7,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "翠邨",
+      "hits": 50,
+      "accepted": 8,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "景邨",
+      "hits": 50,
+      "accepted": 23,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "中廣場",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "大廣場",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "新廣場",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "東廣場",
+      "hits": 50,
+      "accepted": 8,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "西廣場",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "海廣場",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "山廣場",
+      "hits": 48,
+      "accepted": 1,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "嘉廣場",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "華廣場",
+      "hits": 50,
+      "accepted": 7,
+      "skippedExisting": 18
+    },
+    {
+      "seed": "麗廣場",
+      "hits": 25,
+      "accepted": 2,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "寶廣場",
+      "hits": 8,
+      "accepted": 2,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "富廣場",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 24
+    },
+    {
+      "seed": "美廣場",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "翠廣場",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "景廣場",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 39
+    },
+    {
+      "seed": "中中心",
+      "hits": 50,
+      "accepted": 5,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "大中心",
+      "hits": 6,
+      "accepted": 0,
+      "skippedExisting": 5
+    },
+    {
+      "seed": "新中心",
+      "hits": 16,
+      "accepted": 2,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "東中心",
+      "hits": 12,
+      "accepted": 0,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "西中心",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "海中心",
+      "hits": 3,
+      "accepted": 0,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "山中心",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 21
+    },
+    {
+      "seed": "嘉中心",
+      "hits": 22,
+      "accepted": 0,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "華中心",
+      "hits": 50,
+      "accepted": 6,
+      "skippedExisting": 34
+    },
+    {
+      "seed": "麗中心",
+      "hits": 5,
+      "accepted": 0,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "寶中心",
+      "hits": 23,
+      "accepted": 1,
+      "skippedExisting": 10
+    },
+    {
+      "seed": "富中心",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 41
+    },
+    {
+      "seed": "美中心",
+      "hits": 15,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "翠中心",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "景中心",
+      "hits": 41,
+      "accepted": 3,
+      "skippedExisting": 31
+    },
+    {
+      "seed": "中大廈",
+      "hits": 14,
+      "accepted": 4,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "大大廈",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 49
+    },
+    {
+      "seed": "新大廈",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 35
+    },
+    {
+      "seed": "東大廈",
+      "hits": 24,
+      "accepted": 2,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "西大廈",
+      "hits": 50,
+      "accepted": 2,
+      "skippedExisting": 34
+    },
+    {
+      "seed": "海大廈",
+      "hits": 34,
+      "accepted": 2,
+      "skippedExisting": 23
+    },
+    {
+      "seed": "山大廈",
+      "hits": 12,
+      "accepted": 0,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "嘉大廈",
+      "hits": 12,
+      "accepted": 0,
+      "skippedExisting": 10
+    },
+    {
+      "seed": "華大廈",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 48
+    },
+    {
+      "seed": "麗大廈",
+      "hits": 23,
+      "accepted": 0,
+      "skippedExisting": 11
+    },
+    {
+      "seed": "寶大廈",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "富大廈",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "美大廈",
+      "hits": 27,
+      "accepted": 1,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "翠大廈",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "景大廈",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 50
+    },
+    {
+      "seed": "中酒店",
+      "hits": 50,
+      "accepted": 10,
+      "skippedExisting": 36
+    },
+    {
+      "seed": "大酒店",
+      "hits": 14,
+      "accepted": 0,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "新酒店",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 37
+    },
+    {
+      "seed": "東酒店",
+      "hits": 9,
+      "accepted": 5,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "西酒店",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 36
+    },
+    {
+      "seed": "海酒店",
+      "hits": 6,
+      "accepted": 3,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "山酒店",
+      "hits": 3,
+      "accepted": 0,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "嘉酒店",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 36
+    },
+    {
+      "seed": "華酒店",
+      "hits": 13,
+      "accepted": 1,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "麗酒店",
+      "hits": 23,
+      "accepted": 12,
+      "skippedExisting": 7
+    },
+    {
+      "seed": "寶酒店",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 36
+    },
+    {
+      "seed": "富酒店",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "美酒店",
+      "hits": 5,
+      "accepted": 2,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "翠酒店",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 36
+    },
+    {
+      "seed": "景酒店",
+      "hits": 44,
+      "accepted": 12,
+      "skippedExisting": 24
+    },
+    {
+      "seed": "中醫院",
+      "hits": 4,
+      "accepted": 3,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "大醫院",
+      "hits": 50,
+      "accepted": 26,
+      "skippedExisting": 16
+    },
+    {
+      "seed": "新醫院",
+      "hits": 50,
+      "accepted": 16,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "東醫院",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "西醫院",
+      "hits": 50,
+      "accepted": 2,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "海醫院",
+      "hits": 50,
+      "accepted": 2,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "山醫院",
+      "hits": 44,
+      "accepted": 19,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "嘉醫院",
+      "hits": 50,
+      "accepted": 17,
+      "skippedExisting": 16
+    },
+    {
+      "seed": "華醫院",
+      "hits": 38,
+      "accepted": 17,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "麗醫院",
+      "hits": 50,
+      "accepted": 17,
+      "skippedExisting": 8
+    },
+    {
+      "seed": "寶醫院",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "富醫院",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "美醫院",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "翠醫院",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "景醫院",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "中學校",
+      "hits": 50,
+      "accepted": 33,
+      "skippedExisting": 10
+    },
+    {
+      "seed": "大學校",
+      "hits": 50,
+      "accepted": 27,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "新學校",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "東學校",
+      "hits": 2,
+      "accepted": 1,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "西學校",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "海學校",
+      "hits": 15,
+      "accepted": 10,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "山學校",
+      "hits": 12,
+      "accepted": 6,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "嘉學校",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 43
+    },
+    {
+      "seed": "華學校",
+      "hits": 12,
+      "accepted": 9,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "麗學校",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 40
+    },
+    {
+      "seed": "寶學校",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "富學校",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "美學校",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "翠學校",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "景學校",
+      "hits": 50,
+      "accepted": 10,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "central plaza",
+      "hits": 42,
+      "accepted": 7,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "central mall",
+      "hits": 18,
+      "accepted": 2,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "central centre",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "central tower",
+      "hits": 17,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "central building",
+      "hits": 24,
+      "accepted": 17,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "central house",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "central estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "central garden",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "central court",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 14
+    },
+    {
+      "seed": "central residence",
+      "hits": 3,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "central residences",
+      "hits": 3,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "central hotel",
+      "hits": 16,
+      "accepted": 5,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "central school",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "central college",
+      "hits": 5,
+      "accepted": 4,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "central academy",
+      "hits": 50,
+      "accepted": 21,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "central commercial",
+      "hits": 50,
+      "accepted": 35,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "central industrial",
+      "hits": 3,
+      "accepted": 2,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "central galleria",
+      "hits": 3,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "central pavilion",
+      "hits": 50,
+      "accepted": 6,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "admiralty plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "admiralty mall",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "admiralty centre",
+      "hits": 40,
+      "accepted": 4,
+      "skippedExisting": 10
+    },
+    {
+      "seed": "admiralty tower",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "admiralty building",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "admiralty house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "admiralty estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "admiralty garden",
+      "hits": 3,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "admiralty court",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "admiralty residence",
+      "hits": 50,
+      "accepted": 24,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "admiralty residences",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "admiralty hotel",
+      "hits": 50,
+      "accepted": 1,
+      "skippedExisting": 24
+    },
+    {
+      "seed": "admiralty school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 15
+    },
+    {
+      "seed": "admiralty college",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "admiralty academy",
+      "hits": 50,
+      "accepted": 7,
+      "skippedExisting": 5
+    },
+    {
+      "seed": "admiralty commercial",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "admiralty industrial",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 32
+    },
+    {
+      "seed": "admiralty galleria",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 17
+    },
+    {
+      "seed": "admiralty pavilion",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "wan chai plaza",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "wan chai mall",
+      "hits": 3,
+      "accepted": 2,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "wan chai centre",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "wan chai tower",
+      "hits": 10,
+      "accepted": 5,
+      "skippedExisting": 3
+    },
+    {
+      "seed": "wan chai building",
+      "hits": 2,
+      "accepted": 2,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "wan chai house",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "wan chai estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "wan chai garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "wan chai court",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "wan chai residence",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "wan chai residences",
+      "hits": 1,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "wan chai hotel",
+      "hits": 23,
+      "accepted": 4,
+      "skippedExisting": 13
+    },
+    {
+      "seed": "wan chai school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 12
+    },
+    {
+      "seed": "wan chai college",
+      "hits": 4,
+      "accepted": 4,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "wan chai academy",
+      "hits": 6,
+      "accepted": 2,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "wan chai commercial",
+      "hits": 33,
+      "accepted": 10,
+      "skippedExisting": 4
+    },
+    {
+      "seed": "wan chai industrial",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "wan chai galleria",
+      "hits": 50,
+      "accepted": 8,
+      "skippedExisting": 9
+    },
+    {
+      "seed": "wan chai pavilion",
+      "hits": 50,
+      "accepted": 3,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "causeway bay plaza",
+      "hits": 14,
+      "accepted": 3,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "causeway bay mall",
+      "hits": 5,
+      "accepted": 1,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "causeway bay centre",
+      "hits": 6,
+      "accepted": 2,
+      "skippedExisting": 2
+    },
+    {
+      "seed": "causeway bay tower",
+      "hits": 1,
+      "accepted": 1,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "causeway bay building",
+      "hits": 4,
+      "accepted": 0,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "causeway bay house",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "causeway bay estate",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "causeway bay garden",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "causeway bay court",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "causeway bay residence",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "causeway bay residences",
+      "hits": 2,
+      "accepted": 0,
+      "skippedExisting": 0
+    },
+    {
+      "seed": "causeway bay hotel",
+      "hits": 17,
+      "accepted": 3,
+      "skippedExisting": 6
+    },
+    {
+      "seed": "causeway bay school",
+      "hits": 50,
+      "accepted": 0,
+      "skippedExisting": 20
+    },
+    {
+      "seed": "causeway bay college",
+      "hits": 7,
+      "accepted": 4,
+      "skippedExisting": 1
+    },
+    {
+      "seed": "causeway bay academy",
+      "hits": 3,
+      "accepted": 2,
+      "skippedExisting": 0
+    }
+  ]
+}
