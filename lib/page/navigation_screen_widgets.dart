@@ -78,21 +78,30 @@ class NavigationScreen extends StatefulWidget {
   State<NavigationScreen> createState() => _NavigationScreenState();
 }
 
-class _NavigationScreenState extends State<NavigationScreen>
-    with SingleTickerProviderStateMixin {
-  static const double _kRouteSheetInitialSize = 0.32;
-  static const double _kRouteSheetMinSize = 0.18;
+enum _MapPickTarget { start, destination }
+
+class _NavigationScreenState extends State<NavigationScreen> {
+  static const double _kRouteSheetInitialSize = 0.30;
+  static const double _kRouteSheetMinSize = 0.30;
   static const double _kRouteSheetMaxSize = 0.88;
   static const double _kCameraFitEdgePadding = 48;
   static const double _kNavigationZoom = 17.0;
   static const Duration _kTdasRetryInterval = Duration(seconds: 30);
   static const Duration _kRouteRefreshInterval = Duration(minutes: 1);
+  static const String _savedPlacesPrefKey = 'savedPlaces';
+  static const String _recentSearchPrefKey = 'recentCarparkSearches';
+  static const String _favoriteCarparkPrefKey = 'favoriteCarparks';
+  static const String _recentMeteredPrefKey = 'recentMeteredSearches';
+  static const String _recentCombinedPrefKey = 'recentSearchCombined';
+  static const String _recentStartSearchPrefKey = 'recentStartSearches';
+  static const int _maxSearchResults = 50;
+  static const int _maxRecentStartSearches = 10;
+  static const int _maxSavedPlaces = 8;
 
   final MapController _mapController = MapController();
   final PageController _routeCardsController = PageController(
     viewportFraction: 0.9,
   );
-  late final AnimationController _cameraAnimationController;
   late final routing.OsrmRouteApi _api;
   List<routing.RouteResult> _routes = const [];
   int _selectedRouteIndex = 0;
@@ -108,6 +117,11 @@ class _NavigationScreenState extends State<NavigationScreen>
   String? _tollFilterNote;
   LatLng? _manualOrigin;
   bool _pickingStart = false;
+  bool _pickingDestination = false;
+  late LatLng _destination;
+  late String _destinationName;
+  late String _destinationAddress;
+  parking.Carpark? _destinationCarpark;
   TollTimeMode _tollTimeMode = TollTimeMode.now;
   DateTime? _tollDateTime;
   HkVehicleType _vehicleType = HkVehicleType.privateCar;
@@ -120,33 +134,117 @@ class _NavigationScreenState extends State<NavigationScreen>
   final Map<String, TdasRouteInsight> _tdasCache = {};
   Timer? _tdasRetryTimer;
   Timer? _routeRefreshTimer;
+  StreamSubscription<LocationMarkerHeading?>? _sensorHeadingSub;
+  double? _deviceCompassHeading;
+  final StreamController<LocationMarkerPosition?> _navPositionStreamController =
+      StreamController<LocationMarkerPosition?>.broadcast();
+  final StreamController<LocationMarkerHeading?> _navHeadingStreamController =
+      StreamController<LocationMarkerHeading?>.broadcast();
+  late final GeocodingService _startGeocodingService;
+  final MeteredParkingService _startMeteredService = MeteredParkingService();
+  List<SavedPlace> _savedPlaces = const [];
+  List<SavedPlace> _recentStartSearches = const [];
+  List<String> _recentSearchCarparkIds = const [];
+  List<String> _favoriteCarparkIds = const [];
+  List<String> _recentMeteredKeys = const [];
+  List<String> _recentCombinedKeys = const [];
+  List<parking.Carpark> _startSearchCarparks = const [];
+  List<MeteredStreetGroup> _startSearchMeteredGroups = const [];
+  bool _startSearchDataLoaded = false;
+  LatLng? _lastVehiclePosition;
+  double? _fallbackVehicleHeading;
+  double? _lastFusedHeadingDeg;
 
   @override
   void initState() {
     super.initState();
+    final cp = widget.carpark;
     _manualOrigin = widget.initialManualOrigin;
     _origin = widget.initialManualOrigin;
+    _destination = LatLng(cp.latitude, cp.longitude);
+    _destinationName = (widget.carparkDisplayName?.isNotEmpty ?? false)
+        ? widget.carparkDisplayName!
+        : (cp.nameEn.isNotEmpty ? cp.nameEn : cp.nameTc);
+    _destinationAddress = (widget.carparkDisplayAddress?.isNotEmpty ?? false)
+        ? widget.carparkDisplayAddress!
+        : cp.fullAddress;
+    _destinationCarpark = cp;
     _tollTimeMode = widget.initialTollTimeMode;
     _tollDateTime = widget.initialTollTimeMode == TollTimeMode.now
         ? null
         : widget.initialTollDateTime;
     _vehicleType = widget.initialVehicleType;
     _pendingAutoStart = widget.autoStartNavigation;
-    _cameraAnimationController = AnimationController(vsync: this);
     _api = routing.OsrmRouteApi(
       baseUrl: widget.osrmBaseUrl,
       profile: widget.profile,
+    );
+    _startGeocodingService = GeocodingService(
+      userAgent: 'wilson-parking/1.0 (contact@example.com)',
     );
     _nav = NavigationService(languageCode: widget.languageCode);
     _nav.vehiclePosition.addListener(() {
       final pos = _nav.vehiclePosition.value;
       if (pos != null && _nav.navigating.value) {
-        _moveCameraToNavigationPosition(pos);
+        final previous = _lastVehiclePosition;
+        if (previous != null && _distanceMeters(previous, pos) >= 0.8) {
+          _fallbackVehicleHeading = _bearingDegrees(previous, pos);
+        }
+        _lastVehiclePosition = pos;
+        _navPositionStreamController.add(
+          LocationMarkerPosition(
+            latitude: pos.latitude,
+            longitude: pos.longitude,
+            accuracy: 5,
+          ),
+        );
+        _pushLocationMarkerHeading(pos);
+      }
+    });
+    _nav.vehicleHeading.addListener(() {
+      final pos = _nav.vehiclePosition.value;
+      if (pos != null && _nav.navigating.value) {
+        _pushLocationMarkerHeading(pos);
+      }
+    });
+    _nav.instructionText.addListener(() => setState(() {}));
+    _nav.navigating.addListener(() {
+      if (!_nav.navigating.value) {
+        _lastVehiclePosition = null;
+        _fallbackVehicleHeading = null;
+        _deviceCompassHeading = null;
+        _lastFusedHeadingDeg = null;
+        _navPositionStreamController.add(null);
+        _navHeadingStreamController.add(null);
+        try {
+          _mapController.rotate(0);
+        } catch (_) {}
+      } else {
+        final pos = _nav.vehiclePosition.value;
+        if (pos != null) {
+          _navPositionStreamController.add(
+            LocationMarkerPosition(
+              latitude: pos.latitude,
+              longitude: pos.longitude,
+              accuracy: 5,
+            ),
+          );
+          _pushLocationMarkerHeading(pos);
+        }
       }
       setState(() {});
     });
-    _nav.instructionText.addListener(() => setState(() {}));
-    _nav.navigating.addListener(() => setState(() {}));
+    _sensorHeadingSub = const LocationMarkerDataStreamFactory()
+        .fromRotationSensorHeadingStream()
+        .listen((heading) {
+          if (heading == null) return;
+          _deviceCompassHeading =
+              ((heading.heading * 180.0 / math.pi) + 360.0) % 360.0;
+          final pos = _nav.vehiclePosition.value;
+          if (pos != null && _nav.navigating.value) {
+            _pushLocationMarkerHeading(pos);
+          }
+        }, onError: (_) {});
     WidgetsBinding.instance.addPostFrameCallback((_) => _fetchRoute());
     _tdasRetryTimer = Timer.periodic(
       _kTdasRetryInterval,
@@ -156,14 +254,19 @@ class _NavigationScreenState extends State<NavigationScreen>
       _kRouteRefreshInterval,
       (_) => _refreshRouteIfNeeded(),
     );
+    unawaited(_restoreStartSearchData());
+    unawaited(_ensureStartSearchDatasets());
   }
 
   @override
   void dispose() {
     _nav.dispose();
+    _sensorHeadingSub?.cancel();
+    _navPositionStreamController.close();
+    _navHeadingStreamController.close();
+    _startGeocodingService.dispose();
     _tollService.dispose();
     _routeCardsController.dispose();
-    _cameraAnimationController.dispose();
     _tdasRetryTimer?.cancel();
     _routeRefreshTimer?.cancel();
     super.dispose();
@@ -174,80 +277,221 @@ class _NavigationScreenState extends State<NavigationScreen>
     setState(fn);
   }
 
-  void _moveCameraToNavigationPosition(LatLng pos, {bool forceZoom = false}) {
+  bool get _isPickingOnMap => _pickingStart || _pickingDestination;
+
+  _MapPickTarget get _activeMapPickTarget =>
+      _pickingDestination ? _MapPickTarget.destination : _MapPickTarget.start;
+
+  LatLng _currentMapCenterForMapPicker() {
+    try {
+      return _mapController.camera.center;
+    } catch (_) {
+      return _manualOrigin ?? _origin ?? _destination;
+    }
+  }
+
+  void _setDestination({
+    required LatLng point,
+    required String name,
+    required String address,
+    required parking.Carpark? carpark,
+  }) {
+    if (_nav.navigating.value) {
+      _nav.stop();
+    }
+    _safeSetState(() {
+      _destination = point;
+      _destinationName = name;
+      _destinationAddress = address;
+      _destinationCarpark = carpark;
+      _pickingStart = false;
+      _pickingDestination = false;
+    });
+    _fetchRoute();
+  }
+
+  void _confirmPickFromMapCenter() {
+    final center = _currentMapCenterForMapPicker();
+    if (_activeMapPickTarget == _MapPickTarget.destination) {
+      _setDestination(
+        point: center,
+        name: _formatLatLng(center),
+        address: '',
+        carpark: null,
+      );
+      return;
+    }
+    _safeSetState(() {
+      _manualOrigin = center;
+      _origin = center;
+      _pickingStart = false;
+      _pickingDestination = false;
+    });
+    _fetchRoute();
+  }
+
+  void _cancelPickOnMap() {
+    _safeSetState(() {
+      _pickingStart = false;
+      _pickingDestination = false;
+    });
+  }
+
+  double _distanceMeters(LatLng a, LatLng b) {
+    return const Distance().as(LengthUnit.Meter, a, b);
+  }
+
+  double _bearingDegrees(LatLng a, LatLng b) {
+    final lat1 = a.latitude * math.pi / 180.0;
+    final lat2 = b.latitude * math.pi / 180.0;
+    final dLon = (b.longitude - a.longitude) * math.pi / 180.0;
+    final y = math.sin(dLon) * math.cos(lat2);
+    final x =
+        math.cos(lat1) * math.sin(lat2) -
+        math.sin(lat1) * math.cos(lat2) * math.cos(dLon);
+    final brng = math.atan2(y, x) * 180.0 / math.pi;
+    return (brng + 360.0) % 360.0;
+  }
+
+  double _normalizeHeading(double deg) => (deg % 360.0 + 360.0) % 360.0;
+
+  double _angleDelta(double fromDeg, double toDeg) {
+    var delta = (toDeg - fromDeg) % 360.0;
+    if (delta > 180.0) delta -= 360.0;
+    if (delta < -180.0) delta += 360.0;
+    return delta;
+  }
+
+  double _blendHeadingDegrees(double fromDeg, double toDeg, double weightTo) {
+    final t = weightTo.clamp(0.0, 1.0).toDouble();
+    final blended = fromDeg + (_angleDelta(fromDeg, toDeg) * t);
+    return _normalizeHeading(blended);
+  }
+
+  double _sensorWeightForSpeed(double speedMps) {
+    if (speedMps <= 1.0) return 0.88;
+    if (speedMps <= 4.0) return 0.72;
+    if (speedMps <= 8.0) return 0.52;
+    return 0.36;
+  }
+
+  double _headingAccuracyForSpeed(double speedMps) {
+    if (speedMps <= 1.0) return 0.5;
+    if (speedMps <= 4.0) return 0.35;
+    return 0.2;
+  }
+
+  double? _routeForwardHeading(LatLng currentPosition) {
+    final points = _routeResult?.points;
+    if (points == null || points.length < 2) return null;
+    var nearestIndex = 0;
+    var nearestDistance = double.infinity;
+    for (var i = 0; i < points.length; i++) {
+      final d = _distanceMeters(currentPosition, points[i]);
+      if (d < nearestDistance) {
+        nearestDistance = d;
+        nearestIndex = i;
+      }
+    }
+    if (nearestIndex >= points.length - 1) {
+      return _bearingDegrees(points[points.length - 2], points.last);
+    }
+    return _bearingDegrees(points[nearestIndex], points[nearestIndex + 1]);
+  }
+
+  double? _resolvedNavigationHeading(LatLng currentPosition) {
+    final speedMps = (_nav.vehicleSpeedMps.value ?? 0.0)
+        .clamp(0.0, 100.0)
+        .toDouble();
+    final sensorHeading =
+        (_deviceCompassHeading != null && _deviceCompassHeading!.isFinite)
+        ? _normalizeHeading(_deviceCompassHeading!)
+        : null;
+    final serviceHeading =
+        (_nav.vehicleHeading.value != null &&
+            _nav.vehicleHeading.value!.isFinite)
+        ? _normalizeHeading(_nav.vehicleHeading.value!)
+        : null;
+    final fallbackHeading =
+        (_fallbackVehicleHeading != null && _fallbackVehicleHeading!.isFinite)
+        ? _normalizeHeading(_fallbackVehicleHeading!)
+        : null;
+    final routeHeading = _routeForwardHeading(currentPosition);
+    final routeHeadingNorm = (routeHeading != null && routeHeading.isFinite)
+        ? _normalizeHeading(routeHeading)
+        : null;
+
+    double? baseHeading = serviceHeading ?? fallbackHeading ?? routeHeadingNorm;
+    if (baseHeading == null) {
+      baseHeading = sensorHeading;
+    } else if (sensorHeading != null) {
+      baseHeading = _blendHeadingDegrees(
+        baseHeading,
+        sensorHeading,
+        _sensorWeightForSpeed(speedMps),
+      );
+    }
+
+    if (baseHeading == null) return null;
+
+    final previous = _lastFusedHeadingDeg;
+    if (previous != null && previous.isFinite) {
+      final smoothingAlpha = speedMps > 8.0
+          ? 0.92
+          : speedMps > 4.0
+          ? 0.82
+          : 0.72;
+      baseHeading = _blendHeadingDegrees(previous, baseHeading, smoothingAlpha);
+    }
+    return baseHeading;
+  }
+
+  void _pushLocationMarkerHeading(LatLng currentPosition) {
+    final heading = _resolvedNavigationHeading(currentPosition);
+    if (heading == null || !heading.isFinite) return;
+    final previous = _lastFusedHeadingDeg;
+    if (previous != null && _angleDelta(previous, heading).abs() < 0.5) {
+      return;
+    }
+    _lastFusedHeadingDeg = heading;
+    final speedMps = (_nav.vehicleSpeedMps.value ?? 0.0)
+        .clamp(0.0, 100.0)
+        .toDouble();
+    _navHeadingStreamController.add(
+      LocationMarkerHeading(
+        heading: heading * math.pi / 180.0,
+        accuracy: _headingAccuracyForSpeed(speedMps),
+      ),
+    );
+  }
+
+  void _moveCameraToNavigationPosition(
+    LatLng pos, {
+    bool forceZoom = false,
+    double? headingDegrees,
+  }) {
     double currentZoom;
+    double currentRotation;
     try {
       currentZoom = _mapController.camera.zoom;
+      currentRotation = _mapController.camera.rotation;
     } catch (_) {
       currentZoom = _NavigationScreenState._kNavigationZoom;
+      currentRotation = 0;
     }
     final targetZoom = forceZoom
         ? _NavigationScreenState._kNavigationZoom
         : math.max(currentZoom, _NavigationScreenState._kNavigationZoom);
-    _mapController.move(pos, targetZoom);
-  }
-
-  Future<void> _animateCameraToNavigationPosition(
-    LatLng pos, {
-    bool forceZoom = false,
-    Duration duration = const Duration(milliseconds: 850),
-    Curve curve = Curves.easeOutCubic,
-  }) async {
-    late final MapCamera camera;
+    final targetCameraRotation = headingDegrees == null
+        ? currentRotation
+        : (((-headingDegrees) % 360) + 360) % 360;
     try {
-      camera = _mapController.camera;
+      _mapController.moveAndRotate(pos, targetZoom, targetCameraRotation);
     } catch (_) {
-      _moveCameraToNavigationPosition(pos, forceZoom: forceZoom);
-      return;
-    }
-
-    final startCenter = camera.center;
-    final startZoom = camera.zoom;
-    final targetZoom = forceZoom
-        ? _NavigationScreenState._kNavigationZoom
-        : math.max(startZoom, _NavigationScreenState._kNavigationZoom);
-
-    final samePoint =
-        (startCenter.latitude - pos.latitude).abs() < 0.000001 &&
-        (startCenter.longitude - pos.longitude).abs() < 0.000001;
-    if (samePoint && (startZoom - targetZoom).abs() < 0.001) {
-      _moveCameraToNavigationPosition(pos, forceZoom: forceZoom);
-      return;
-    }
-
-    final controller = _cameraAnimationController;
-    controller.stop();
-    controller.duration = duration;
-
-    final curved = CurvedAnimation(parent: controller, curve: curve);
-    final latTween = Tween<double>(
-      begin: startCenter.latitude,
-      end: pos.latitude,
-    );
-    final lngTween = Tween<double>(
-      begin: startCenter.longitude,
-      end: pos.longitude,
-    );
-    final zoomTween = Tween<double>(begin: startZoom, end: targetZoom);
-
-    void listener() {
-      if (!mounted) return;
-      final lat = latTween.evaluate(curved);
-      final lng = lngTween.evaluate(curved);
-      final zoom = zoomTween.evaluate(curved);
+      _mapController.move(pos, targetZoom);
       try {
-        _mapController.move(LatLng(lat, lng), zoom);
+        _mapController.rotate(targetCameraRotation);
       } catch (_) {}
-    }
-
-    curved.addListener(listener);
-    try {
-      controller.reset();
-      await controller.forward();
-    } on TickerCanceled {
-      // Expected if a new camera animation interrupts the current one.
-    } finally {
-      curved.removeListener(listener);
     }
   }
 
@@ -258,8 +502,6 @@ class _NavigationScreenState extends State<NavigationScreen>
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final cp = widget.carpark;
     final useDarkStatusText =
         ThemeData.estimateBrightnessForColor(widget.appBarColor) ==
         Brightness.light;
@@ -267,92 +509,18 @@ class _NavigationScreenState extends State<NavigationScreen>
         ? SystemUiOverlayStyle.dark
         : SystemUiOverlayStyle.light;
     final resolvedStyle = widget.statusBarStyle ?? overlayStyle;
-    final displayName = (widget.carparkDisplayName?.isNotEmpty ?? false)
-        ? widget.carparkDisplayName!
-        : (cp.nameEn.isNotEmpty ? cp.nameEn : cp.nameTc);
-    final displayAddress = (widget.carparkDisplayAddress?.isNotEmpty ?? false)
-        ? widget.carparkDisplayAddress!
-        : cp.fullAddress;
     final scaffold = Scaffold(
       backgroundColor: widget.backgroundColor,
-      appBar: AppBar(
-        toolbarHeight: 80,
-        backgroundColor: widget.appBarColor,
-        foregroundColor: widget.appBarForeground,
-        systemOverlayStyle: resolvedStyle,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            InkWell(
-              onTap: _showStartPicker,
-              borderRadius: BorderRadius.circular(8),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 2),
-                child: Row(
-                  children: [
-                    const Icon(Icons.trip_origin, size: 18),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        _startHeaderLabel(),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 4),
-            Row(
-              children: [
-                const Icon(Icons.place, size: 18),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    displayName,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            tooltip: l10n.route_priorities,
-            icon: const Icon(Icons.tune),
-            onPressed: _showRoutePrioritiesPicker,
-          ),
-          IconButton(
-            tooltip: l10n.route_again,
-            icon: const Icon(Icons.alt_route),
-            onPressed: _fetchRoute,
-          ),
-        ],
-      ),
       body: Stack(
         children: [
           FlutterMap(
             mapController: _mapController,
             options: MapOptions(
-              initialCenter: LatLng(cp.latitude, cp.longitude),
+              initialCenter: _destination,
               initialZoom: 15,
               interactionOptions: const InteractionOptions(
                 flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
               ),
-              onTap: (tapPos, latLng) {
-                if (!_pickingStart) return;
-                setState(() {
-                  _manualOrigin = latLng;
-                  _origin = latLng;
-                  _pickingStart = false;
-                });
-                _fetchRoute();
-              },
             ),
             children: [
               TileLayer(
@@ -364,6 +532,31 @@ class _NavigationScreenState extends State<NavigationScreen>
                   source: widget.hkSpeedMapSource,
                   opacity: 0.6,
                 ),
+              CurrentLocationLayer(
+                positionStream: _navPositionStreamController.stream,
+                headingStream: _navHeadingStreamController.stream,
+                alignPositionOnUpdate: _nav.navigating.value
+                    ? AlignOnUpdate.always
+                    : AlignOnUpdate.never,
+                alignDirectionOnUpdate: _nav.navigating.value
+                    ? AlignOnUpdate.always
+                    : AlignOnUpdate.never,
+                alignPositionAnimationDuration: const Duration(
+                  milliseconds: 120,
+                ),
+                alignDirectionAnimationDuration: const Duration(
+                  milliseconds: 100,
+                ),
+                moveAnimationDuration: const Duration(milliseconds: 120),
+                rotateAnimationDuration: const Duration(milliseconds: 100),
+                style: const LocationMarkerStyle(
+                  marker: Icon(Icons.navigation, color: Colors.red, size: 36),
+                  markerSize: Size(40, 40),
+                  markerDirection: MarkerDirection.heading,
+                  showHeadingSector: false,
+                  showAccuracyCircle: false,
+                ),
+              ),
               if (_routes.isNotEmpty)
                 PolylineLayer(
                   polylines: [
@@ -382,7 +575,7 @@ class _NavigationScreenState extends State<NavigationScreen>
               MarkerLayer(
                 markers: [
                   Marker(
-                    point: LatLng(cp.latitude, cp.longitude),
+                    point: _destination,
                     width: 40,
                     height: 40,
                     child: Icon(
@@ -402,27 +595,19 @@ class _NavigationScreenState extends State<NavigationScreen>
                         size: 32,
                       ),
                     ),
-                  if (_nav.vehiclePosition.value != null &&
-                      _nav.navigating.value)
-                    Marker(
-                      point: _nav.vehiclePosition.value!,
-                      width: 44,
-                      height: 44,
-                      child: const Icon(
-                        Icons.navigation,
-                        color: Colors.red,
-                        size: 40,
-                      ),
-                    ),
                 ],
               ),
             ],
           ),
+          _buildRouteHeaderOverlay(),
           _buildTopOverlay(),
-          _buildRouteSheet(
-            destinationName: displayName,
-            destinationAddress: displayAddress,
-          ),
+          if (_isPickingOnMap)
+            _buildMapPickerOverlay()
+          else
+            _buildRouteSheet(
+              destinationName: _destinationName,
+              destinationAddress: _destinationAddress,
+            ),
         ],
       ),
     );

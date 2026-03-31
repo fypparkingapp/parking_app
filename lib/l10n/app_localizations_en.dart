@@ -163,6 +163,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'Tap the map to place a start marker';
 
   @override
+  String get move_and_zoom_map_under_pin =>
+      'Move and zoom the map under the pin';
+
+  @override
+  String get current_start_point => 'Current start point';
+
+  @override
+  String from_start_point_coords(Object coords) {
+    return 'From: $coords';
+  }
+
+  @override
   String get from_current_location => 'From: current location';
 
   @override
@@ -336,6 +348,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get no_matching_car_parks => 'No matching car parks';
+
+  @override
+  String get no_matching_locations => 'No matching locations';
 
   @override
   String get no_recent_searches => 'No recent searches';

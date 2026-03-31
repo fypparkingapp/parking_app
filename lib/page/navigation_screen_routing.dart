@@ -48,10 +48,7 @@ extension _NavigationScreenRouting on _NavigationScreenState {
       return;
     }
     final origin = _origin!;
-    final destination = LatLng(
-      widget.carpark.latitude,
-      widget.carpark.longitude,
-    );
+    final destination = _destination;
     final cacheKey = _tdasCacheKey(origin, destination);
     final cached = _tdasCache[cacheKey];
     if (cached != null) {
@@ -69,10 +66,7 @@ extension _NavigationScreenRouting on _NavigationScreenState {
   Future<void> _refreshTdasNow() async {
     if (!mounted || _origin == null || _tdasLoading) return;
     final origin = _origin!;
-    final destination = LatLng(
-      widget.carpark.latitude,
-      widget.carpark.longitude,
-    );
+    final destination = _destination;
     final cacheKey = _tdasCacheKey(origin, destination);
     final cached = _tdasCache[cacheKey];
     if (cached != null) {
@@ -173,10 +167,7 @@ extension _NavigationScreenRouting on _NavigationScreenState {
     });
     try {
       final origin = _manualOrigin ?? await routing.getCurrentLatLng();
-      final destination = LatLng(
-        widget.carpark.latitude,
-        widget.carpark.longitude,
-      );
+      final destination = _destination;
       final alternatives = _avoidTolls ? 3 : 2;
       var results = await _api.routeGeoJsonAlternatives(
         origin: origin,
@@ -486,14 +477,11 @@ extension _NavigationScreenRouting on _NavigationScreenState {
     final points = <LatLng>[
       ...pts,
       if (_origin != null) _origin!,
-      LatLng(widget.carpark.latitude, widget.carpark.longitude),
+      _destination,
     ];
 
     if (points.isEmpty) {
-      _mapController.move(
-        LatLng(widget.carpark.latitude, widget.carpark.longitude),
-        15,
-      );
+      _mapController.move(_destination, 15);
       return;
     }
 

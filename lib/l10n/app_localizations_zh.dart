@@ -159,6 +159,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tap_map_to_place_start_marker => '點擊地圖放置起點標記';
 
   @override
+  String get move_and_zoom_map_under_pin => '平移和縮放在圖釘下的地圖';
+
+  @override
+  String get current_start_point => '目前起點';
+
+  @override
+  String from_start_point_coords(Object coords) {
+    return '從：$coords';
+  }
+
+  @override
   String get from_current_location => '從：目前位置';
 
   @override
@@ -330,6 +341,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get no_matching_car_parks => '沒有符合的停車場';
+
+  @override
+  String get no_matching_locations => '沒有符合的位置';
 
   @override
   String get no_recent_searches => '沒有最近搜尋';
@@ -789,6 +803,17 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get tap_map_to_place_start_marker => '点击地图放置起点标记';
 
   @override
+  String get move_and_zoom_map_under_pin => '平移和缩放在图钉下的地图';
+
+  @override
+  String get current_start_point => '当前起点';
+
+  @override
+  String from_start_point_coords(Object coords) {
+    return '从：$coords';
+  }
+
+  @override
   String get from_current_location => '从：当前位置';
 
   @override
@@ -960,6 +985,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get no_matching_car_parks => '没有匹配的停车场';
+
+  @override
+  String get no_matching_locations => '没有匹配的位置';
 
   @override
   String get no_recent_searches => '没有最近搜索';
@@ -1419,6 +1447,17 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get tap_map_to_place_start_marker => '點擊地圖放置起點標記';
 
   @override
+  String get move_and_zoom_map_under_pin => '平移和縮放在圖釘下的地圖';
+
+  @override
+  String get current_start_point => '目前起點';
+
+  @override
+  String from_start_point_coords(Object coords) {
+    return '從：$coords';
+  }
+
+  @override
   String get from_current_location => '從：目前位置';
 
   @override
@@ -1590,6 +1629,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get no_matching_car_parks => '沒有符合的停車場';
+
+  @override
+  String get no_matching_locations => '沒有符合的位置';
 
   @override
   String get no_recent_searches => '沒有最近搜尋';

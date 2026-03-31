@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen>
   final TollTimeMode _routeTollTimeMode = TollTimeMode.now;
   DateTime? _routeTollDateTime;
   LatLng? _searchLocationMarker;
-  double _searchRadiusMeters = 1000;
+  final double _searchRadiusMeters = 1000;
   List<Carpark> _allCarparks = []; // Complete dataset from API
   List<Carpark> _carparks = []; // Carparks currently shown on the map
   final MeteredParkingService _meteredService = MeteredParkingService();
@@ -90,6 +90,14 @@ class _HomeScreenState extends State<HomeScreen>
   static final LatLng _defaultCenter = LatLng(22.3193, 114.1694);
   static const String _osrmBaseUrl = 'https://osrm.ryanpumpkin.com';
   bool _smartNavigationRunning = false;
+
+  void _armSkipNextMapTapSelection() {
+    _skipNextMapTapSelection = true;
+    // Clear after this frame in case no map onTap arrives for the same gesture.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _skipNextMapTapSelection = false;
+    });
+  }
 
   // Map themes with their respective tile URLs
   final Map<String, MapThemeConfig> _mapThemes = {
@@ -371,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen>
                             height: 44,
                             child: GestureDetector(
                               onTap: () {
-                                _skipNextMapTapSelection = true;
+                                _armSkipNextMapTapSelection();
                                 _clearPendingMapSelection();
                                 _clearSearchMarker();
                               },
@@ -393,7 +401,7 @@ class _HomeScreenState extends State<HomeScreen>
                             height: 44,
                             child: GestureDetector(
                               onTap: () {
-                                _skipNextMapTapSelection = true;
+                                _armSkipNextMapTapSelection();
                                 _safeSetState(() {
                                   _pendingMapTapPoint = null;
                                   _routeStartOverride = null;
@@ -420,7 +428,7 @@ class _HomeScreenState extends State<HomeScreen>
                             height: 44,
                             child: GestureDetector(
                               onTap: () {
-                                _skipNextMapTapSelection = true;
+                                _armSkipNextMapTapSelection();
                                 _safeSetState(() {
                                   _pendingMapTapPoint = null;
                                   _routeDestination = null;
@@ -598,20 +606,6 @@ class _HomeScreenState extends State<HomeScreen>
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (_searchLocationMarker != null) ...[
-                        _buildMapControlButton(
-                          heroTag: 'radiusPlusButton',
-                          icon: Icons.add_circle_outline,
-                          onPressed: () => _adjustSearchRadius(500),
-                        ),
-                        const SizedBox(height: 8),
-                        _buildMapControlButton(
-                          heroTag: 'radiusMinusButton',
-                          icon: Icons.remove_circle_outline,
-                          onPressed: () => _adjustSearchRadius(-500),
-                        ),
-                        const SizedBox(height: 8),
-                      ],
                       _buildMapControlButton(
                         heroTag: 'zoomInButton',
                         icon: Icons.add,
@@ -1657,18 +1651,6 @@ class _HomeScreenState extends State<HomeScreen>
       _searchLocationMarker = null;
       _carparks = List<Carpark>.from(_allCarparks);
     });
-  }
-
-  void _adjustSearchRadius(double deltaMeters) {
-    final next = (_searchRadiusMeters + deltaMeters)
-        .clamp(500, 5000)
-        .toDouble();
-    if (next == _searchRadiusMeters) return;
-    _safeSetState(() => _searchRadiusMeters = next);
-    final marker = _searchLocationMarker;
-    if (marker != null) {
-      _showNearbyCarparksOnMap(marker);
-    }
   }
 
   void _openNearbyCarparkList({LatLng? origin}) {

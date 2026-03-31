@@ -400,6 +400,24 @@ abstract class AppLocalizations {
   /// **'Tap the map to place a start marker'**
   String get tap_map_to_place_start_marker;
 
+  /// No description provided for @move_and_zoom_map_under_pin.
+  ///
+  /// In en, this message translates to:
+  /// **'Move and zoom the map under the pin'**
+  String get move_and_zoom_map_under_pin;
+
+  /// No description provided for @current_start_point.
+  ///
+  /// In en, this message translates to:
+  /// **'Current start point'**
+  String get current_start_point;
+
+  /// No description provided for @from_start_point_coords.
+  ///
+  /// In en, this message translates to:
+  /// **'From: {coords}'**
+  String from_start_point_coords(Object coords);
+
   /// No description provided for @from_current_location.
   ///
   /// In en, this message translates to:
@@ -735,6 +753,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No matching car parks'**
   String get no_matching_car_parks;
+
+  /// No description provided for @no_matching_locations.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching locations'**
+  String get no_matching_locations;
 
   /// No description provided for @no_recent_searches.
   ///

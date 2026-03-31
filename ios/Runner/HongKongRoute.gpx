@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Xcode">
+  <trk>
+    <name>HK Route</name>
+    <trkseg>
+      <trkpt lat="22.38299" lon="114.20577"><time>2026-03-31T08:00:00Z</time></trkpt>
+      <trkpt lat="22.38180" lon="114.20720"><time>2026-03-31T08:00:20Z</time></trkpt>
+      <trkpt lat="22.38040" lon="114.20890"><time>2026-03-31T08:00:40Z</time></trkpt>
+      <trkpt lat="22.37920" lon="114.21010"><time>2026-03-31T08:01:00Z</time></trkpt>
+      <trkpt lat="22.37810" lon="114.21140"><time>2026-03-31T08:01:20Z</time></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

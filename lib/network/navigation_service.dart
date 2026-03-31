@@ -53,6 +53,8 @@ class NavigationService {
   final ValueNotifier<int> stepIndex = ValueNotifier<int>(0);
   final ValueNotifier<String> instructionText = ValueNotifier<String>('');
   final ValueNotifier<LatLng?> vehiclePosition = ValueNotifier<LatLng?>(null);
+  final ValueNotifier<double?> vehicleHeading = ValueNotifier<double?>(null);
+  final ValueNotifier<double?> vehicleSpeedMps = ValueNotifier<double?>(null);
 
   List<LatLng> _route = const [];
   StreamSubscription<Position>? _sub;
@@ -85,21 +87,45 @@ class NavigationService {
       vehiclePosition.value = initialPosition;
     } else {
       try {
-        final pos = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
+        final pos = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation,
+        );
         vehiclePosition.value = LatLng(pos.latitude, pos.longitude);
       } catch (_) {}
+    }
+    if (_route.length >= 2) {
+      final seed = vehiclePosition.value ?? _route.first;
+      vehicleHeading.value = _bearing(seed, _route[1]);
+    } else if (_route.isNotEmpty) {
+      vehicleHeading.value = _bearing(
+        vehiclePosition.value ?? _route.first,
+        _route.last,
+      );
     }
 
     navigating.value = true;
 
     final locSettings = const LocationSettings(
       accuracy: LocationAccuracy.bestForNavigation,
-      distanceFilter: 5, // meters
+      distanceFilter: 1, // meters
     );
 
-    _sub = Geolocator.getPositionStream(locationSettings: locSettings).listen((pos) {
+    _sub = Geolocator.getPositionStream(locationSettings: locSettings).listen((
+      pos,
+    ) {
+      final previous = vehiclePosition.value;
       final user = LatLng(pos.latitude, pos.longitude);
       vehiclePosition.value = user;
+      final speedMps = pos.speed.isFinite
+          ? math.max(0.0, pos.speed).toDouble()
+          : 0.0;
+      vehicleSpeedMps.value = speedMps;
+      _updateHeading(
+        user: user,
+        previous: previous,
+        gpsHeadingDeg: pos.heading,
+        speedMps: speedMps,
+      );
       _updateProgress(user);
     });
   }
@@ -108,11 +134,15 @@ class NavigationService {
     await _sub?.cancel();
     _sub = null;
     navigating.value = false;
+    vehicleHeading.value = null;
+    vehicleSpeedMps.value = null;
   }
 
   Future<void> dispose() async {
     await stop();
     vehiclePosition.dispose();
+    vehicleHeading.dispose();
+    vehicleSpeedMps.dispose();
     instructionText.dispose();
     stepIndex.dispose();
     navigating.dispose();
@@ -159,7 +189,9 @@ class NavigationService {
 
     // Off-route detection (distance to nearest segment)
     final distToRoute = _minDistanceToRoute(user);
-    if (distToRoute > offRouteThresholdMeters && _onRerouteRequested != null && _destination != null) {
+    if (distToRoute > offRouteThresholdMeters &&
+        _onRerouteRequested != null &&
+        _destination != null) {
       _onRerouteRequested!(user, _destination!);
     }
   }
@@ -204,7 +236,9 @@ class NavigationService {
     final lat2 = _toRad(b.latitude);
     final dLon = _toRad(b.longitude - a.longitude);
     final y = math.sin(dLon) * math.cos(lat2);
-    final x = math.cos(lat1) * math.sin(lat2) - math.sin(lat1) * math.cos(lat2) * math.cos(dLon);
+    final x =
+        math.cos(lat1) * math.sin(lat2) -
+        math.sin(lat1) * math.cos(lat2) * math.cos(dLon);
     final brng = math.atan2(y, x);
     return (_toDeg(brng) + 360) % 360;
   }
@@ -214,6 +248,12 @@ class NavigationService {
     if (d > 180) d -= 360;
     if (d < -180) d += 360;
     return d;
+  }
+
+  double _blendHeadingDegrees(double fromDeg, double toDeg, double t) {
+    final clampedT = t.clamp(0.0, 1.0).toDouble();
+    final delta = _normalizeAngle(toDeg - fromDeg);
+    return (fromDeg + (delta * clampedT) + 360.0) % 360.0;
   }
 
   String _turnFromDelta(double deltaDeg) {
@@ -245,6 +285,75 @@ class NavigationService {
 
   double _toRad(double deg) => deg * math.pi / 180.0;
   double _toDeg(double rad) => rad * 180.0 / math.pi;
+
+  void _updateHeading({
+    required LatLng user,
+    required LatLng? previous,
+    required double gpsHeadingDeg,
+    required double speedMps,
+  }) {
+    double? movementHeading;
+    if (previous != null) {
+      final movedMeters = _distance(previous, user);
+      if (movedMeters >= 0.8) {
+        movementHeading = _bearing(previous, user);
+      }
+    }
+
+    double? gpsHeading;
+    final gpsHeadingValid =
+        gpsHeadingDeg.isFinite &&
+        gpsHeadingDeg >= 0 &&
+        gpsHeadingDeg <= 360 &&
+        speedMps > 0.6;
+    if (gpsHeadingValid) {
+      gpsHeading = gpsHeadingDeg % 360;
+    }
+
+    double? routeHeading;
+    if (_route.length >= 2) {
+      final idx = stepIndex.value.clamp(0, _route.length - 1);
+      if (idx < _route.length - 1) {
+        routeHeading = _bearing(_route[idx], _route[idx + 1]);
+      } else {
+        routeHeading = _bearing(_route[_route.length - 2], _route.last);
+      }
+    }
+
+    double? motionHeading;
+    if (movementHeading != null && gpsHeading != null) {
+      final gpsWeight = speedMps > 7.0
+          ? 0.75
+          : speedMps > 4.0
+          ? 0.60
+          : 0.35;
+      motionHeading = _blendHeadingDegrees(
+        movementHeading,
+        gpsHeading,
+        gpsWeight,
+      );
+    } else {
+      motionHeading = movementHeading ?? gpsHeading;
+    }
+
+    final nextHeading = motionHeading ?? routeHeading;
+    if (nextHeading == null) return;
+    final current = vehicleHeading.value;
+    if (current == null || !current.isFinite) {
+      vehicleHeading.value = nextHeading;
+      return;
+    }
+
+    // Smooth heading updates to reduce visual jitter from noisy GPS samples.
+    final delta = _normalizeAngle(nextHeading - current);
+    final smoothingFactor = speedMps > 8.0
+        ? 0.88
+        : speedMps > 4.0
+        ? 0.78
+        : 0.65;
+    final smoothed = (current + (delta * smoothingFactor) + 360) % 360;
+    vehicleHeading.value = smoothed;
+  }
 
   double _minDistanceToRoute(LatLng p) {
     if (_route.length < 2) return double.infinity;

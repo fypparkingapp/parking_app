@@ -70,8 +70,10 @@ extension _NavigationScreenUi on _NavigationScreenState {
 
   double? _vacancyProbabilityForIndex(int index) {
     if (index < 0 || index >= _routes.length) return null;
+    final destinationCarpark = _destinationCarpark;
+    if (destinationCarpark == null) return null;
     return VacancyProbabilityEstimator.estimate(
-      carpark: widget.carpark,
+      carpark: destinationCarpark,
       travelMinutes: _travelMinutesForProbability(_routes[index]),
     );
   }
@@ -90,11 +92,13 @@ extension _NavigationScreenUi on _NavigationScreenState {
 
   ParkingCostEstimate? _parkingEstimateForIndex(int index) {
     if (index < 0 || index >= _routes.length) return null;
+    final destinationCarpark = _destinationCarpark;
+    if (destinationCarpark == null) return null;
     final arrivalDateTime = DateTime.now().add(
       Duration(minutes: _travelMinutesForProbability(_routes[index])),
     );
     return ParkingCostEstimator.estimateDetailed(
-      widget.carpark,
+      destinationCarpark,
       arrivalDateTime: arrivalDateTime,
       stayDuration: const Duration(hours: 3),
       languageCode: widget.languageCode,
@@ -143,28 +147,178 @@ extension _NavigationScreenUi on _NavigationScreenState {
     );
   }
 
-  Widget _buildTopOverlay() {
+  Widget _buildRouteHeaderOverlay() {
     final l10n = AppLocalizations.of(context)!;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final panelColor = isDarkMode
+        ? Colors.black.withValues(alpha: 0.78)
+        : Colors.white.withValues(alpha: 0.95);
+    final lineColor = isDarkMode
+        ? Colors.white.withValues(alpha: 0.22)
+        : Colors.black.withValues(alpha: 0.14);
+    final textColor = isDarkMode ? Colors.white : const Color(0xFF202124);
+    final actionIconColor = isDarkMode
+        ? Colors.white70
+        : const Color(0xFF5F6368);
     return Align(
       alignment: Alignment.topCenter,
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: panelColor,
+              borderRadius: BorderRadius.circular(22),
+              border: isDarkMode
+                  ? null
+                  : Border.all(color: Colors.black.withValues(alpha: 0.08)),
+              boxShadow: isDarkMode
+                  ? null
+                  : const [
+                      BoxShadow(
+                        color: Color(0x1A000000),
+                        blurRadius: 10,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(14, 10, 6, 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        InkWell(
+                          borderRadius: BorderRadius.circular(12),
+                          onTap: _showStartPicker,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 8,
+                            ),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.trip_origin,
+                                  size: 21,
+                                  color: Color(0xFF7FB4FF),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    _startHeaderLabel(),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: Divider(height: 1, color: lineColor),
+                        ),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(12),
+                          onTap: _showDestinationPicker,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 8,
+                            ),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.place_outlined,
+                                  size: 21,
+                                  color: Color(0xFFFF9B8F),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    _destinationName,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 2),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        tooltip: l10n.route_priorities,
+                        icon: Icon(
+                          Icons.tune,
+                          color: actionIconColor,
+                          size: 25,
+                        ),
+                        visualDensity: VisualDensity.standard,
+                        onPressed: _showRoutePrioritiesPicker,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTopOverlay() {
+    final l10n = AppLocalizations.of(context)!;
+    final showMapPickHint = _isPickingOnMap;
+    final showNavInstruction =
+        _nav.navigating.value && _nav.instructionText.value.isNotEmpty;
+    final showLoadingCard = _loading;
+    if (!showMapPickHint && !showNavInstruction && !showLoadingCard) {
+      return const SizedBox.shrink();
+    }
+    return Align(
+      alignment: Alignment.topCenter,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 126, 16, 0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (_pickingStart)
+              if (showMapPickHint)
                 Card(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 12,
                       vertical: 10,
                     ),
-                    child: Text(l10n.tap_map_to_set_start_point),
+                    child: Text(
+                      _pickingDestination
+                          ? l10n.tap_map_to_set_destination_point
+                          : l10n.move_and_zoom_map_under_pin,
+                    ),
                   ),
                 ),
-              if (_nav.navigating.value &&
-                  _nav.instructionText.value.isNotEmpty)
+              if (showNavInstruction)
                 Card(
                   color: Colors.black87,
                   child: Padding(
@@ -181,7 +335,7 @@ extension _NavigationScreenUi on _NavigationScreenState {
                     ),
                   ),
                 ),
-              if (_loading)
+              if (showLoadingCard)
                 Card(
                   child: Padding(
                     padding: const EdgeInsets.all(12),
@@ -201,6 +355,62 @@ extension _NavigationScreenUi on _NavigationScreenState {
                 ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMapPickerOverlay() {
+    final l10n = AppLocalizations.of(context)!;
+    final confirmLabel = _pickingDestination
+        ? l10n.choose_destination
+        : l10n.choose_start_point;
+    return Positioned.fill(
+      child: SafeArea(
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: IgnorePointer(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Icon(Icons.place, color: Colors.red, size: 52),
+                    SizedBox(height: 2),
+                    Icon(Icons.close, color: Colors.white, size: 24),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: 12,
+              right: 16,
+              child: Material(
+                color: Colors.black.withValues(alpha: 0.35),
+                shape: const CircleBorder(),
+                child: IconButton(
+                  tooltip: l10n.cancel,
+                  icon: const Icon(Icons.close, color: Colors.white),
+                  onPressed: _cancelPickOnMap,
+                ),
+              ),
+            ),
+            Positioned(
+              left: 16,
+              right: 16,
+              bottom: 12,
+              child: FilledButton(
+                style: FilledButton.styleFrom(
+                  minimumSize: const Size.fromHeight(52),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                onPressed: _confirmPickFromMapCenter,
+                child: Text(confirmLabel),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -699,11 +909,13 @@ extension _NavigationScreenUi on _NavigationScreenState {
   void _startNavigation() {
     if (_routeResult == null) return;
     final routePts = _routes[_selectedRouteIndex].points;
-    final dest = LatLng(widget.carpark.latitude, widget.carpark.longitude);
+    final dest = _destination;
     final initialPos = _nav.vehiclePosition.value ?? _origin;
     if (initialPos != null) {
-      unawaited(
-        _animateCameraToNavigationPosition(initialPos, forceZoom: true),
+      _moveCameraToNavigationPosition(
+        initialPos,
+        forceZoom: true,
+        headingDegrees: _resolvedNavigationHeading(initialPos),
       );
     }
     _nav.startNavigation(

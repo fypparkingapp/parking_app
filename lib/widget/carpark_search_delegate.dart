@@ -20,6 +20,8 @@ typedef MeteredSearchFn = List<MeteredStreetGroup> Function(String query);
 
 enum SearchFilter { all, parking, metered }
 
+enum CarparkSearchAction { select, useCurrentLocation, pickOnMap }
+
 @immutable
 class CarparkSearchSelection {
   const CarparkSearchSelection({
@@ -28,7 +30,13 @@ class CarparkSearchSelection {
     this.meteredGroup,
     required this.showDetails,
     this.setAsDestination = true,
-  }) : assert(carpark != null || location != null || meteredGroup != null);
+    this.action = CarparkSearchAction.select,
+  }) : assert(
+         action != CarparkSearchAction.select ||
+             carpark != null ||
+             location != null ||
+             meteredGroup != null,
+       );
 
   const CarparkSearchSelection.carpark({
     required Carpark carpark,
@@ -45,20 +53,54 @@ class CarparkSearchSelection {
     : carpark = null,
       meteredGroup = null,
       showDetails = false,
-      setAsDestination = false;
+      setAsDestination = false,
+      action = CarparkSearchAction.select;
 
   const CarparkSearchSelection.metered({
     required MeteredStreetGroup this.meteredGroup,
   }) : carpark = null,
        location = null,
        showDetails = false,
-       setAsDestination = false;
+       setAsDestination = false,
+       action = CarparkSearchAction.select;
+
+  const CarparkSearchSelection.useCurrentLocation()
+    : carpark = null,
+      location = null,
+      meteredGroup = null,
+      showDetails = false,
+      setAsDestination = false,
+      action = CarparkSearchAction.useCurrentLocation;
+
+  const CarparkSearchSelection.pickOnMap()
+    : carpark = null,
+      location = null,
+      meteredGroup = null,
+      showDetails = false,
+      setAsDestination = false,
+      action = CarparkSearchAction.pickOnMap;
 
   final Carpark? carpark;
   final GeocodingResult? location;
   final MeteredStreetGroup? meteredGroup;
   final bool showDetails;
   final bool setAsDestination;
+  final CarparkSearchAction action;
+}
+
+@immutable
+class CarparkSearchQuickAction {
+  const CarparkSearchQuickAction({
+    required this.icon,
+    required this.title,
+    required this.selection,
+    this.subtitle,
+  });
+
+  final IconData icon;
+  final String title;
+  final String? subtitle;
+  final CarparkSearchSelection selection;
 }
 
 class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
@@ -90,6 +132,7 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
     this.onClearRecents,
     this.onClearFavorites,
     this.onClearMeteredRecents,
+    this.quickActions = const [],
     String? initialQuery,
   }) : _recentCarparks = List<Carpark>.from(recentCarparks),
        _savedPlaces = List<SavedPlace>.from(savedPlaces),
@@ -124,6 +167,7 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
   final Future<void> Function()? onClearRecents;
   final Future<void> Function()? onClearFavorites;
   final Future<void> Function()? onClearMeteredRecents;
+  final List<CarparkSearchQuickAction> quickActions;
   final ValueNotifier<int> _refreshSignal = ValueNotifier<int>(0);
   static const int _maxNearbyResults = 20;
 
@@ -274,6 +318,9 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
     final showMetered = _filter != SearchFilter.parking;
     final savedSection = showParking ? _buildSavedPlacesSection(context) : null;
     final filterRow = _buildFilterRow(context);
+    final quickActionSection = isQueryMode
+        ? const <Widget>[]
+        : _buildQuickActionSection(context);
 
     if (isQueryMode) {
       final meteredItems = showMetered ? searchMetered(trimmed) : const [];
@@ -450,6 +497,7 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
         return ListView(
           padding: const EdgeInsets.symmetric(vertical: 8),
           children: [
+            ...quickActionSection,
             filterRow,
             const Divider(height: 1),
             Padding(
@@ -490,7 +538,12 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
       ];
       return ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
-        children: [filterRow, const Divider(height: 1), ..._withDividers(rows)],
+        children: [
+          ...quickActionSection,
+          filterRow,
+          const Divider(height: 1),
+          ..._withDividers(rows),
+        ],
       );
     }
 
@@ -502,6 +555,7 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
         children: [
           if (savedSection != null) savedSection,
           const Divider(height: 1),
+          ...quickActionSection,
           filterRow,
           const Divider(height: 1),
           Padding(
@@ -598,11 +652,26 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
       children: [
         if (savedSection != null) savedSection,
         const Divider(height: 1),
+        ...quickActionSection,
         filterRow,
         const Divider(height: 1),
         ..._withDividers(rows),
       ],
     );
+  }
+
+  List<Widget> _buildQuickActionSection(BuildContext context) {
+    if (quickActions.isEmpty) return const [];
+    final rows = <Widget>[
+      for (final action in quickActions)
+        ListTile(
+          leading: Icon(action.icon),
+          title: Text(action.title),
+          subtitle: action.subtitle == null ? null : Text(action.subtitle!),
+          onTap: () => close(context, action.selection),
+        ),
+    ];
+    return [..._withDividers(rows), const Divider(height: 1)];
   }
 
   void _scheduleDebouncedSearch(BuildContext context, String rawTrimmed) {
