@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
@@ -162,16 +162,18 @@ class NavigationService {
   void _updateProgress(LatLng user) {
     if (_route.isEmpty) return;
 
+    // Snap to the nearest route segment so bearings follow route direction.
+    var idx = _snapIndexForUser(user, stepIndex.value);
+
     // Advance to next waypoint if close enough
-    var idx = stepIndex.value;
     if (idx < _route.length) {
       final target = _route[idx];
       final d = _distance(user, target);
       if (d <= arrivalThresholdMeters) {
         idx += 1;
-        stepIndex.value = idx;
       }
     }
+    stepIndex.value = idx;
 
     // Finished?
     if (idx >= _route.length) {
@@ -197,12 +199,16 @@ class NavigationService {
   }
 
   String _buildInstruction(LatLng user, int idx) {
+    if (_route.length >= 2 && idx == 0) {
+      // Avoid using a zero index which breaks bearing calculations.
+      idx = 1;
+    }
     // Next waypoint distance
     final next = _route[idx];
     final dist = _distance(user, next);
 
     // Determine maneuver if we have previous and next segments
-    final prev = idx > 0 ? _route[idx - 1] : user;
+    final prev = idx > 0 ? _route[idx - 1] : next;
     final after = idx + 1 < _route.length ? _route[idx + 1] : null;
 
     if (after != null) {
@@ -222,8 +228,8 @@ class NavigationService {
     final distStr = _fmtDistance(dist);
     return _tr(
       en: 'Continue for $distStr to destination',
-      tc: '繼續行駛 $distStr 到目的地',
-      sc: '继续行驶 $distStr 到目的地',
+      tc: '繼續行駛 $distStr 直到目的地',
+      sc: '继续行驶 $distStr 直到目的地',
     );
   }
 
@@ -263,13 +269,13 @@ class NavigationService {
     }
     if (ad < 45) {
       return deltaDeg > 0
-          ? _tr(en: 'bear left', tc: '靠左', sc: '靠左')
-          : _tr(en: 'bear right', tc: '靠右', sc: '靠右');
+          ? _tr(en: 'bear right', tc: '靠右行駛', sc: '靠右行驶')
+          : _tr(en: 'bear left', tc: '靠左行駛', sc: '靠左行驶');
     }
     if (ad < 135) {
       return deltaDeg > 0
-          ? _tr(en: 'turn left', tc: '左轉', sc: '左转')
-          : _tr(en: 'turn right', tc: '右轉', sc: '右转');
+          ? _tr(en: 'turn right', tc: '右轉', sc: '右转')
+          : _tr(en: 'turn left', tc: '左轉', sc: '左转');
     }
     return _tr(en: 'make a U-turn', tc: '掉頭', sc: '掉头');
   }
@@ -359,14 +365,43 @@ class NavigationService {
     if (_route.length < 2) return double.infinity;
     double minD = double.infinity;
     for (var i = 0; i < _route.length - 1; i++) {
-      final d = _distancePointToSegment(p, _route[i], _route[i + 1]);
-      if (d < minD) minD = d;
+      final proj = _projectPointToSegment(p, _route[i], _route[i + 1]);
+      if (proj.distanceMeters < minD) minD = proj.distanceMeters;
     }
     return minD;
   }
 
-  // Returns distance from point P to segment AB (meters) using projection on great-circle approximated by planar on small scale
-  double _distancePointToSegment(LatLng p, LatLng a, LatLng b) {
+  int _snapIndexForUser(LatLng user, int currentIdx) {
+    if (_route.length < 2) return currentIdx;
+    final nearest = _nearestRouteSegment(user);
+    final snapped =
+        (nearest.segmentIndex + 1).clamp(1, _route.length - 1).toInt();
+    return snapped > currentIdx ? snapped : currentIdx;
+  }
+
+  ({int segmentIndex, double t, double distanceMeters}) _nearestRouteSegment(
+    LatLng p,
+  ) {
+    var bestIndex = 0;
+    var bestT = 0.0;
+    var bestDist = double.infinity;
+    for (var i = 0; i < _route.length - 1; i++) {
+      final proj = _projectPointToSegment(p, _route[i], _route[i + 1]);
+      if (proj.distanceMeters < bestDist) {
+        bestDist = proj.distanceMeters;
+        bestIndex = i;
+        bestT = proj.t;
+      }
+    }
+    return (segmentIndex: bestIndex, t: bestT, distanceMeters: bestDist);
+  }
+
+  // Returns projection info from point P to segment AB (meters) using a local projection approximation.
+  ({double t, double distanceMeters}) _projectPointToSegment(
+    LatLng p,
+    LatLng a,
+    LatLng b,
+  ) {
     // Work in meters using a local projection approximation: convert lat/lng to meters relative to A.
     final mPerDegLat = 111320.0;
     final mPerDegLng = 40075000 * math.cos(_toRad(a.latitude)) / 360.0;
@@ -382,13 +417,18 @@ class NavigationService {
     final apx = px - ax;
     final apy = py - ay;
     final ab2 = abx * abx + aby * aby;
-    if (ab2 == 0) return math.sqrt(apx * apx + apy * apy);
-    var t = (apx * abx + apy * aby) / ab2;
+    if (ab2 == 0) {
+      return (t: 0.0, distanceMeters: math.sqrt(apx * apx + apy * apy));
+    }
+    var t = ((apx * abx) + (apy * aby)) / ab2;
     t = t.clamp(0.0, 1.0);
     final cx = ax + t * abx;
     final cy = ay + t * aby;
     final dx = px - cx;
     final dy = py - cy;
-    return math.sqrt(dx * dx + dy * dy);
+    return (t: t, distanceMeters: math.sqrt(dx * dx + dy * dy));
   }
 }
+
+
+
