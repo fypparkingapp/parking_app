@@ -33,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen>
   final TollTimeMode _routeTollTimeMode = TollTimeMode.now;
   DateTime? _routeTollDateTime;
   LatLng? _searchLocationMarker;
-  final double _searchRadiusMeters = 1000;
+  double _searchRadiusMeters = 1000;
+  static const double _minSearchRadiusMeters = 200;
+  static const double _maxSearchRadiusMeters = 5000;
+  static const double _searchRadiusStepMeters = 200;
   List<Carpark> _allCarparks = []; // Complete dataset from API
   List<Carpark> _carparks = []; // Carparks currently shown on the map
   final MeteredParkingService _meteredService = MeteredParkingService();
@@ -198,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen>
     final themeConfig = _mapThemes[_selectedTheme]!;
     final useDarkFade = _selectedTheme == 'Dark';
     final fadeColor = useDarkFade ? Colors.black : Colors.white;
-    final mapControlsBottom = 260.0;
+    final mapControlsBottom = widget.showBottomFunctionBar ? 310.0 : 120.0;
     final hkSpeedOpacity = _currentZoom <= 11
         ? 0.4
         : _currentZoom < 13
@@ -606,6 +609,22 @@ class _HomeScreenState extends State<HomeScreen>
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      if (_searchLocationMarker != null) ...[
+                        _buildMapControlButton(
+                          heroTag: 'radiusIncreaseButton',
+                          icon: Icons.add_circle_outline,
+                          onPressed: () =>
+                              _adjustSearchRadius(_searchRadiusStepMeters),
+                        ),
+                        const SizedBox(height: 8),
+                        _buildMapControlButton(
+                          heroTag: 'radiusDecreaseButton',
+                          icon: Icons.remove_circle_outline,
+                          onPressed: () =>
+                              _adjustSearchRadius(-_searchRadiusStepMeters),
+                        ),
+                        const SizedBox(height: 12),
+                      ],
                       _buildMapControlButton(
                         heroTag: 'zoomInButton',
                         icon: Icons.add,
@@ -718,6 +737,20 @@ class _HomeScreenState extends State<HomeScreen>
         child: Icon(icon, size: 20),
       ),
     );
+  }
+
+  void _adjustSearchRadius(double deltaMeters) {
+    final marker = _searchLocationMarker;
+    if (marker == null) return;
+    final next = (_searchRadiusMeters + deltaMeters).clamp(
+      _minSearchRadiusMeters,
+      _maxSearchRadiusMeters,
+    );
+    if (next == _searchRadiusMeters) return;
+    _safeSetState(() {
+      _searchRadiusMeters = next;
+    });
+    _showNearbyCarparksOnMap(marker);
   }
 
   Future<void> _showMarkerRouteChoiceSheet(Carpark carpark) async {

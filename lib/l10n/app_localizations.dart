@@ -916,6 +916,12 @@ abstract class AppLocalizations {
   /// **'Hourly'**
   String get rate_type_hourly;
 
+  /// No description provided for @rate_type_half_hourly.
+  ///
+  /// In en, this message translates to:
+  /// **'Half-hourly'**
+  String get rate_type_half_hourly;
+
   /// No description provided for @rate_type_12_hour_parking.
   ///
   /// In en, this message translates to:

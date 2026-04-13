@@ -976,13 +976,36 @@ class ParkingCostEstimator {
     final stayHours = math.max(1, (stayDuration.inMinutes / 60).ceil());
     switch (normalizedType) {
       case 'hourly':
-        final billableHours = math.max(rate.usageMinimum ?? 1, stayHours);
+        final billableHours = math.max(
+          (rate.usageMinimum ?? 1).toDouble(),
+          stayHours.toDouble(),
+        );
         final amount = price * billableHours;
         return ParkingCostEstimate(
           amountHkd: amount,
           summary: _localizedEstimatedHourlySummary(
             amount: amount,
-            hours: billableHours,
+            hours: billableHours.ceil(),
+            languageCode: languageCode,
+          ),
+          rateType: normalizedType,
+        );
+      case 'half-hourly':
+        final minimumUnitBlocks = math.max(
+          1,
+          ((rate.usageMinimum ?? 0.5).toDouble() * 2).ceil(),
+        );
+        final stayUnitBlocks = math.max(
+          1,
+          (stayDuration.inMinutes / 30).ceil(),
+        );
+        final billableUnitBlocks = math.max(minimumUnitBlocks, stayUnitBlocks);
+        final amount = price * billableUnitBlocks;
+        return ParkingCostEstimate(
+          amountHkd: amount,
+          summary: _localizedEstimatedHourlySummary(
+            amount: amount,
+            hours: (billableUnitBlocks / 2).ceil(),
             languageCode: languageCode,
           ),
           rateType: normalizedType,
@@ -1107,6 +1130,11 @@ class ParkingCostEstimator {
         'tc' => '日夜泊',
         'sc' => '日夜泊',
         _ => 'Day & night',
+      },
+      'half-hourly' => switch (languageCode.toLowerCase()) {
+        'tc' => '每半小時',
+        'sc' => '每半小时',
+        _ => 'Half-hourly',
       },
       '12-hour' => switch (languageCode.toLowerCase()) {
         'tc' => '12 小時',

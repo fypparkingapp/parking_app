@@ -401,7 +401,7 @@ List<CarparkRate> _parseGovPrivateCarRates(Map<String, dynamic>? govPrices) {
   final privateCar = govPrices['privateCar'];
   if (privateCar is! Map<String, dynamic>) return const <CarparkRate>[];
 
-  CarparkRate? pickBest(dynamic listValue, {String? typeOverride}) {
+  CarparkRate? pickBest(dynamic listValue, {String? fallbackType}) {
     if (listValue is! List || listValue.isEmpty) return null;
     Map<String, dynamic>? preferred;
     for (final item in listValue.whereType<Map<String, dynamic>>()) {
@@ -413,20 +413,25 @@ List<CarparkRate> _parseGovPrivateCarRates(Map<String, dynamic>? govPrices) {
     }
     if (preferred == null) return null;
     final map = Map<String, dynamic>.from(preferred);
-    if (typeOverride != null) map['type'] = typeOverride;
+    if (fallbackType != null) {
+      final type = map['type']?.toString().trim();
+      if (type == null || type.isEmpty) {
+        map['type'] = fallbackType;
+      }
+    }
     // Remove noisy remarks from govPrices-derived rates.
     map.remove('remark');
     return CarparkRate.fromJson(map);
   }
 
   final rates = <CarparkRate>[];
-  final hourly = pickBest(privateCar['hourly'], typeOverride: 'hourly');
+  final hourly = pickBest(privateCar['hourly'], fallbackType: 'hourly');
   if (hourly != null) rates.add(hourly);
   final dayNight = pickBest(
     privateCar['dayNight'] ?? privateCar['dayNightParks'],
   );
   if (dayNight != null) rates.add(dayNight);
-  final monthly = pickBest(privateCar['monthly'], typeOverride: 'monthly-park');
+  final monthly = pickBest(privateCar['monthly'], fallbackType: 'monthly-park');
   if (monthly != null) rates.add(monthly);
 
   return rates;
@@ -563,6 +568,8 @@ List<CarparkRate> _parseWilsonRates(dynamic rawPlans) {
     final unit = plan['unit']?.toString() ?? '';
     final rule = plan['ruleEn']?.toString() ?? '';
     final timeOfDay = plan['timeOfDay']?.toString();
+    final normalizedType = normalizeType(serviceType, unit);
+    if (normalizedType == null) continue;
 
     rates.add(
       CarparkRate(
@@ -572,7 +579,7 @@ List<CarparkRate> _parseWilsonRates(dynamic rawPlans) {
         periodEnd: parsePeriodEnd(timeOfDay),
         price: amount.toDouble(),
         covered: null,
-        type: normalizeType(serviceType, unit),
+        type: normalizedType,
         remark: null,
         usageMinimum: null,
         reserved: null,
@@ -609,7 +616,7 @@ class CarparkRate {
   final String? covered;
   final String? type;
   final String? remark;
-  final int? usageMinimum;
+  final num? usageMinimum;
   final String? reserved;
   final String? validUntil;
 
@@ -664,9 +671,12 @@ class CarparkRate {
       covered: json['covered']?.toString(),
       type: json['type']?.toString(),
       remark: null,
-      usageMinimum: (json['usageMinimum'] is num)
-          ? (json['usageMinimum'] as num).toInt()
-          : null,
+      usageMinimum: () {
+        final value = json['usageMinimum'];
+        if (value is num) return value;
+        if (value is String) return num.tryParse(value);
+        return null;
+      }(),
       reserved: json['reserved']?.toString(),
       validUntil:
           json['validUntil']?.toString() ??

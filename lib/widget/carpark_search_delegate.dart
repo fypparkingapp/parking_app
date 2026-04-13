@@ -420,7 +420,8 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
                   context,
                   carpark,
                   leadingIcon: Icons.local_parking,
-                  showDetails: false,
+                  showDetails: true,
+                  setAsDestination: false,
                 ),
               ),
             ];
@@ -441,7 +442,8 @@ class CarparkSearchDelegate extends SearchDelegate<CarparkSearchSelection?> {
                 context,
                 carpark,
                 leadingIcon: Icons.local_parking,
-                showDetails: false,
+                showDetails: true,
+                setAsDestination: false,
               ),
             ),
             if (hasMetered)

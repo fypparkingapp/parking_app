@@ -432,6 +432,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rate_type_hourly => 'Hourly';
 
   @override
+  String get rate_type_half_hourly => 'Half-hourly';
+
+  @override
   String get rate_type_12_hour_parking => '12-hour Parking';
 
   @override

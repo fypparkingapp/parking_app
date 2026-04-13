@@ -136,6 +136,7 @@
   "no_pricing_info": "No pricing information available for this car park.",
   "no_price_information": "No price information",
   "rate_type_hourly": "Hourly",
+  "rate_type_half_hourly": "Half-hourly",
   "rate_type_12_hour_parking": "12-hour Parking",
   "rate_type_24_hour_parking": "24-hour Parking",
   "rate_type_monthly": "Monthly",

@@ -564,8 +564,8 @@ extension _HomeScreenDetails on _HomeScreenState {
         .toList();
     if (pricedRates.isEmpty) return null;
     pricedRates.sort((a, b) {
-      final aHourly = a.type == 'hourly';
-      final bHourly = b.type == 'hourly';
+      final aHourly = a.type == 'hourly' || a.type == 'half-hourly';
+      final bHourly = b.type == 'hourly' || b.type == 'half-hourly';
       if (aHourly != bHourly) {
         return aHourly ? -1 : 1;
       }
@@ -606,6 +606,9 @@ extension _HomeScreenDetails on _HomeScreenState {
       case 'hourly':
         suffix = l10n.rate_type_hourly;
         break;
+      case 'half-hourly':
+        suffix = l10n.rate_type_half_hourly;
+        break;
       case '12-hour':
         suffix = l10n.rate_type_12_hour_parking;
         break;
@@ -637,7 +640,9 @@ extension _HomeScreenDetails on _HomeScreenState {
 
   String? _formatHourlyPriceShort(Carpark carpark) {
     final hourlyRates = carpark.privateCarRates.where(
-      (rate) => rate.type == 'hourly' && (rate.price ?? 0) > 0,
+      (rate) =>
+          (rate.type == 'hourly' || rate.type == 'half-hourly') &&
+          (rate.price ?? 0) > 0,
     );
     final rate = hourlyRates.isNotEmpty ? hourlyRates.first : null;
     if (rate == null || rate.price == null || rate.price! <= 0) {
@@ -656,6 +661,7 @@ extension _HomeScreenDetails on _HomeScreenState {
     if (type == null || type.isEmpty) return false;
     switch (type) {
       case 'hourly':
+      case 'half-hourly':
       case '12-hour':
       case '24-hour':
       case 'monthly-park':
@@ -677,6 +683,8 @@ extension _HomeScreenDetails on _HomeScreenState {
     switch (type) {
       case 'hourly':
         return l10n.rate_type_hourly;
+      case 'half-hourly':
+        return l10n.rate_type_half_hourly;
       case '12-hour':
         return l10n.rate_type_12_hour_parking;
       case '24-hour':

@@ -424,6 +424,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rate_type_hourly => '每小時';
 
   @override
+  String get rate_type_half_hourly => '每半小時';
+
+  @override
   String get rate_type_12_hour_parking => '12 小時停車';
 
   @override
@@ -1068,6 +1071,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get rate_type_hourly => '每小时';
 
   @override
+  String get rate_type_half_hourly => '每半小时';
+
+  @override
   String get rate_type_12_hour_parking => '12小时停车';
 
   @override
@@ -1710,6 +1716,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get rate_type_hourly => '每小時';
+
+  @override
+  String get rate_type_half_hourly => '每半小時';
 
   @override
   String get rate_type_12_hour_parking => '12 小時停車';

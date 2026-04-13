@@ -604,6 +604,7 @@ extension _CarparkSearchSections on CarparkSearchDelegate {
     Carpark carpark, {
     required IconData leadingIcon,
     required bool showDetails,
+    bool setAsDestination = true,
   }) {
     final title = titleBuilder(carpark);
     final subtitle = subtitleBuilder(carpark);
@@ -639,6 +640,7 @@ extension _CarparkSearchSections on CarparkSearchDelegate {
           CarparkSearchSelection.carpark(
             carpark: carpark,
             showDetails: showDetails,
+            setAsDestination: setAsDestination,
           ),
         );
       },
@@ -647,7 +649,9 @@ extension _CarparkSearchSections on CarparkSearchDelegate {
 
   String? _formatHourlyPriceShort(Carpark carpark) {
     final hourlyRates = carpark.privateCarRates.where(
-      (rate) => rate.type == 'hourly' && (rate.price ?? 0) > 0,
+      (rate) =>
+          (rate.type == 'hourly' || rate.type == 'half-hourly') &&
+          (rate.price ?? 0) > 0,
     );
     final rate = hourlyRates.isNotEmpty ? hourlyRates.first : null;
     if (rate == null || rate.price == null || rate.price! <= 0) {

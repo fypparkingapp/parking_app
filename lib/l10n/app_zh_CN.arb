@@ -136,6 +136,7 @@
   "no_pricing_info": "此停车场没有可用的收费信息。",
   "no_price_information": "没有收费信息",
   "rate_type_hourly": "每小时",
+  "rate_type_half_hourly": "每半小时",
   "rate_type_12_hour_parking": "12小时停车",
   "rate_type_24_hour_parking": "24小时停车",
   "rate_type_monthly": "月租",
