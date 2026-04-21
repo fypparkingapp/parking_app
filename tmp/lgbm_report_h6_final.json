@@ -1,0 +1,257 @@
+{
+  "config": {
+    "data_root": "/Users/yuntungyeung/FYP/parking_app/gov_vacancy/api.data.gov.hk/v1-carpark-info-vacancy",
+    "vehicle_type": "privateCar",
+    "target_key": "vacancy",
+    "horizon_steps": 6,
+    "train_ratio": 0.8,
+    "max_files": 5000,
+    "park_filter": [],
+    "n_estimators_max": 5000,
+    "best_iteration": 2051,
+    "early_stopping_rounds": 100,
+    "num_leaves": 63,
+    "learning_rate_lgbm": 0.05,
+    "predict_delta": true
+  },
+  "data_summary": {
+    "snapshot_count": 5000,
+    "train_snapshots": 4000,
+    "test_snapshots": 1000,
+    "first_snapshot": "2025-12-11T16:18:05",
+    "last_snapshot": "2026-01-15T09:48:04",
+    "train_examples": 2048690,
+    "test_examples": 529114,
+    "park_count": 534
+  },
+  "metrics": {
+    "train": {
+      "model": {
+        "count": 2048690,
+        "mae": 1.8322454429516062,
+        "rmse": 7.177122641603148
+      },
+      "lag_1_baseline": {
+        "count": 2048690,
+        "mae": 2.349550200371945,
+        "rmse": 11.423872936529902
+      }
+    },
+    "test": {
+      "model": {
+        "count": 529114,
+        "mae": 2.1487953763702334,
+        "rmse": 7.896857527132068
+      },
+      "lag_1_baseline": {
+        "count": 529114,
+        "mae": 2.571292764886206,
+        "rmse": 11.63072277553228
+      }
+    }
+  },
+  "top_features": [
+    {
+      "name": "hour_sin",
+      "importance": 19054
+    },
+    {
+      "name": "park_dow_mean",
+      "importance": 18509
+    },
+    {
+      "name": "park_capacity",
+      "importance": 18206
+    },
+    {
+      "name": "park_hour_mean",
+      "importance": 16805
+    },
+    {
+      "name": "hour_cos",
+      "importance": 15562
+    },
+    {
+      "name": "occupancy_ratio",
+      "importance": 8592
+    },
+    {
+      "name": "dow_sin",
+      "importance": 6077
+    },
+    {
+      "name": "lag_1",
+      "importance": 3542
+    },
+    {
+      "name": "roll_mean_6",
+      "importance": 3420
+    },
+    {
+      "name": "lag_6",
+      "importance": 3246
+    },
+    {
+      "name": "roll_std_6",
+      "importance": 3245
+    },
+    {
+      "name": "dow_cos",
+      "importance": 3149
+    },
+    {
+      "name": "roll_mean_3",
+      "importance": 2006
+    },
+    {
+      "name": "lag_3",
+      "importance": 1202
+    },
+    {
+      "name": "roll_std_3",
+      "importance": 1195
+    }
+  ],
+  "top_parks": [
+    {
+      "park_id": "27",
+      "model": {
+        "count": 994,
+        "mae": 0.18636994602154064,
+        "rmse": 0.5508342270071346
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 0.16901408450704225,
+        "rmse": 0.5566499393061832
+      },
+      "mae_gain": -0.01735586151449839
+    },
+    {
+      "park_id": "30",
+      "model": {
+        "count": 994,
+        "mae": 3.6742588312643143,
+        "rmse": 5.755965308519115
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 6.496981891348089,
+        "rmse": 9.833728350919506
+      },
+      "mae_gain": 2.8227230600837743
+    },
+    {
+      "park_id": "31",
+      "model": {
+        "count": 994,
+        "mae": 9.438596239580228,
+        "rmse": 15.059192608767962
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 18.272635814889338,
+        "rmse": 28.573337461383343
+      },
+      "mae_gain": 8.83403957530911
+    },
+    {
+      "park_id": "32",
+      "model": {
+        "count": 994,
+        "mae": 6.873414255539848,
+        "rmse": 11.295669758625175
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 10.887323943661972,
+        "rmse": 17.257780445801625
+      },
+      "mae_gain": 4.013909688122124
+    },
+    {
+      "park_id": "38",
+      "model": {
+        "count": 994,
+        "mae": 10.126516987870009,
+        "rmse": 22.10270713179591
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 10.090543259557345,
+        "rmse": 24.03158552022097
+      },
+      "mae_gain": -0.035973728312663766
+    },
+    {
+      "park_id": "75",
+      "model": {
+        "count": 994,
+        "mae": 6.386651386983551,
+        "rmse": 10.744098982161427
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 4.233400402414487,
+        "rmse": 9.288577178232188
+      },
+      "mae_gain": -2.1532509845690635
+    },
+    {
+      "park_id": "77",
+      "model": {
+        "count": 994,
+        "mae": 2.5331317982977994,
+        "rmse": 3.9621399834358564
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 4.130784708249497,
+        "rmse": 6.055079182258521
+      },
+      "mae_gain": 1.5976529099516972
+    },
+    {
+      "park_id": "78",
+      "model": {
+        "count": 994,
+        "mae": 0.21825759859052637,
+        "rmse": 0.3804359236566103
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 0.1056338028169014,
+        "rmse": 0.35461884772665125
+      },
+      "mae_gain": -0.11262379577362497
+    },
+    {
+      "park_id": "81",
+      "model": {
+        "count": 994,
+        "mae": 0.08970096122712304,
+        "rmse": 0.36273542899736777
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 0.028169014084507043,
+        "rmse": 0.23735633163877068
+      },
+      "mae_gain": -0.06153194714261599
+    },
+    {
+      "park_id": "88",
+      "model": {
+        "count": 994,
+        "mae": 0.07721142359619619,
+        "rmse": 0.22836423516325688
+      },
+      "lag_1_baseline": {
+        "count": 994,
+        "mae": 0.007042253521126761,
+        "rmse": 0.08391813582966891
+      },
+      "mae_gain": -0.07016917007506943
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "config": {
+    "data_root": "/Users/yuntungyeung/FYP/parking_app/gov_vacancy/api.data.gov.hk/v1-carpark-info-vacancy",
+    "vehicle_type": "privateCar",
+    "target_key": "vacancy",
+    "train_ratio": 0.8,
+    "learning_rate": 0.01,
+    "min_expert_weight": 0.02,
+    "horizon_steps": 6,
+    "min_history": 3,
+    "reset_gap_minutes": 180.0,
+    "sample_every": 1,
+    "max_files": 5000,
+    "park_filter": [
+      "27",
+      "30",
+      "31"
+    ]
+  },
+  "data_summary": {
+    "snapshot_file_count": 5000,
+    "train_snapshot_file_count": 4000,
+    "test_snapshot_file_count": 1000,
+    "first_snapshot": "2025-12-11T16:18:05",
+    "last_snapshot": "2026-01-15T09:48:04",
+    "processed_rows": 14994,
+    "skipped_rows": 0,
+    "stale_rows_over_60_minutes": 5975,
+    "park_count": 3
+  },
+  "weights": {
+    "lag_1": 0.8998616466846358,
+    "mean_3": 0.020028232415005762,
+    "mean_6": 0.020018344371555703,
+    "park_hour": 0.020039250525554504,
+    "park_dow": 0.020041170040493946,
+    "global_hour": 0.020011355962754378
+  },
+  "metrics": {
+    "train": {
+      "model": {
+        "count": 11985,
+        "mae": 9.022169588512693,
+        "rmse": 17.49668998570028
+      },
+      "lag_1_baseline": {
+        "count": 11985,
+        "mae": 8.555778055903213,
+        "rmse": 17.516114518773662
+      }
+    },
+    "test": {
+      "model": {
+        "count": 2982,
+        "mae": 8.709739387288538,
+        "rmse": 17.30111530206923
+      },
+      "lag_1_baseline": {
+        "count": 2982,
+        "mae": 8.31287726358149,
+        "rmse": 17.449428702364443
+      }
+    }
+  },
+  "top_parks": [
+    {
+      "park_id": "27",
+      "model": {
+        "count": 4989,
+        "mae": 0.9962844178175986,
+        "rmse": 1.1751053801115479
+      },
+      "lag_1_baseline": {
+        "count": 4989,
+        "mae": 0.1669673281218681,
+        "rmse": 0.6097688083192826
+      },
+      "mae_gain_vs_lag_1": -0.8293170896957305
+    },
+    {
+      "park_id": "30",
+      "model": {
+        "count": 4989,
+        "mae": 7.011384087103988,
+        "rmse": 10.290487706726203
+      },
+      "lag_1_baseline": {
+        "count": 4989,
+        "mae": 6.917017438364402,
+        "rmse": 10.29877383154681
+      },
+      "mae_gain_vs_lag_1": -0.09436664873958556
+    },
+    {
+      "park_id": "31",
+      "model": {
+        "count": 4989,
+        "mae": 18.87209605134603,
+        "rmse": 28.408795830259884
+      },
+      "lag_1_baseline": {
+        "count": 4989,
+        "mae": 18.43816396071357,
+        "rmse": 28.506359774701686
+      },
+      "mae_gain_vs_lag_1": -0.4339320906324602
+    }
+  ]
+}

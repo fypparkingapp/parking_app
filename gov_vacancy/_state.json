@@ -1,0 +1,8 @@
+{
+  "https://api.data.gov.hk/v1/carpark-info-vacancy?data=vacancy&vehicleTypes=privateCar&lang=en_US": {
+    "last_saved": "2026:04:14 19:30:23",
+    "etag": null,
+    "last_modified": null,
+    "last_sha256": "aeaad626de8fce5cef225051f1638fe17b874fe978a64dffacca1c78b889787d"
+  }
+}

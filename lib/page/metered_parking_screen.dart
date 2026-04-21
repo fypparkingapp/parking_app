@@ -15,6 +15,7 @@ import 'package:parking_app/manager/map_theme_manager.dart';
 import 'package:parking_app/network/metered_parking_service.dart';
 import 'package:parking_app/network/parking_api.dart';
 import 'package:parking_app/network/toll_service.dart';
+import 'package:parking_app/network/vacancy_prediction_service.dart';
 import 'package:parking_app/page/navigation_screen.dart';
 import 'package:parking_app/page/open_screen.dart';
 import 'package:parking_app/page/settings.dart';
@@ -932,6 +933,7 @@ class _MeteredParkingScreenState extends State<MeteredParkingScreen> {
     unawaited(_rememberRecentMeteredSearch(group));
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    final predictionFuture = VacancyPredictionService().forecastMeter(group);
     final unknownCount = group.spaces
         .where((s) => s.occupancy == MeteredOccupancy.unknown)
         .length;
@@ -1042,6 +1044,126 @@ class _MeteredParkingScreenState extends State<MeteredParkingScreen> {
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(height: 12),
+                FutureBuilder<MeterVacancyForecast?>(
+                  future: predictionFuture,
+                  builder: (sheetContext, snap) {
+                    if (snap.connectionState == ConnectionState.waiting) {
+                      return Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: _themeConfig.accentColor.withValues(
+                            alpha: 0.08,
+                          ),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.access_time,
+                              color: _themeConfig.accentColor,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              l10n.predictedVacancy,
+                              style: theme.textTheme.labelMedium?.copyWith(
+                                color: _themeConfig.accentColor,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const Spacer(),
+                            const SizedBox(
+                              width: 14,
+                              height: 14,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+
+                    final forecast = snap.data;
+                    if (forecast == null) return const SizedBox.shrink();
+
+                    final delta = forecast.delta;
+                    final deltaLabel = delta > 0 ? '+$delta' : delta.toString();
+                    final deltaColor = delta > 0
+                        ? Colors.green
+                        : delta < 0
+                        ? Colors.red
+                        : theme.colorScheme.onSurface;
+
+                    return Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: _themeConfig.accentColor.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.access_time,
+                            color: _themeConfig.accentColor,
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  l10n.predictedVacancy,
+                                  style: theme.textTheme.labelMedium?.copyWith(
+                                    color: _themeConfig.accentColor,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${forecast.predictedVacancy}/${forecast.totalSpaces}',
+                                      style: theme.textTheme.titleSmall
+                                          ?.copyWith(
+                                            color: _themeConfig.accentColor,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                    ),
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      '($deltaLabel)',
+                                      style: theme.textTheme.bodySmall
+                                          ?.copyWith(
+                                            color: deltaColor,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                    ),
+                                    if (!forecast.isReliable) ...[
+                                      const SizedBox(width: 6),
+                                      const Icon(
+                                        Icons.warning_amber,
+                                        size: 14,
+                                        color: Colors.orange,
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Text(
+                            '+${forecast.horizonMinutes}min',
+                            style: theme.textTheme.labelSmall?.copyWith(
+                              color: theme.textTheme.bodySmall?.color
+                                  ?.withValues(alpha: 0.7),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 12),
                 Wrap(

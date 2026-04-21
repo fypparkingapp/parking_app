@@ -862,6 +862,12 @@ abstract class AppLocalizations {
   /// **'Vacancies'**
   String get vacancies;
 
+  /// No description provided for @predictedVacancy.
+  ///
+  /// In en, this message translates to:
+  /// **'Predicted vacancy'**
+  String get predictedVacancy;
+
   /// No description provided for @updated.
   ///
   /// In en, this message translates to:

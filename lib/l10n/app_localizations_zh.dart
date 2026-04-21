@@ -397,6 +397,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get vacancies => '空位';
 
   @override
+  String get predictedVacancy => '預測空位';
+
+  @override
   String get updated => '更新';
 
   @override
@@ -1044,6 +1047,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get vacancies => '空位';
 
   @override
+  String get predictedVacancy => '预测空位';
+
+  @override
   String get updated => '更新';
 
   @override
@@ -1689,6 +1695,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get vacancies => '空位';
+
+  @override
+  String get predictedVacancy => '預測空位';
 
   @override
   String get updated => '更新';

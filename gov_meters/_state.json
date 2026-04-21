@@ -1,0 +1,16 @@
+{
+  "https://resource.data.one.gov.hk/td/psiparkingspaces/spaceinfo/parkingspaces.csv": {
+    "last_saved": "2026:04:14 16:13:47",
+    "last_checked_epoch": 1776154427.036573,
+    "etag": "\"4902bf-64f66710018cb\"",
+    "last_modified": "Tue, 14 Apr 2026 07:21:01 GMT",
+    "last_sha256": "36df5db6cebf0a4c5488f276073aa3582ab5f0e00f6b381506d366b30923bf3c"
+  },
+  "https://resource.data.one.gov.hk/td/psiparkingspaces/occupancystatus/occupancystatus.csv": {
+    "last_saved": "2026:04:14 19:08:47",
+    "last_checked_epoch": 1776164927.039848,
+    "etag": "\"ad403-64f699cb1d8e6\"",
+    "last_modified": "Tue, 14 Apr 2026 11:07:59 GMT",
+    "last_sha256": "266adcd812d03aa19d20085341bda886f808fca43ce280e4738a4e90f22491fb"
+  }
+}

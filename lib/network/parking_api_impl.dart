@@ -12,7 +12,7 @@ class Carpark {
   final double _latitude;
   final double _longitude;
   final String _operator;
-  final Map<String, Map<String, dynamic>> _vacancies;
+  final VacancyInfo _vacancyInfo;
   final String? _photoUrl;
   final String? _openingStatus;
   final List<CarparkRate> _privateCarRates;
@@ -31,6 +31,7 @@ class Carpark {
     String? photoUrl,
     String? openingStatus,
     List<CarparkRate>? privateCarRates,
+    VacancyInfo? vacancyInfo,
     Map<String, Map<String, dynamic>>? vacancies,
   }) : _id = id,
        _nameEn = nameEn,
@@ -45,7 +46,7 @@ class Carpark {
        _photoUrl = photoUrl,
        _openingStatus = openingStatus,
        _privateCarRates = privateCarRates ?? const [],
-       _vacancies = vacancies ?? {};
+       _vacancyInfo = vacancyInfo ?? VacancyInfo.fromJson(vacancies ?? const {});
 
   // Getters
   String get id => _id;
@@ -58,7 +59,8 @@ class Carpark {
   double get latitude => _latitude;
   double get longitude => _longitude;
   String get operatorName => _operator;
-  Map<String, Map<String, dynamic>> get vacancies => _vacancies;
+  VacancyInfo get vacancyInfo => _vacancyInfo;
+  Map<String, Map<String, dynamic>> get vacancies => _vacancyInfo.toLegacyJson();
   String? get photoUrl => _photoUrl;
   String? get openingStatus => _openingStatus;
   List<CarparkRate> get privateCarRates => _privateCarRates;
@@ -74,10 +76,10 @@ class Carpark {
     return '';
   }
 
+  int? get currentVacancy => _vacancyInfo.privateCarVacancy;
+
   // Backward compatibility: Return privateCar vacancy for existing code
-  int? get vacancy => (vacancies['privateCar']?['vacancy'] is num)
-      ? vacancies['privateCar']!['vacancy'].toInt()
-      : null;
+  int? get vacancy => currentVacancy;
 
   factory Carpark.fromJson(Map<String, dynamic> json) {
     double? parseDouble(dynamic value) {
@@ -141,53 +143,33 @@ class Carpark {
       privateCarRates = _deriveRatesFromRemarks(json);
     }
 
-    final vacancies = <String, Map<String, dynamic>>{};
-    if (isLinkReit && json['linkVacancy'] is num) {
-      vacancies['privateCar'] = {
-        'vacancy': (json['linkVacancy'] as num).toInt(),
-        'vacancy_type': 'LinkREIT',
-        'vacancyEV': null,
-        'vacancyDIS': null,
-        'lastupdate': json['linkModifiedDate']?.toString() ?? '',
-      };
-    }
+    final structuredVacancy = () {
+      final provided = json['vacancyInfo'];
+      if (provided != null) return VacancyInfo.fromJson(provided);
 
-    Map<String, dynamic>? vacancyFromTransport(Map<String, dynamic>? source) {
-      if (source == null) return null;
-      int? toInt(dynamic value) {
-        if (value is num) return value.toInt();
-        return int.tryParse(value?.toString() ?? '');
+      final legacy = json['vacancies'];
+      if (legacy != null) return VacancyInfo.fromJson(legacy);
+
+      final buckets = <VacancyBucket>[];
+      if (isLinkReit && json['linkVacancy'] is num) {
+        buckets.add(
+          VacancyBucket(
+            key: 'privateCar',
+            vehicleTypeKey: 'privateCar',
+            available: (json['linkVacancy'] as num).toInt(),
+            categoryLabel: 'LinkREIT',
+            lastUpdated: json['linkModifiedDate']?.toString(),
+            source: VacancySource.linkReit,
+          ),
+        );
       }
 
-      final vacancy = toInt(source['space']);
-      final ev = toInt(source['spaceEV']);
-      final disabled = toInt(source['spaceDIS']);
-      final unloading = toInt(source['spaceUNL']);
-      if ([vacancy, ev, disabled, unloading].every((v) => v == null)) {
-        return null;
+      if (!isLinkReit) {
+        buckets.addAll(_extractGovInfoVacancyBuckets(json));
       }
-      final lastUpdate =
-          source['lastupdate']?.toString() ??
-          json['modifiedDate']?.toString() ??
-          json['publishedDate']?.toString() ??
-          '';
-      final vacancyType = source['vacancy_type']?.toString() ?? 'gov';
-      return {
-        if (vacancy != null) 'vacancy': vacancy,
-        if (ev != null) 'vacancyEV': ev,
-        if (disabled != null) 'vacancyDIS': disabled,
-        if (unloading != null) 'vacancyUNL': unloading,
-        'vacancy_type': vacancyType,
-        'lastupdate': lastUpdate,
-      };
-    }
 
-    final govVacancy = isLinkReit
-        ? null
-        : vacancyFromTransport(json['privateCar'] as Map<String, dynamic>?);
-    if (govVacancy != null) {
-      vacancies['privateCar'] = govVacancy;
-    }
+      return VacancyInfo.fromBuckets(buckets);
+    }();
 
     final name = json['name']?.toString() ?? '';
     final displayAddress = json['displayAddress']?.toString() ?? '';
@@ -297,7 +279,7 @@ class Carpark {
       photoUrl: _normalizePhotoUrl(photoUrl),
       openingStatus: json['opening_status']?.toString(),
       privateCarRates: privateCarRates,
-      vacancies: vacancies,
+      vacancyInfo: structuredVacancy,
     );
   }
 
@@ -356,17 +338,12 @@ class Carpark {
       'operator': _operator,
       'photoUrl': _photoUrl,
       'openingStatus': _openingStatus,
-      'vacancies': _vacancies.map(
-        (key, value) => MapEntry(key, Map<String, dynamic>.from(value)),
-      ),
+      'vacancyInfo': _vacancyInfo.toJson(),
       'privateCarRates': _privateCarRates.map((rate) => rate.toJson()).toList(),
     };
   }
 
   factory Carpark.fromCacheJson(Map<String, dynamic> json) {
-    final vacancies = (json['vacancies'] as Map<String, dynamic>? ?? {}).map(
-      (key, value) => MapEntry(key, Map<String, dynamic>.from(value as Map)),
-    );
     final rates =
         (json['privateCarRates'] as List?)
             ?.whereType<Map<String, dynamic>>()
@@ -391,9 +368,152 @@ class Carpark {
       photoUrl: json['photoUrl']?.toString(),
       openingStatus: json['openingStatus']?.toString(),
       privateCarRates: rates,
-      vacancies: vacancies,
+      vacancyInfo: VacancyInfo.fromJson(
+        json['vacancyInfo'] ?? json['vacancies'] ?? const {},
+      ),
     );
   }
+}
+
+const Map<String, String> _govInfoVacancyFieldToVehicleType = {
+  'privateCar': 'privateCar',
+  'motorCycle': 'motorcycle',
+  'motorcycle': 'motorcycle',
+  'taxi': 'taxi',
+  'LGV': 'lightGoodsVehicle',
+  'HGV': 'heavyGoodsVehicle',
+  'coach': 'coach',
+};
+
+VacancyBucket? _vacancyBucketFromTransport({
+  required String key,
+  required String vehicleTypeKey,
+  required Map<String, dynamic> source,
+  required VacancySource vacancySource,
+  String? categoryLabel,
+  String? fallbackLastUpdated,
+}) {
+  int? parseInt(dynamic value) {
+    if (value is num) return value.toInt();
+    if (value is String) return int.tryParse(value);
+    return null;
+  }
+
+  final available = parseInt(source['available'] ?? source['space'] ?? source['vacancy']);
+  final evAvailable = parseInt(source['evAvailable'] ?? source['spaceEV'] ?? source['vacancyEV']);
+  final disabledAvailable = parseInt(
+    source['disabledAvailable'] ?? source['spaceDIS'] ?? source['vacancyDIS'],
+  );
+  final unloadingAvailable = parseInt(
+    source['unloadingAvailable'] ?? source['spaceUNL'] ?? source['vacancyUNL'],
+  );
+
+  if ([available, evAvailable, disabledAvailable, unloadingAvailable].every((v) => v == null)) {
+    return null;
+  }
+
+  final normalizedKey = VacancyBucket.normalizeBucketKey(
+    key,
+    fallback: vehicleTypeKey,
+  );
+  return VacancyBucket(
+    key: normalizedKey,
+    vehicleTypeKey: VacancyBucket.normalizeVehicleTypeKey(vehicleTypeKey),
+    available: available,
+    evAvailable: evAvailable,
+    disabledAvailable: disabledAvailable,
+    unloadingAvailable: unloadingAvailable,
+    categoryLabel: categoryLabel?.trim().isEmpty == true ? null : categoryLabel?.trim(),
+    lastUpdated:
+        source['lastUpdated']?.toString() ??
+        source['lastupdate']?.toString() ??
+        fallbackLastUpdated,
+    source: vacancySource,
+  );
+}
+
+VacancyInfo _vacancyInfoFromGovInfoRow(Map<String, dynamic> row) {
+  return VacancyInfo.fromBuckets(_extractGovInfoVacancyBuckets(row));
+}
+
+List<VacancyBucket> _extractGovInfoVacancyBuckets(Map<String, dynamic> row) {
+  final fallbackLastUpdated =
+      row['modifiedDate']?.toString() ?? row['publishedDate']?.toString();
+  final buckets = <VacancyBucket>[];
+  for (final entry in _govInfoVacancyFieldToVehicleType.entries) {
+    final source = row[entry.key];
+    if (source is! Map<String, dynamic>) continue;
+    final bucket = _vacancyBucketFromTransport(
+      key: entry.value,
+      vehicleTypeKey: entry.value,
+      source: source,
+      categoryLabel: source['vacancy_type']?.toString(),
+      fallbackLastUpdated: fallbackLastUpdated,
+      vacancySource: VacancySource.government,
+    );
+    if (bucket != null) buckets.add(bucket);
+  }
+  return buckets;
+}
+
+VacancyInfo _vacancyInfoFromGovFeedItem(Map<String, dynamic> item) {
+  final vehicleTypes = item['vehicle_type'];
+  if (vehicleTypes is! List) return VacancyInfo();
+
+  final buckets = <VacancyBucket>[];
+  for (final rawVehicle in vehicleTypes.whereType<Map>()) {
+    final vehicleMap = Map<String, dynamic>.from(rawVehicle);
+    final vehicleTypeKey = VacancyBucket.normalizeVehicleTypeKey(
+      vehicleMap['type']?.toString() ?? '',
+    );
+    final categories = vehicleMap['service_category'];
+    if (categories is! List) continue;
+
+    final categoryMaps = categories
+        .whereType<Map>()
+        .map((entry) => Map<String, dynamic>.from(entry))
+        .toList(growable: false);
+    if (categoryMaps.isEmpty) continue;
+
+    for (var i = 0; i < categoryMaps.length; i++) {
+      final category = categoryMaps[i];
+      final categoryLabel = category['vacancy_type']?.toString();
+      final bucketKey = _transportBucketKey(
+        vehicleTypeKey: vehicleTypeKey,
+        categoryLabel: categoryLabel,
+        index: i,
+        totalCategories: categoryMaps.length,
+      );
+      final bucket = _vacancyBucketFromTransport(
+        key: bucketKey,
+        vehicleTypeKey: vehicleTypeKey,
+        source: category,
+        categoryLabel: categoryLabel,
+        fallbackLastUpdated: category['lastupdate']?.toString(),
+        vacancySource: VacancySource.government,
+      );
+      if (bucket != null) buckets.add(bucket);
+    }
+  }
+
+  return VacancyInfo.fromBuckets(buckets);
+}
+
+String _transportBucketKey({
+  required String vehicleTypeKey,
+  required String? categoryLabel,
+  required int index,
+  required int totalCategories,
+}) {
+  if (totalCategories <= 1) {
+    return vehicleTypeKey;
+  }
+  final suffix = VacancyBucket.normalizeBucketKey(
+    categoryLabel ?? 'category${index + 1}',
+    fallback: 'category${index + 1}',
+  );
+  final suffixOnly = suffix.contains(':') ? suffix.split(':').last : suffix;
+  return '$vehicleTypeKey:$suffixOnly';
 }
 
 List<CarparkRate> _parseGovPrivateCarRates(Map<String, dynamic>? govPrices) {
@@ -890,6 +1010,37 @@ class ParkingApi {
       throw Exception('Unexpected carpark response structure');
     }
 
+    final govRows = rows.whereType<Map<String, dynamic>>().toList(growable: false);
+    return _mergeCarparkData(
+      ryanMetadata: ryanMetadata,
+      govRows: govRows,
+      govVacancies: govVacancies,
+    );
+  }
+
+  @visibleForTesting
+  static VacancyInfo parseGovVacancyFeedEntryForTesting(Map<String, dynamic> item) {
+    return _vacancyInfoFromGovFeedItem(item);
+  }
+
+  @visibleForTesting
+  static List<Carpark> mergeCarparkDataForTesting({
+    required Map<String, Map<String, dynamic>> ryanMetadata,
+    required List<Map<String, dynamic>> govRows,
+    required Map<String, VacancyInfo> govVacancies,
+  }) {
+    return _mergeCarparkData(
+      ryanMetadata: ryanMetadata,
+      govRows: govRows,
+      govVacancies: govVacancies,
+    );
+  }
+
+  static List<Carpark> _mergeCarparkData({
+    required Map<String, Map<String, dynamic>> ryanMetadata,
+    required List<Map<String, dynamic>> govRows,
+    required Map<String, VacancyInfo> govVacancies,
+  }) {
     String? resolveId(Map<String, dynamic> row) {
       return Carpark._firstNonEmptyString([
         row['sourceId'],
@@ -900,7 +1051,7 @@ class ParkingApi {
     }
 
     final govById = <String, Map<String, dynamic>>{};
-    for (final row in rows.whereType<Map<String, dynamic>>()) {
+    for (final row in govRows) {
       final id = resolveId(row);
       if (id != null) {
         govById[id] = row;
@@ -915,9 +1066,13 @@ class ParkingApi {
       final govRow = govById[id];
 
       if (govRow != null) {
-        // Use gov vacancy data; Ryan provides names/prices/metadata.
-        ryanRow['privateCar'] =
-            govVacancies[id] ?? govRow['privateCar'] ?? ryanRow['privateCar'];
+        final fallbackVacancy = _vacancyInfoFromGovInfoRow(govRow);
+        final liveVacancy = govVacancies[id] ?? VacancyInfo();
+        final mergedVacancy = liveVacancy.withFallback(fallbackVacancy);
+
+        if (!mergedVacancy.isEmpty) {
+          ryanRow['vacancyInfo'] = mergedVacancy;
+        }
         ryanRow['opening_status'] ??= govRow['opening_status'];
         ryanRow['lat'] = ryanRow['lat'] ?? govRow['lat'] ?? govRow['latitude'];
         ryanRow['lng'] = ryanRow['lng'] ?? govRow['lng'] ?? govRow['longitude'];
@@ -932,8 +1087,10 @@ class ParkingApi {
         overridePhoto('photoUrl');
       }
 
-      // If no gov row, still apply vacancy feed when available.
-      ryanRow['privateCar'] ??= govVacancies[id];
+      final feedVacancy = govVacancies[id];
+      if (!ryanRow.containsKey('vacancyInfo') && feedVacancy != null && !feedVacancy.isEmpty) {
+        ryanRow['vacancyInfo'] = feedVacancy;
+      }
 
       final carpark = Carpark.fromJson(ryanRow);
       if (carpark.latitude != 0.0 && carpark.longitude != 0.0) {
@@ -945,7 +1102,12 @@ class ParkingApi {
     for (final entry in govById.entries) {
       if (ryanMetadata.containsKey(entry.key)) continue;
       final merged = Map<String, dynamic>.from(entry.value);
-      merged['privateCar'] = govVacancies[entry.key] ?? merged['privateCar'];
+      final fallbackVacancy = _vacancyInfoFromGovInfoRow(merged);
+      final liveVacancy = govVacancies[entry.key] ?? VacancyInfo();
+      final mergedVacancy = liveVacancy.withFallback(fallbackVacancy);
+      if (!mergedVacancy.isEmpty) {
+        merged['vacancyInfo'] = mergedVacancy;
+      }
       final fallback = Carpark.fromJson(merged);
       if (fallback.latitude != 0.0 && fallback.longitude != 0.0) {
         carparks.add(fallback);
@@ -993,49 +1155,27 @@ class ParkingApi {
     }
   }
 
-  static Future<Map<String, Map<String, dynamic>>> _fetchGovVacancyMap() async {
+  static Future<Map<String, VacancyInfo>> _fetchGovVacancyMap() async {
     try {
       final response = await http.get(Uri.parse(_govVacancyApiUrl));
-      if (response.statusCode != 200) return const {};
+      if (response.statusCode != 200) return const <String, VacancyInfo>{};
       String body = response.body.trim();
       if (body.startsWith('?')) {
         body = body.substring(1);
       }
       final decoded = jsonDecode(body);
-      if (decoded is! Map || decoded['car_park'] is! List) return const {};
+      if (decoded is! Map || decoded['car_park'] is! List) {
+        return const <String, VacancyInfo>{};
+      }
 
-      final result = <String, Map<String, dynamic>>{};
+      final result = <String, VacancyInfo>{};
       for (final item in (decoded['car_park'] as List).whereType<Map>()) {
         final id = item['park_id']?.toString();
         if (id == null || id.isEmpty) continue;
-
-        Map<String, dynamic>? pickPrivateCarVacancy() {
-          final vehicleTypes = item['vehicle_type'];
-          if (vehicleTypes is! List) return null;
-          for (final vt in vehicleTypes.whereType<Map>()) {
-            final type = vt['type']?.toString().toUpperCase();
-            if (type != 'P') continue;
-            final categories = vt['service_category'];
-            if (categories is! List) continue;
-            for (final cat in categories.whereType<Map>()) {
-              final vacancy = cat['vacancy'];
-              if (vacancy == null) continue;
-              final num? vacancyNum = (vacancy is num)
-                  ? vacancy
-                  : num.tryParse(vacancy.toString());
-              if (vacancyNum == null) continue;
-              return {
-                'space': vacancyNum.toInt(),
-                'vacancy_type': cat['vacancy_type']?.toString() ?? '',
-                'lastupdate': cat['lastupdate']?.toString() ?? '',
-              };
-            }
-          }
-          return null;
-        }
-
-        final vacancy = pickPrivateCarVacancy();
-        if (vacancy != null) {
+        final vacancy = _vacancyInfoFromGovFeedItem(
+          Map<String, dynamic>.from(item),
+        );
+        if (!vacancy.isEmpty) {
           result[id] = vacancy;
         }
       }

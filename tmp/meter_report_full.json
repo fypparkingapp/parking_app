@@ -1,0 +1,255 @@
+{
+  "config": {
+    "data_root": "/Users/yuntungyeung/FYP/parking_app/gov_meters/resource.data.one.gov.hk",
+    "horizon_steps": 12,
+    "horizon_minutes": 60,
+    "train_ratio": 0.8,
+    "max_files": null,
+    "min_group_spaces": 3,
+    "n_estimators_max": 2000,
+    "best_iteration": 1387,
+    "early_stopping_rounds": 80,
+    "num_leaves": 63,
+    "learning_rate": 0.05
+  },
+  "data_summary": {
+    "snapshot_count": 6331,
+    "train_snapshots": 5064,
+    "test_snapshots": 1267,
+    "first_snapshot": "2026-03-23T16:13:46",
+    "last_snapshot": "2026-04-14T19:08:47",
+    "group_count": 1352,
+    "train_examples": 6830304,
+    "test_examples": 1696760
+  },
+  "metrics": {
+    "train": {
+      "model": {
+        "count": 6830304,
+        "mae": 0.6823545809968216,
+        "rmse": 1.6243982095267637
+      },
+      "lag_1_baseline": {
+        "count": 6830304,
+        "mae": 0.7761153822728827,
+        "rmse": 1.9564161972377685
+      }
+    },
+    "test": {
+      "model": {
+        "count": 1696760,
+        "mae": 0.7199808457189204,
+        "rmse": 1.6733607805972786
+      },
+      "lag_1_baseline": {
+        "count": 1696760,
+        "mae": 0.8103402956222447,
+        "rmse": 1.9832015421113007
+      }
+    }
+  },
+  "top_features": [
+    {
+      "name": "group_hour_mean",
+      "importance": 14324
+    },
+    {
+      "name": "hour_sin",
+      "importance": 11195
+    },
+    {
+      "name": "group_dow_mean",
+      "importance": 11109
+    },
+    {
+      "name": "hour_cos",
+      "importance": 6425
+    },
+    {
+      "name": "total_spaces",
+      "importance": 5569
+    },
+    {
+      "name": "roll_mean_6",
+      "importance": 5032
+    },
+    {
+      "name": "vacancy_ratio",
+      "importance": 3659
+    },
+    {
+      "name": "dow_sin",
+      "importance": 3619
+    },
+    {
+      "name": "lag_1",
+      "importance": 3525
+    },
+    {
+      "name": "roll_std_6",
+      "importance": 3161
+    },
+    {
+      "name": "lag_12",
+      "importance": 2864
+    },
+    {
+      "name": "roll_mean_3",
+      "importance": 2183
+    },
+    {
+      "name": "lag_4",
+      "importance": 1424
+    },
+    {
+      "name": "lag_11",
+      "importance": 1378
+    },
+    {
+      "name": "lag_10",
+      "importance": 1368
+    }
+  ],
+  "top_groups": [
+    {
+      "group_key": "A|D|SOUTHERN|ISLAND ROAD|THE HONG KONG GOLF CLUB",
+      "model": {
+        "count": 1255,
+        "mae": 1.350625370788073,
+        "rmse": 2.1000791439795536
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 1.401593625498008,
+        "rmse": 2.255228542053428
+      },
+      "mae_gain": 0.050968254709934824
+    },
+    {
+      "group_key": "A|D|SOUTHERN|ISLAND ROAD|DEEP WATER BAY",
+      "model": {
+        "count": 1255,
+        "mae": 1.4777399674385203,
+        "rmse": 2.406089288705315
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 1.5434262948207171,
+        "rmse": 2.6221550700054674
+      },
+      "mae_gain": 0.06568632738219682
+    },
+    {
+      "group_key": "A|D|SOUTHERN|SOUTH BAY ROAD|SOUTH BAY BEACH",
+      "model": {
+        "count": 1255,
+        "mae": 2.4629515913115907,
+        "rmse": 3.7802272921360918
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 2.486852589641434,
+        "rmse": 4.02670369278422
+      },
+      "mae_gain": 0.023900998329843492
+    },
+    {
+      "group_key": "A|D|SHAM SHUI PO|TAI NAN STREET|KWEILIN STREET",
+      "model": {
+        "count": 1255,
+        "mae": 0.31055138125557036,
+        "rmse": 0.696493468308851
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 0.3673306772908366,
+        "rmse": 0.7939010545793168
+      },
+      "mae_gain": 0.05677929603526627
+    },
+    {
+      "group_key": "C|3D|WAN CHAI|TAI HANG ROAD|TAI HANG ROAD CAR PARK",
+      "model": {
+        "count": 1255,
+        "mae": 0.5608617124229582,
+        "rmse": 0.8340472154814745
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 0.600796812749004,
+        "rmse": 0.9455283731239746
+      },
+      "mae_gain": 0.03993510032604575
+    },
+    {
+      "group_key": "G|3A|SHAM SHUI PO|TAI NAN STREET|KWEILIN STREET",
+      "model": {
+        "count": 1255,
+        "mae": 0.09871989600776274,
+        "rmse": 0.34361426464257305
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 0.11394422310756971,
+        "rmse": 0.37554740922246443
+      },
+      "mae_gain": 0.015224327099806978
+    },
+    {
+      "group_key": "A|D|WAN CHAI|TAI HANG ROAD|TAI HANG ROAD CAR PARK",
+      "model": {
+        "count": 1255,
+        "mae": 0.34493704576421996,
+        "rmse": 0.5988937374016732
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 0.3776892430278884,
+        "rmse": 0.6809882670944624
+      },
+      "mae_gain": 0.03275219726366846
+    },
+    {
+      "group_key": "A|D|SHAM SHUI PO|YEE KUK STREET|PEI HO STREET",
+      "model": {
+        "count": 1255,
+        "mae": 0.5997944184098648,
+        "rmse": 0.9876429142772818
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 0.6780876494023904,
+        "rmse": 1.144882951271244
+      },
+      "mae_gain": 0.07829323099252561
+    },
+    {
+      "group_key": "A|D|SHAM SHUI PO|YEE KUK STREET|YEN CHOW STREET",
+      "model": {
+        "count": 1255,
+        "mae": 0.2525940211991386,
+        "rmse": 0.6586249238468592
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 0.3139442231075697,
+        "rmse": 0.761629622109658
+      },
+      "mae_gain": 0.0613502019084311
+    },
+    {
+      "group_key": "A|D|SHAM SHUI PO|HAI TAN STREET|YEN CHOW STREET",
+      "model": {
+        "count": 1255,
+        "mae": 0.44782226733231456,
+        "rmse": 1.0248501206985732
+      },
+      "lag_1_baseline": {
+        "count": 1255,
+        "mae": 0.545816733067729,
+        "rmse": 1.228155744954418
+      },
+      "mae_gain": 0.09799446573541448
+    }
+  ]
+}

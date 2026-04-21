@@ -1,0 +1,255 @@
+{
+  "config": {
+    "data_root": "/Users/yuntungyeung/FYP/parking_app/gov_meters/resource.data.one.gov.hk",
+    "horizon_steps": 12,
+    "horizon_minutes": 60,
+    "train_ratio": 0.8,
+    "max_files": 600,
+    "min_group_spaces": 3,
+    "n_estimators_max": 2000,
+    "best_iteration": 486,
+    "early_stopping_rounds": 80,
+    "num_leaves": 63,
+    "learning_rate": 0.05
+  },
+  "data_summary": {
+    "snapshot_count": 600,
+    "train_snapshots": 480,
+    "test_snapshots": 120,
+    "first_snapshot": "2026-03-23T16:13:46",
+    "last_snapshot": "2026-03-25T18:48:46",
+    "group_count": 1352,
+    "train_examples": 632736,
+    "test_examples": 146016
+  },
+  "metrics": {
+    "train": {
+      "model": {
+        "count": 632736,
+        "mae": 0.6679015755089378,
+        "rmse": 1.6705720359550424
+      },
+      "lag_1_baseline": {
+        "count": 632736,
+        "mae": 0.755738570272594,
+        "rmse": 2.0133712452760184
+      }
+    },
+    "test": {
+      "model": {
+        "count": 146016,
+        "mae": 1.133978742054307,
+        "rmse": 2.050442631123828
+      },
+      "lag_1_baseline": {
+        "count": 146016,
+        "mae": 1.2216811856234933,
+        "rmse": 2.2408117722471124
+      }
+    }
+  },
+  "top_features": [
+    {
+      "name": "group_hour_mean",
+      "importance": 4450
+    },
+    {
+      "name": "total_spaces",
+      "importance": 4272
+    },
+    {
+      "name": "group_dow_mean",
+      "importance": 4104
+    },
+    {
+      "name": "hour_sin",
+      "importance": 3716
+    },
+    {
+      "name": "hour_cos",
+      "importance": 2394
+    },
+    {
+      "name": "roll_mean_6",
+      "importance": 2092
+    },
+    {
+      "name": "vacancy_ratio",
+      "importance": 1319
+    },
+    {
+      "name": "lag_1",
+      "importance": 1162
+    },
+    {
+      "name": "dow_sin",
+      "importance": 1128
+    },
+    {
+      "name": "lag_12",
+      "importance": 1121
+    },
+    {
+      "name": "roll_std_6",
+      "importance": 1078
+    },
+    {
+      "name": "lag_11",
+      "importance": 508
+    },
+    {
+      "name": "lag_10",
+      "importance": 474
+    },
+    {
+      "name": "roll_mean_3",
+      "importance": 344
+    },
+    {
+      "name": "lag_3",
+      "importance": 284
+    }
+  ],
+  "top_groups": [
+    {
+      "group_key": "A|D|SOUTHERN|ISLAND ROAD|THE HONG KONG GOLF CLUB",
+      "model": {
+        "count": 108,
+        "mae": 1.8447379950565435,
+        "rmse": 2.2613493539744867
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 2.0555555555555554,
+        "rmse": 2.5092421756969365
+      },
+      "mae_gain": 0.2108175604990119
+    },
+    {
+      "group_key": "A|D|SOUTHERN|ISLAND ROAD|DEEP WATER BAY",
+      "model": {
+        "count": 108,
+        "mae": 2.110270149938758,
+        "rmse": 2.6880430496041043
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 2.138888888888889,
+        "rmse": 2.6856959922826267
+      },
+      "mae_gain": 0.028618738950130673
+    },
+    {
+      "group_key": "A|D|SOUTHERN|SOUTH BAY ROAD|SOUTH BAY BEACH",
+      "model": {
+        "count": 108,
+        "mae": 2.6896716466891637,
+        "rmse": 3.418653118681216
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 2.6574074074074074,
+        "rmse": 3.3458099833141217
+      },
+      "mae_gain": -0.03226423928175626
+    },
+    {
+      "group_key": "A|D|SHAM SHUI PO|TAI NAN STREET|KWEILIN STREET",
+      "model": {
+        "count": 108,
+        "mae": 0.5932097498297085,
+        "rmse": 0.8972108359445031
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 0.7592592592592593,
+        "rmse": 1.2322818340454909
+      },
+      "mae_gain": 0.16604950942955077
+    },
+    {
+      "group_key": "C|3D|WAN CHAI|TAI HANG ROAD|TAI HANG ROAD CAR PARK",
+      "model": {
+        "count": 108,
+        "mae": 0.6086180343792384,
+        "rmse": 0.8521589106557484
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 0.6666666666666666,
+        "rmse": 1.009216784699164
+      },
+      "mae_gain": 0.05804863228742818
+    },
+    {
+      "group_key": "G|3A|SHAM SHUI PO|TAI NAN STREET|KWEILIN STREET",
+      "model": {
+        "count": 108,
+        "mae": 0.13306649816883587,
+        "rmse": 0.3332743740658861
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 0.14814814814814814,
+        "rmse": 0.4303314829119352
+      },
+      "mae_gain": 0.015081649979312273
+    },
+    {
+      "group_key": "A|D|WAN CHAI|TAI HANG ROAD|TAI HANG ROAD CAR PARK",
+      "model": {
+        "count": 108,
+        "mae": 0.548205142090115,
+        "rmse": 0.7521191585756329
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 0.6851851851851852,
+        "rmse": 0.97182531580755
+      },
+      "mae_gain": 0.13698004309507028
+    },
+    {
+      "group_key": "A|D|SHAM SHUI PO|YEE KUK STREET|PEI HO STREET",
+      "model": {
+        "count": 108,
+        "mae": 0.80964727047601,
+        "rmse": 0.9921741913886509
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 0.7314814814814815,
+        "rmse": 1.0046189622236181
+      },
+      "mae_gain": -0.07816578899452853
+    },
+    {
+      "group_key": "A|D|SHAM SHUI PO|YEE KUK STREET|YEN CHOW STREET",
+      "model": {
+        "count": 108,
+        "mae": 0.5401994959557022,
+        "rmse": 0.747723179994496
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 0.5648148148148148,
+        "rmse": 0.8221471437193746
+      },
+      "mae_gain": 0.02461531885911261
+    },
+    {
+      "group_key": "A|D|SHAM SHUI PO|HAI TAN STREET|YEN CHOW STREET",
+      "model": {
+        "count": 108,
+        "mae": 0.3720780581385262,
+        "rmse": 0.5648144728288401
+      },
+      "lag_1_baseline": {
+        "count": 108,
+        "mae": 0.4444444444444444,
+        "rmse": 0.8050764858994133
+      },
+      "mae_gain": 0.07236638630591824
+    }
+  ]
+}

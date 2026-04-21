@@ -1,0 +1,37 @@
+{
+  "trained_at": "2026-04-14T14:10:46.316813Z",
+  "config": {
+    "data_root": "/Users/yuntungyeung/Downloads/gov_vacancy/api.data.gov.hk/v1-carpark-info-vacancy",
+    "vehicle_type": "privateCar",
+    "target_key": "vacancy",
+    "train_ratio": 0.8,
+    "learning_rate": 0.14,
+    "horizon_steps": 6,
+    "min_history": 3,
+    "reset_gap_minutes": 180.0,
+    "sample_every": 1,
+    "max_files": 5000,
+    "park_filter": [
+      "27",
+      "30",
+      "31"
+    ]
+  },
+  "weights": {
+    "lag_1": 1.0,
+    "mean_3": 1.2614456253898696e-25,
+    "mean_6": 7.748008976052428e-59,
+    "park_hour": 1.773556401235902e-192,
+    "park_dow": 5e-324,
+    "global_hour": 5e-324
+  },
+  "notes": {
+    "prediction_target": "next observed vacancy snapshot",
+    "recommended_inference_inputs": [
+      "latest vacancy history for the same park",
+      "current timestamp",
+      "hour-of-day historical means",
+      "day-of-week historical means"
+    ]
+  }
+}

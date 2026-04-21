@@ -127,6 +127,7 @@
   "na": "N/A",
   "price": "Price",
   "vacancies": "Vacancies",
+  "predictedVacancy": "Predicted vacancy",
   "updated": "Updated",
   "rates": "Rates",
   "navigate": "Navigate",

@@ -404,6 +404,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get vacancies => 'Vacancies';
 
   @override
+  String get predictedVacancy => 'Predicted vacancy';
+
+  @override
   String get updated => 'Updated';
 
   @override

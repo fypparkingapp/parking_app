@@ -27,6 +27,7 @@ import 'package:parking_app/page/parking_map_screen.dart';
 import 'package:parking_app/page/settings.dart';
 import 'package:parking_app/page/toll_fee_page.dart';
 import 'package:parking_app/widget/carpark_search_delegate.dart';
+import 'package:parking_app/network/vacancy_prediction_service.dart';
 import 'package:parking_app/widget/hk_speed_map_layer.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';

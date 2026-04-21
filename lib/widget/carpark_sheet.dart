@@ -10,6 +10,7 @@ extension _HomeScreenDetails on _HomeScreenState {
     });
     final theme = _mapThemes[_selectedTheme]!;
     _prefetchCarparkImage(c);
+    final predictionFuture = VacancyPredictionService().forecast(c);
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -21,7 +22,7 @@ extension _HomeScreenDetails on _HomeScreenState {
           builder: (ctx, setSheetState) {
             final sheetTheme = Theme.of(ctx);
             final l10n = AppLocalizations.of(ctx)!;
-            final vacancyEntries = c.vacancies.entries.toList();
+            final vacancyEntries = c.vacancyInfo.entries.toList();
             final rates = c.privateCarRates;
             final visibleVacancies = showAllVacancies
                 ? vacancyEntries
@@ -32,10 +33,10 @@ extension _HomeScreenDetails on _HomeScreenState {
             final priceValue = primaryRate != null
                 ? _formatRatePrice(primaryRate)
                 : l10n.na;
-            final vacancyValue =
-                c.vacancy?.toString() ?? l10n.na;
+            final vacancyValue = c.currentVacancy?.toString() ?? l10n.na;
 
-            final displayVacancyValue = (c.vacancy != null && c.vacancy! >= 0)
+            final displayVacancyValue =
+                (c.currentVacancy != null && c.currentVacancy! >= 0)
                 ? vacancyValue
                 : l10n.na;
 
@@ -195,6 +196,120 @@ extension _HomeScreenDetails on _HomeScreenState {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 8),
+                      FutureBuilder<VacancyForecast?>(
+                        future: predictionFuture,
+                        builder: (ctx, snap) {
+                          if (snap.connectionState == ConnectionState.waiting) {
+                            return Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: sheetTheme
+                                    .colorScheme
+                                    .surfaceContainerHighest
+                                    .withValues(alpha: 0.4),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.access_time,
+                                      color: theme.accentColor),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    l10n.predictedVacancy,
+                                    style:
+                                        sheetTheme.textTheme.labelMedium,
+                                  ),
+                                  const Spacer(),
+                                  const SizedBox(
+                                    width: 14,
+                                    height: 14,
+                                    child: CircularProgressIndicator(
+                                        strokeWidth: 2),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                          final forecast = snap.data;
+                          if (forecast == null) return const SizedBox.shrink();
+                          final delta = forecast.delta;
+                          final deltaStr = delta > 0
+                              ? '+$delta'
+                              : delta.toString();
+                          final deltaColor = delta > 0
+                              ? Colors.green
+                              : delta < 0
+                                  ? Colors.red
+                                  : sheetTheme.colorScheme.onSurface;
+                          return Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: sheetTheme
+                                  .colorScheme
+                                  .surfaceContainerHighest
+                                  .withValues(alpha: 0.4),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(Icons.access_time,
+                                    color: theme.accentColor),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        l10n.predictedVacancy,
+                                        style:
+                                            sheetTheme.textTheme.labelMedium,
+                                      ),
+                                      const SizedBox(height: 2),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            '${forecast.predictedVacancy}',
+                                            style: sheetTheme
+                                                .textTheme
+                                                .titleMedium
+                                                ?.copyWith(
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                          ),
+                                          const SizedBox(width: 6),
+                                          Text(
+                                            '($deltaStr)',
+                                            style: sheetTheme
+                                                .textTheme
+                                                .bodySmall
+                                                ?.copyWith(color: deltaColor),
+                                          ),
+                                          if (!forecast.isReliable) ...[
+                                            const SizedBox(width: 6),
+                                            Icon(Icons.warning_amber,
+                                                size: 14,
+                                                color: Colors.orange),
+                                          ],
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  '+${forecast.horizonMinutes}min',
+                                  style: sheetTheme.textTheme.labelSmall
+                                      ?.copyWith(
+                                    color: sheetTheme.colorScheme.onSurface
+                                        .withValues(alpha: 0.55),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                       if (primaryRate != null) ...[
                         const SizedBox(height: 8),
                         Text(
@@ -264,17 +379,17 @@ extension _HomeScreenDetails on _HomeScreenState {
                         ),
                         const SizedBox(height: 6),
                         ...visibleVacancies.map((entry) {
-                          final lastUpdate = entry.value['lastupdate']
-                              ?.toString();
+                          final bucket = entry.value;
+                          final lastUpdate = bucket.lastUpdated;
                           final updateLabel =
                               (lastUpdate != null && lastUpdate.isNotEmpty)
                               ? ' (${l10n.updated}: $lastUpdate)'
                               : '';
-                          final label = _formatVacancyKey(entry.key, l10n);
+                          final label = _formatVacancyKey(bucket, l10n);
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 6),
                             child: Text(
-                              '$label: ${_formatVacancySummary(entry.value)}$updateLabel',
+                              '$label: ${_formatVacancySummary(bucket)}$updateLabel',
                               style: sheetTheme.textTheme.bodySmall,
                             ),
                           );
@@ -390,31 +505,30 @@ extension _HomeScreenDetails on _HomeScreenState {
   }
 
 
-  String _formatVacancySummary(Map<String, dynamic> data) {
+  String _formatVacancySummary(VacancyBucket bucket) {
     final l10n = AppLocalizations.of(context)!;
-    final vacancyValue = data['vacancy'];
-    final vacancy = (vacancyValue is num && vacancyValue >= 0)
-        ? vacancyValue.toInt().toString()
+    final vacancy = (bucket.available != null && bucket.available! >= 0)
+        ? bucket.available!.toString()
         : l10n.na;
     final extras = <String>[];
-    final type = data['vacancy_type']?.toString();
+    final type = bucket.categoryLabel;
     if (type != null && type.isNotEmpty && type != 'Unknown') {
       extras.add(type);
     }
-    final ev = data['vacancyEV'];
-    if (ev is num && ev >= 0) {
-      extras.add(l10n.vacancy_ev(ev.toInt()));
+    final ev = bucket.evAvailable;
+    if (ev != null && ev >= 0) {
+      extras.add(l10n.vacancy_ev(ev));
     }
-    final disabled = data['vacancyDIS'];
-    if (disabled is num && disabled >= 0) {
-      extras.add(l10n.vacancy_disabled(disabled.toInt()));
+    final disabled = bucket.disabledAvailable;
+    if (disabled != null && disabled >= 0) {
+      extras.add(l10n.vacancy_disabled(disabled));
     }
     if (extras.isEmpty) return vacancy;
     return '$vacancy - ${extras.join(' - ')}';
   }
 
-  String _formatVacancyKey(String key, AppLocalizations l10n) {
-    switch (key.toLowerCase()) {
+  String _formatVacancyKey(VacancyBucket bucket, AppLocalizations l10n) {
+    switch (bucket.vehicleTypeKey.toLowerCase()) {
       case 'privatecar':
       case 'private_car':
       case 'pc':
@@ -425,9 +539,27 @@ extension _HomeScreenDetails on _HomeScreenState {
         return l10n.vacancy_type_motorcycle;
       case 'taxi':
         return l10n.vacancy_type_taxi;
+      case 'lightgoodsvehicle':
+        return l10n.metered_vehicle_light_goods;
+      case 'heavygoodsvehicle':
+        return l10n.metered_vehicle_heavy_goods;
+      case 'coach':
+        return l10n.metered_vehicle_coach;
       default:
-        return key;
+        return _prettifyVacancyKey(bucket.vehicleTypeKey);
     }
+  }
+
+  String _prettifyVacancyKey(String key) {
+    final words = key
+        .replaceAllMapped(
+          RegExp(r'(?<!^)([A-Z])'),
+          (match) => ' ${match.group(1)}',
+        )
+        .replaceAll('_', ' ')
+        .trim();
+    if (words.isEmpty) return key;
+    return words.substring(0, 1).toUpperCase() + words.substring(1);
   }
 
   Widget _buildRateLine(CarparkRate rate) {
