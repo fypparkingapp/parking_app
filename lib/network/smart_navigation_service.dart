@@ -7,6 +7,7 @@ import 'package:parking_app/network/smart_navigation_ai_model.dart';
 import 'package:parking_app/network/tdas_service.dart';
 import 'package:parking_app/network/toll_service.dart';
 import 'package:parking_app/network/smart_navigation_types.dart';
+import 'package:parking_app/network/vacancy_prediction_service.dart';
 
 export 'package:parking_app/network/smart_navigation_types.dart';
 
@@ -61,6 +62,7 @@ class SmartNavigationOption {
     required this.parkingCostEstimate,
     required this.walkingDistanceMeters,
     required this.travelMinutes,
+    required this.predictedVacancy,
     required this.vacancyProbability,
     required this.score,
     required this.tdasInsight,
@@ -78,6 +80,7 @@ class SmartNavigationOption {
   final ParkingCostEstimate? parkingCostEstimate;
   final double walkingDistanceMeters;
   final int travelMinutes;
+  final int? predictedVacancy;
   final double vacancyProbability;
   final double score;
   final TdasRouteInsight? tdasInsight;
@@ -94,6 +97,7 @@ class SmartNavigationOption {
     ParkingCostEstimate? parkingCostEstimate,
     double? walkingDistanceMeters,
     int? travelMinutes,
+    int? predictedVacancy,
     double? vacancyProbability,
     double? score,
     TdasRouteInsight? tdasInsight,
@@ -113,6 +117,7 @@ class SmartNavigationOption {
       walkingDistanceMeters:
           walkingDistanceMeters ?? this.walkingDistanceMeters,
       travelMinutes: travelMinutes ?? this.travelMinutes,
+      predictedVacancy: predictedVacancy ?? this.predictedVacancy,
       vacancyProbability: vacancyProbability ?? this.vacancyProbability,
       score: score ?? this.score,
       tdasInsight: tdasInsight ?? this.tdasInsight,
@@ -126,6 +131,8 @@ class SmartNavigationOption {
 }
 
 class SmartNavigationService {
+  static const double _kMinimumRecommendedVacancyProbability = 0.05;
+
   SmartNavigationService({
     required String osrmBaseUrl,
     this.languageCode = 'en',
@@ -172,6 +179,27 @@ class SmartNavigationService {
     if (candidates.isEmpty) return null;
 
     final hkNowParam = await _tollService.fetchHkNowParam();
+
+    // Pre-fetch ML vacancy predictions for all candidates in parallel.
+    // Failures are silently swallowed — scoring falls back to the heuristic.
+    final predictionService = VacancyPredictionService();
+    final predictionResults = await Future.wait(
+      candidates.map((carpark) async {
+        final rawId = carpark.id;
+        if (rawId.startsWith('metered:')) {
+          final groupKey = rawId.substring('metered:'.length);
+          final p = await predictionService.predictMeter(groupKey);
+          return p == null ? null : MapEntry(rawId, p.predictedVacancy);
+        } else {
+          final p = await predictionService.predict(rawId);
+          return p == null ? null : MapEntry(rawId, p.predictedVacancy);
+        }
+      }),
+    );
+    final predictedVacancies = Map<String, int>.fromEntries(
+      predictionResults.whereType<MapEntry<String, int>>(),
+    );
+
     final options = await Future.wait(
       candidates.map(
         (carpark) => _evaluateCarpark(
@@ -183,6 +211,7 @@ class SmartNavigationService {
           now: now,
           hkNowParam: hkNowParam,
           estimatedParkingHours: estimatedParkingHours,
+          predictedVacancies: predictedVacancies,
         ),
       ),
     );
@@ -197,8 +226,10 @@ class SmartNavigationService {
       preference: preference,
       languageCode: effectiveLanguageCode,
     );
-    final sorted = rankOptions(enriched, preference);
-    final best = sorted.first;
+    final rankedAll = rankOptions(enriched, preference);
+    final sorted = rankedAll.where(isRecommendedOption).toList(growable: false);
+    final effectiveSorted = sorted.isNotEmpty ? sorted : rankedAll;
+    final best = effectiveSorted.first;
     return SmartNavigationResult(
       selectedCarpark: best.carpark,
       selectedRoute: best.route,
@@ -209,7 +240,7 @@ class SmartNavigationService {
       vacancyProbability: best.vacancyProbability,
       score: best.score,
       preference: preference,
-      alternatives: sorted,
+      alternatives: rankedAll,
       aiPersonalized: _aiModel.isPersonalized,
       aiLearningSamples: _aiModel.sampleCount,
     );
@@ -236,6 +267,21 @@ class SmartNavigationService {
     }
     ranked.sort((a, b) => _compareOptionsByPreference(a, b, preference));
     return ranked;
+  }
+
+  static bool isHighRiskOption(SmartNavigationOption option) {
+    final effectiveVacancy = VacancyProbabilityEstimator.effectiveVacancy(
+      currentVacancy: option.carpark.currentVacancy,
+      predictedVacancy: option.predictedVacancy,
+    );
+    if (effectiveVacancy != null && effectiveVacancy <= 0) {
+      return true;
+    }
+    return option.vacancyProbability < _kMinimumRecommendedVacancyProbability;
+  }
+
+  static bool isRecommendedOption(SmartNavigationOption option) {
+    return !isHighRiskOption(option);
   }
 
   Future<void> recordSelection({
@@ -386,8 +432,8 @@ class SmartNavigationService {
     withDistance.sort((a, b) {
       final walking = a.walking.compareTo(b.walking);
       if (walking != 0) return walking;
-      final aVacancy = a.carpark.vacancy ?? -1;
-      final bVacancy = b.carpark.vacancy ?? -1;
+      final aVacancy = a.carpark.currentVacancy ?? -1;
+      final bVacancy = b.carpark.currentVacancy ?? -1;
       return bVacancy.compareTo(aVacancy);
     });
 
@@ -410,6 +456,7 @@ class SmartNavigationService {
     required DateTime now,
     required String hkNowParam,
     required int estimatedParkingHours,
+    Map<String, int> predictedVacancies = const {},
   }) async {
     final carparkPoint = LatLng(carpark.latitude, carpark.longitude);
     final walkingDistanceMeters = const Distance()(destination, carparkPoint);
@@ -458,9 +505,11 @@ class SmartNavigationService {
         languageCode: languageCode,
       );
       final parkingCost = parkingCostEstimate?.amountHkd;
+      final predictedVacancy = predictedVacancies[carpark.id];
       final vacancyProbability = VacancyProbabilityEstimator.estimate(
         carpark: carpark,
         travelMinutes: travelMinutes,
+        predictedVacancy: predictedVacancy,
       );
       final score = _scoreOption(
         route: route,
@@ -470,7 +519,8 @@ class SmartNavigationService {
         travelMinutes: travelMinutes,
         vacancyProbability: vacancyProbability,
         openingStatus: carpark.openingStatus,
-        currentVacancy: carpark.vacancy,
+        currentVacancy: carpark.currentVacancy,
+        predictedVacancy: predictedVacancy,
         tdasInsight: insight,
       );
       final option = SmartNavigationOption(
@@ -481,6 +531,7 @@ class SmartNavigationService {
         parkingCostEstimate: parkingCostEstimate,
         walkingDistanceMeters: walkingDistanceMeters,
         travelMinutes: travelMinutes,
+        predictedVacancy: predictedVacancy,
         vacancyProbability: vacancyProbability,
         score: score,
         tdasInsight: insight,
@@ -501,6 +552,7 @@ class SmartNavigationService {
     required double vacancyProbability,
     required String? openingStatus,
     required int? currentVacancy,
+    required int? predictedVacancy,
     required TdasRouteInsight? tdasInsight,
   }) {
     final tollCost = toll.hasUnknown
@@ -510,10 +562,14 @@ class SmartNavigationService {
     final walkingPenalty = walkingDistanceMeters / 140;
     final vacancyPenalty = (1 - vacancyProbability) * 45;
     final closedPenalty = _isClosed(openingStatus) ? 80.0 : 0.0;
-    final emptyPenalty = currentVacancy != null && currentVacancy <= 0
+    final effectiveVacancy = VacancyProbabilityEstimator.effectiveVacancy(
+      currentVacancy: currentVacancy,
+      predictedVacancy: predictedVacancy,
+    );
+    final emptyPenalty = effectiveVacancy != null && effectiveVacancy <= 0
         ? 100.0
         : 0.0;
-    final unknownVacancyPenalty = currentVacancy == null ? 10.0 : 0.0;
+    final unknownVacancyPenalty = effectiveVacancy == null ? 10.0 : 0.0;
     final majorRoadBonus = route.majorRoadDistanceMeters > 0 ? -2.5 : 0.0;
 
     return (travelMinutes * 1.8) +
@@ -846,11 +902,10 @@ class _SmartNavigationAiFeatureSpace {
       SmartNavigationAiModel.featureTrafficFlow: 1 - trafficPenalty,
       SmartNavigationAiModel.featureMajorRoad: _clampDouble(roadCoverage),
       SmartNavigationAiModel.featureAvailabilityNow:
-          option.carpark.vacancy == null
-          ? 0.45
-          : option.carpark.vacancy! > 0
-          ? 1.0
-          : 0.0,
+          VacancyProbabilityEstimator.availabilitySignal(
+            currentVacancy: option.carpark.currentVacancy,
+            predictedVacancy: option.predictedVacancy,
+          ),
       SmartNavigationAiModel.featureMetered:
           option.carpark.id.startsWith('metered:') ? 1.0 : 0.0,
     };
@@ -1164,12 +1219,46 @@ class ParkingCostEstimator {
 }
 
 class VacancyProbabilityEstimator {
+  static int? effectiveVacancy({
+    required int? currentVacancy,
+    int? predictedVacancy,
+  }) {
+    return predictedVacancy ?? currentVacancy;
+  }
+
+  static double availabilitySignal({
+    required int? currentVacancy,
+    int? predictedVacancy,
+  }) {
+    final vacancy = effectiveVacancy(
+      currentVacancy: currentVacancy,
+      predictedVacancy: predictedVacancy,
+    );
+    return switch (vacancy) {
+      null => 0.45,
+      <= 0 => 0.0,
+      <= 2 => 0.35,
+      <= 5 => 0.58,
+      <= 10 => 0.78,
+      _ => 1.0,
+    };
+  }
+
   static double estimate({
     required parking.Carpark carpark,
     required int travelMinutes,
+    int? predictedVacancy, // ML model output: expected spaces at arrival time
   }) {
-    final vacancy = carpark.vacancy;
-    var probability = switch (vacancy) {
+    if (isClosed(carpark.openingStatus)) return 0.01;
+
+    // When the ML model gives us a predicted vacancy at ~arrival time,
+    // use it directly — no travel-time decay needed because the prediction
+    // already looks ~60 min ahead (carpark) or ~60 min ahead (meter).
+    final vacancyForScoring = effectiveVacancy(
+      currentVacancy: carpark.currentVacancy,
+      predictedVacancy: predictedVacancy,
+    );
+    var probability = switch (vacancyForScoring) {
       null => 0.45,
       <= 0 => 0.03,
       <= 2 => 0.10,
@@ -1180,18 +1269,18 @@ class VacancyProbabilityEstimator {
       _ => 0.92,
     };
 
-    probability -= math.min(travelMinutes / 180, 0.24);
-
-    final now = DateTime.now();
-    final hour = now.hour;
-    if ((hour >= 12 && hour <= 14) || (hour >= 18 && hour <= 21)) {
-      probability -= 0.08;
-    }
-    if (now.weekday >= DateTime.saturday && hour >= 11 && hour <= 19) {
-      probability -= 0.05;
-    }
-    if (isClosed(carpark.openingStatus)) {
-      probability = 0.01;
+    // Apply travel-time decay only when falling back to current vacancy,
+    // since the current snapshot may be stale by the time we arrive.
+    if (predictedVacancy == null) {
+      probability -= math.min(travelMinutes / 180, 0.24);
+      final now = DateTime.now();
+      final hour = now.hour;
+      if ((hour >= 12 && hour <= 14) || (hour >= 18 && hour <= 21)) {
+        probability -= 0.08;
+      }
+      if (now.weekday >= DateTime.saturday && hour >= 11 && hour <= 19) {
+        probability -= 0.05;
+      }
     }
 
     return probability.clamp(0.01, 0.98);

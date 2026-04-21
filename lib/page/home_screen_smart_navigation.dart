@@ -88,12 +88,22 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
   String _smartNavigationSelectedMessage(SmartNavigationOption option) {
     final name = _carparkDisplayName(option.carpark);
     final probability = (option.vacancyProbability * 100).round();
+    final isHighRisk = SmartNavigationService.isHighRiskOption(option);
     switch (_language) {
       case AppLanguage.english:
+        if (isHighRisk) {
+          return 'Selected high-risk fallback $name · ${option.travelMinutes} min · vacancy $probability%';
+        }
         return 'Selected $name · ${option.travelMinutes} min · vacancy $probability%';
       case AppLanguage.traditionalChinese:
+        if (isHighRisk) {
+          return '已選擇高風險備選 $name · 約 ${option.travelMinutes} 分鐘 · 空位機率 $probability%';
+        }
         return '已選擇 $name · 約 ${option.travelMinutes} 分鐘 · 空位機率 $probability%';
       case AppLanguage.simplifiedChinese:
+        if (isHighRisk) {
+          return '已选择高风险备选 $name · 约 ${option.travelMinutes} 分钟 · 空位机率 $probability%';
+        }
         return '已选择 $name · 约 ${option.travelMinutes} 分钟 · 空位机率 $probability%';
     }
   }
@@ -243,6 +253,28 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
     }
   }
 
+  String _smartNavigationCurrentSelectionLabel() {
+    switch (_language) {
+      case AppLanguage.english:
+        return 'Current selection';
+      case AppLanguage.traditionalChinese:
+        return '目前選擇';
+      case AppLanguage.simplifiedChinese:
+        return '目前选择';
+    }
+  }
+
+  String _smartNavigationNoReliablePickLabel() {
+    switch (_language) {
+      case AppLanguage.english:
+        return 'No reliable match';
+      case AppLanguage.traditionalChinese:
+        return '暫無可靠建議';
+      case AppLanguage.simplifiedChinese:
+        return '暂无可靠建议';
+    }
+  }
+
   String _smartNavigationPreferenceLabel() {
     switch (_language) {
       case AppLanguage.english:
@@ -305,6 +337,40 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
     }
   }
 
+  String _smartNavigationHighRiskLabel() {
+    switch (_language) {
+      case AppLanguage.english:
+        return 'High-risk fallback';
+      case AppLanguage.traditionalChinese:
+        return '高風險備選';
+      case AppLanguage.simplifiedChinese:
+        return '高风险备选';
+    }
+  }
+
+  String? _smartNavigationRiskNotice({
+    required bool usingHighRiskFallback,
+    required bool selectedHighRisk,
+  }) {
+    if (usingHighRiskFallback) {
+      return switch (_language) {
+        AppLanguage.english =>
+          'No nearby option looks reliably available right now. These are shown as high-risk fallbacks only.',
+        AppLanguage.traditionalChinese => '附近暫時沒有可靠有位的選項，以下只列作高風險備選。',
+        AppLanguage.simplifiedChinese => '附近暂时没有可靠有位的选项，以下只列作高风险备选。',
+      };
+    }
+    if (selectedHighRisk) {
+      return switch (_language) {
+        AppLanguage.english =>
+          'This option is still shown as a backup, but the predicted chance of finding a space is very low.',
+        AppLanguage.traditionalChinese => '這個選項仍可作備選，但預測到達時成功泊位的機會很低。',
+        AppLanguage.simplifiedChinese => '这个选项仍可作备选，但预测到达时成功泊位的机会很低。',
+      };
+    }
+    return null;
+  }
+
   bool _isMeteredCarpark(Carpark carpark) {
     return carpark.id.startsWith('metered:');
   }
@@ -332,6 +398,83 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
         ? amount.toInt().toString()
         : amount.toStringAsFixed(2);
     return 'HK\$$value';
+  }
+
+  String _formatSmartProbability(double probability) {
+    return '${(probability * 100).round()}%';
+  }
+
+  String? _smartPredictedVacancySentence(SmartNavigationOption option) {
+    final predictedVacancy = option.predictedVacancy;
+    if (predictedVacancy == null) return null;
+    return switch (_language) {
+      AppLanguage.english =>
+        'AI expects about $predictedVacancy spaces when you arrive.',
+      AppLanguage.traditionalChinese => '預測到達時約有 $predictedVacancy 個位。',
+      AppLanguage.simplifiedChinese => '预测到达时约有 $predictedVacancy 个位。',
+    };
+  }
+
+  String _smartPredictedChanceSentence(SmartNavigationOption option) {
+    final probability = _formatSmartProbability(option.vacancyProbability);
+    return switch (_language) {
+      AppLanguage.english =>
+        'Estimated chance of finding a space on arrival is about $probability.',
+      AppLanguage.traditionalChinese => '預測到達時有位機率約 $probability。',
+      AppLanguage.simplifiedChinese => '预测到达时有位机率约 $probability。',
+    };
+  }
+
+  String _smartPredictionSummary(SmartNavigationOption option) {
+    final vacancySentence = _smartPredictedVacancySentence(option);
+    final chanceSentence = _smartPredictedChanceSentence(option);
+    if (vacancySentence == null) return chanceSentence;
+    final trimmedVacancy = vacancySentence.endsWith('.')
+        ? vacancySentence.substring(0, vacancySentence.length - 1)
+        : vacancySentence;
+    final trimmedChance = chanceSentence.endsWith('.')
+        ? chanceSentence.substring(0, chanceSentence.length - 1)
+        : chanceSentence;
+    return '$trimmedVacancy · $trimmedChance';
+  }
+
+  Widget _smartPredictionExplanation({
+    required ThemeData theme,
+    required Color accent,
+    required SmartNavigationOption option,
+  }) {
+    final vacancySentence = _smartPredictedVacancySentence(option);
+    final chanceSentence = _smartPredictedChanceSentence(option);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest.withValues(
+          alpha: 0.42,
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (vacancySentence != null)
+            Text(
+              vacancySentence,
+              style: theme.textTheme.bodySmall?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          if (vacancySentence != null) const SizedBox(height: 4),
+          Text(
+            chanceSentence,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: accent,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   ({String label, Color color}) _smartVacancyBadge(double probability) {
@@ -434,13 +577,16 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
       operatorName: 'Metered',
       openingStatus: openingStatus,
       privateCarRates: _meteredRatesForSmartNavigation(group.operatingPeriod),
-      vacancies: <String, Map<String, dynamic>>{
-        'privateCar': <String, dynamic>{
-          'vacancy': group.vacant,
-          'vacancy_type': 'metered',
-          'lastupdate': '',
-        },
-      },
+      vacancyInfo: VacancyInfo.fromBuckets([
+        VacancyBucket(
+          key: 'privateCar',
+          vehicleTypeKey: 'privateCar',
+          available: group.vacant,
+          categoryLabel: 'metered',
+          lastUpdated: '',
+          source: VacancySource.metered,
+        ),
+      ]),
     );
   }
 
@@ -785,15 +931,33 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
 
         return StatefulBuilder(
           builder: (context, setSheetState) {
-            final topOptions = SmartNavigationService.rankOptions(
+            final rankedOptions = SmartNavigationService.rankOptions(
               allOptions,
               preference,
-            ).take(3).toList(growable: false);
+            );
+            final viableOptions = rankedOptions
+                .where(SmartNavigationService.isRecommendedOption)
+                .toList(growable: false);
+            final highRiskOptions = rankedOptions
+                .where(SmartNavigationService.isHighRiskOption)
+                .toList(growable: false);
+            final usingHighRiskFallback = viableOptions.isEmpty;
+            final topOptions = usingHighRiskFallback
+                ? rankedOptions.take(3).toList(growable: false)
+                : [
+                    ...viableOptions.take(3),
+                    ...highRiskOptions.take(
+                      math.max(0, 3 - viableOptions.take(3).length),
+                    ),
+                  ].take(3).toList(growable: false);
             if (topOptions.isEmpty) {
               return const SizedBox.shrink();
             }
             if (selectedIndex >= topOptions.length) selectedIndex = 0;
             final selected = topOptions[selectedIndex];
+            final selectedHighRisk = SmartNavigationService.isHighRiskOption(
+              selected,
+            );
             final reasons = _smartReasonsForOption(selected, topOptions);
             final vacancy = _smartVacancyBadge(selected.vacancyProbability);
             final parkingSummary =
@@ -804,6 +968,15 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
             );
             final isMeteredSelected = _isMeteredCarpark(selected.carpark);
             final aiStatus = _smartNavigationAiStatusText(result, selected);
+            final riskNotice = _smartNavigationRiskNotice(
+              usingHighRiskFallback: usingHighRiskFallback,
+              selectedHighRisk: selectedHighRisk,
+            );
+            final selectionLabel = usingHighRiskFallback
+                ? _smartNavigationNoReliablePickLabel()
+                : selectedIndex == 0
+                ? _smartNavigationBestPickLabel()
+                : _smartNavigationCurrentSelectionLabel();
 
             Widget metric(String label, String value, {Color? color}) {
               return Expanded(
@@ -893,10 +1066,12 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      _smartNavigationBestPickLabel(),
+                                      selectionLabel,
                                       style: theme.textTheme.labelMedium
                                           ?.copyWith(
-                                            color: accent,
+                                            color: usingHighRiskFallback
+                                                ? theme.colorScheme.error
+                                                : accent,
                                             fontWeight: FontWeight.w700,
                                           ),
                                     ),
@@ -1002,6 +1177,32 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
                                     ),
                                   ],
                                   const SizedBox(height: 6),
+                                  if (riskNotice != null) ...[
+                                    Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.all(12),
+                                      decoration: BoxDecoration(
+                                        color: theme.colorScheme.errorContainer
+                                            .withValues(alpha: 0.6),
+                                        borderRadius: BorderRadius.circular(14),
+                                        border: Border.all(
+                                          color: theme.colorScheme.error
+                                              .withValues(alpha: 0.24),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        riskNotice,
+                                        style: theme.textTheme.bodySmall
+                                            ?.copyWith(
+                                              color: theme
+                                                  .colorScheme
+                                                  .onErrorContainer,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                  ],
                                   Container(
                                     width: double.infinity,
                                     padding: const EdgeInsets.all(14),
@@ -1064,6 +1265,36 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
                                                       .labelMedium
                                                       ?.copyWith(
                                                         color: accent,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                      ),
+                                                ),
+                                              ),
+                                            if (selectedHighRisk)
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      horizontal: 10,
+                                                      vertical: 6,
+                                                    ),
+                                                decoration: BoxDecoration(
+                                                  color: theme
+                                                      .colorScheme
+                                                      .errorContainer,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        999,
+                                                      ),
+                                                ),
+                                                child: Text(
+                                                  _smartNavigationHighRiskLabel(),
+                                                  style: theme
+                                                      .textTheme
+                                                      .labelMedium
+                                                      ?.copyWith(
+                                                        color: theme
+                                                            .colorScheme
+                                                            .error,
                                                         fontWeight:
                                                             FontWeight.w700,
                                                       ),
@@ -1168,6 +1399,12 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
                                                 color: accent,
                                                 fontWeight: FontWeight.w600,
                                               ),
+                                        ),
+                                        const SizedBox(height: 8),
+                                        _smartPredictionExplanation(
+                                          theme: theme,
+                                          accent: vacancy.color,
+                                          option: selected,
                                         ),
                                         const SizedBox(height: 12),
                                         Row(
@@ -1296,11 +1533,13 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
   }) {
     final theme = Theme.of(context);
     final badge = _smartVacancyBadge(option.vacancyProbability);
+    final isHighRisk = SmartNavigationService.isHighRiskOption(option);
     final parkingText =
         option.parkingCostEstimate?.summary ??
         _smartNavigationNoParkingInfoLabel();
     final totalCost = _formatHkdAmount(_smartDisplayedTotalCost(option));
     final isMetered = _isMeteredCarpark(option.carpark);
+    final predictionSummary = _smartPredictionSummary(option);
 
     return Material(
       color: Colors.transparent,
@@ -1373,6 +1612,24 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
                               ),
                             ),
                           ),
+                        if (isHighRisk)
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.errorContainer,
+                              borderRadius: BorderRadius.circular(999),
+                            ),
+                            child: Text(
+                              _smartNavigationHighRiskLabel(),
+                              style: theme.textTheme.labelSmall?.copyWith(
+                                color: theme.colorScheme.error,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
                         Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 8,
@@ -1399,6 +1656,16 @@ extension _HomeScreenSmartNavigation on _HomeScreenState {
                           ),
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      predictionSummary,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: badge.color,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),
