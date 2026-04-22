@@ -137,8 +137,7 @@ class MeterVacancyForecast {
 }
 
 class VacancyPredictionService {
-  // Update this to your machine's LAN IP when testing on a physical device.
-  static const String _baseUrl = 'http://localhost:8081';
+  static const String _baseUrl = 'https://vacancyapi.ryanpumpkin.com';
 
   static final VacancyPredictionService _instance =
       VacancyPredictionService._();
