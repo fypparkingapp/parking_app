@@ -475,7 +475,7 @@ extension _NavigationScreenUi on _NavigationScreenState {
                       const SizedBox(height: 10),
                       if (_routes.isNotEmpty) ...[
                         SizedBox(
-                          height: 120,
+                          height: /*120*/ 125,  // changed from 120 to 125, some devices got layout overflow
                           child: PageView.builder(
                             controller: _routeCardsController,
                             onPageChanged: (index) {
