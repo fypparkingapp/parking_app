@@ -542,7 +542,7 @@ extension _HomeScreenSearch on _HomeScreenState {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: _buildHomeFunctionRow(
-          totalSlots: 5,
+          totalSlots: /*5*/ 4,
           children: [
             _buildHomeFunctionIcon(
               icon: Icons.near_me,
@@ -564,14 +564,14 @@ extension _HomeScreenSearch on _HomeScreenState {
               accent: accent,
               textColor: textColor,
               onTap: onMeteredTap,
-            ),
+            ),/*
             _buildHomeFunctionIcon(
               icon: Icons.route,
               label: _routePriceLabel(),
               accent: accent,
               textColor: textColor,
               onTap: () => _handleTripPriceTap(themeConfig),
-            ),
+            ),*/
             _buildHomeFunctionIcon(
               icon: Icons.toll,
               label: _tollTimeLabel(),
