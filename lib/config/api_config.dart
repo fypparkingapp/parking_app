@@ -5,10 +5,20 @@
 class ApiConfig {
   ApiConfig._();
 
-  // Self-hosted services
-  static const String osrmBaseUrl = 'https://osrm.ryanpumpkin.com';
-  static const String parkApiBaseUrl = 'https://parkapi2.ryanpumpkin.com';
-  static const String vacancyApiBaseUrl = 'https://vacancyapi.ryanpumpkin.com';
+  // Self-hosted services — toggle between production and local Docker deploy.
+  /// Set to `true` to point self-hosted services at local Docker (see
+  /// https://github.com/fypparkingapp/parking_app_backend). Keep `false` for
+  /// production builds so the deployed *.ryanpumpkin.com endpoints are used.
+  static const bool useLocalBackends = false;
+
+  static const String osrmBaseUrl =
+      useLocalBackends ? 'http://localhost:8082' : 'https://osrm.ryanpumpkin.com';
+  static const String parkApiBaseUrl = useLocalBackends
+      ? 'http://localhost:8000'
+      : 'https://parkapi2.ryanpumpkin.com';
+  static const String vacancyApiBaseUrl = useLocalBackends
+      ? 'http://localhost:8081'
+      : 'https://vacancyapi.ryanpumpkin.com';
 
   // Hong Kong government open data APIs
   static const String hkGovCarparkInfoVacancyUrl =
