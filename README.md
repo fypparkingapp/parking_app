@@ -22,7 +22,7 @@ government history with:
 
 ```bash
 python3 scripts/train_gov_vacancy_baseline.py \
-  --data-root /Users/yuntungyeung/Downloads/gov_vacancy \
+  --data-root ./gov_vacancy \
   --report-out tmp/vacancy_report.json \
   --model-out tmp/vacancy_model.json
 ```
