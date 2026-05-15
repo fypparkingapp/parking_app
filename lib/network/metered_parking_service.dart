@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
 import 'package:csv/csv.dart';
+import 'package:parking_app/config/api_config.dart';
 
 enum MeteredOccupancy { vacant, occupied, unknown }
 
@@ -173,16 +174,14 @@ class MeteredParkingService {
 
   final http.Client _client;
 
-  static const String _spacesUrl =
-      'https://resource.data.one.gov.hk/td/psiparkingspaces/spaceinfo/parkingspaces.csv';
-  static const String _occupancyUrl =
-      'https://resource.data.one.gov.hk/td/psiparkingspaces/occupancystatus/occupancystatus.csv';
+  static const String _spacesUrl = ApiConfig.hkGovMeterSpaceInfoUrl;
+  static const String _occupancyUrl = ApiConfig.hkGovMeterOccupancyUrl;
 
   static const Map<String, String> _headers = {
     'User-Agent':
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
-    'Referer': 'https://www.hkemobility.gov.hk/tc/route-search/pt',
-    'Origin': 'https://www.hkemobility.gov.hk',
+    'Referer': ApiConfig.hkemobilityRouteReferer,
+    'Origin': ApiConfig.hkemobilityBase,
     'Accept': 'text/csv,*/*;q=0.8',
   };
 

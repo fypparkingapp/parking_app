@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:parking_app/config/api_config.dart';
 import 'package:parking_app/network/metered_parking_service.dart';
 import 'package:parking_app/network/parking_api.dart';
 
@@ -137,7 +138,7 @@ class MeterVacancyForecast {
 }
 
 class VacancyPredictionService {
-  static const String _baseUrl = 'https://vacancyapi.ryanpumpkin.com';
+  static const String _baseUrl = ApiConfig.vacancyApiBaseUrl;
 
   static final VacancyPredictionService _instance =
       VacancyPredictionService._();

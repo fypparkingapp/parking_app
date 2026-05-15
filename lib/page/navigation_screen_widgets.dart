@@ -13,8 +13,7 @@ class NavigationScreen extends StatefulWidget {
     this.carparkDisplayAddress,
     required this.osrmBaseUrl,
     this.profile = 'driving',
-    this.tileUrlTemplate =
-        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    this.tileUrlTemplate = ApiConfig.cartoVoyagerTileUrl,
     this.tileSubdomains = const ['a', 'b', 'c', 'd'],
     this.accentColor = Colors.blue,
     this.backgroundColor = Colors.white,

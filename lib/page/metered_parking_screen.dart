@@ -9,6 +9,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:parking_app/config/api_config.dart';
 import 'package:parking_app/l10n/app_localizations.dart';
 import 'package:parking_app/manager/language_manager.dart';
 import 'package:parking_app/manager/map_theme_manager.dart';
@@ -42,7 +43,7 @@ class MeteredParkingScreen extends StatefulWidget {
 }
 
 class _MeteredParkingScreenState extends State<MeteredParkingScreen> {
-  static const String _osrmBaseUrl = 'https://osrm.ryanpumpkin.com';
+  static const String _osrmBaseUrl = ApiConfig.osrmBaseUrl;
   static const String _themePrefKey = 'selectedTheme';
   static const String _languagePrefKey = 'selectedLanguage';
   static const String _vehicleTypePrefKey = 'selectedVehicleType';
@@ -76,8 +77,7 @@ class _MeteredParkingScreenState extends State<MeteredParkingScreen> {
   final Map<String, MapThemeConfig> _mapThemes = {
     'Standard': const MapThemeConfig(
       label: 'Default',
-      urlTemplate:
-          'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      urlTemplate: ApiConfig.cartoVoyagerTileUrl,
       subdomains: ['a', 'b', 'c', 'd'],
       appBarColor: Color(0xFF1565C0),
       appBarForeground: Colors.white,
@@ -86,8 +86,7 @@ class _MeteredParkingScreenState extends State<MeteredParkingScreen> {
     ),
     'Dark': const MapThemeConfig(
       label: 'Night Drive',
-      urlTemplate:
-          'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+      urlTemplate: ApiConfig.cartoDarkTileUrl,
       subdomains: ['a', 'b', 'c', 'd'],
       appBarColor: Color(0xFF101820),
       appBarForeground: Colors.white,
@@ -96,8 +95,7 @@ class _MeteredParkingScreenState extends State<MeteredParkingScreen> {
     ),
     'Light': const MapThemeConfig(
       label: 'Clean Atlas',
-      urlTemplate:
-          'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      urlTemplate: ApiConfig.cartoLightTileUrl,
       subdomains: ['a', 'b', 'c', 'd'],
       appBarColor: Color(0xFFF6F6F6),
       appBarForeground: Color(0xFF1B1F24),

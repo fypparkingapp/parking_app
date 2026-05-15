@@ -3,13 +3,14 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
+import 'package:parking_app/config/api_config.dart';
 
 /// Thin TDAS client for `/tdas/api/route`.
 ///
 /// We only use it to understand cross-harbour tunnel usage and ETA so we can
 /// filter OSRM alternatives on the client.
 class TdasService {
-  const TdasService({this.baseUrl = 'https://tdas-api.hkemobility.gov.hk'});
+  const TdasService({this.baseUrl = ApiConfig.tdasApiBaseUrl});
 
   final String baseUrl;
 
@@ -56,8 +57,8 @@ class TdasService {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Referer': 'https://www.hkemobility.gov.hk/tc/route-search/pt',
-          'Origin': 'https://www.hkemobility.gov.hk',
+          'Referer': ApiConfig.hkemobilityRouteReferer,
+          'Origin': ApiConfig.hkemobilityBase,
           'User-Agent':
               'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
         },

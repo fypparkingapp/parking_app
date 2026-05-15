@@ -714,7 +714,7 @@ List<CarparkRate> _parseWilsonRates(dynamic rawPlans) {
 String? _normalizePhotoUrl(String? url) {
   if (url == null || url.isEmpty) return null;
   if (url.startsWith('/')) {
-    return 'https://parkapi2.ryanpumpkin.com$url';
+    return '${ApiConfig.parkApiBaseUrl}$url';
   }
   final uri = Uri.tryParse(url);
   if (uri == null) return url;
@@ -865,12 +865,9 @@ List<CarparkRate> _dedupeRates(List<CarparkRate> rates) {
 
 /// Service to fetch carparks
 class ParkingApi {
-  static const String _carparkApiUrl =
-      'https://api.data.gov.hk/v1/carpark-info-vacancy';
-  static const String _govVacancyApiUrl =
-      'https://resource.data.one.gov.hk/td/carpark/vacancy_all.json';
-  static const String _ryanCarparkApiUrl =
-      'https://parkapi2.ryanpumpkin.com/carparks';
+  static const String _carparkApiUrl = ApiConfig.hkGovCarparkInfoVacancyUrl;
+  static const String _govVacancyApiUrl = ApiConfig.hkGovVacancyAllUrl;
+  static const String _ryanCarparkApiUrl = '${ApiConfig.parkApiBaseUrl}/carparks';
   static const Duration _cacheDuration = Duration(minutes: 10);
   static const String _prefsKeyData = 'parking_api.carparks.data';
   static const String _prefsKeyTimestamp = 'parking_api.carparks.timestamp';

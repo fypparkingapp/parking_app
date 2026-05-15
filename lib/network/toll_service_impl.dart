@@ -46,7 +46,7 @@ class TollService {
   }
 
   Future<String> fetchHkNowParam() async {
-    final uri = Uri.https('www.hkemobility.gov.hk', '/api/drss/toll/time');
+    final uri = Uri.https(ApiConfig.hkemobilityHost, '/api/drss/toll/time');
     try {
       final res = await _client.get(uri, headers: _hkMobilityHeaders);
       if (res.statusCode != 200) return formatDateTimeParam(DateTime.now());
@@ -148,7 +148,7 @@ class TollService {
     required String dateTimeParam,
   }) async {
     final useAll = vehicleType == HkVehicleType.taxi;
-    final uri = Uri.https('www.hkemobility.gov.hk', '/api/drss/toll/rate', {
+    final uri = Uri.https(ApiConfig.hkemobilityHost, '/api/drss/toll/rate', {
       'tunnel': tunnelCode,
       'vehicleType': useAll ? 'all' : vehicleType.apiCode,
       'date': dateTimeParam,
@@ -432,8 +432,8 @@ class TollService {
   static const Map<String, String> _hkMobilityHeaders = {
     'Accept': 'application/json',
     'User-Agent': 'parking_app',
-    'Origin': 'https://www.hkemobility.gov.hk',
-    'Referer': 'https://www.hkemobility.gov.hk/en/toll-rate/',
+    'Origin': ApiConfig.hkemobilityBase,
+    'Referer': ApiConfig.hkemobilityTollReferer,
   };
 
   static const List<_TollFacility> _facilities = [

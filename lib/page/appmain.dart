@@ -11,6 +11,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:parking_app/config/api_config.dart';
 import 'package:parking_app/network/geocoding_service.dart';
 import 'package:parking_app/network/parking_api.dart';
 import 'package:parking_app/network/smart_navigation_service.dart';

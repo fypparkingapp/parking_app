@@ -3,6 +3,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:parking_app/config/api_config.dart';
 
 enum LocalPoiCategory {
   districtLocality,
@@ -76,7 +77,7 @@ class GeocodingService {
   }) : _client = client ?? http.Client(),
        _mapGovBaseUri =
            mapGovBaseUri ??
-           Uri.parse('https://www.map.gov.hk/gs/api/v1.0.0/locationSearch') {
+           Uri.parse(ApiConfig.mapGovLocationSearchUrl) {
     final hasLegacyFallbackParams =
         baseUri != null || fallbackBaseUri != null || platformLookup != null;
     if (hasLegacyFallbackParams && kDebugMode) {
@@ -184,8 +185,8 @@ class GeocodingService {
           // map.gov.hk can reject generic clients; use browser-like headers.
           'User-Agent': 'Mozilla/5.0',
           'Accept': 'application/json, text/plain, */*',
-          'Referer': 'https://www.map.gov.hk/gm/',
-          'Origin': 'https://www.map.gov.hk',
+          'Referer': ApiConfig.mapGovReferer,
+          'Origin': ApiConfig.mapGovBase,
           'Accept-Language': 'en-US,en;q=0.9,zh-HK;q=0.8,zh;q=0.7',
         },
       );

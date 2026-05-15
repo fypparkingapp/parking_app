@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:parking_app/config/api_config.dart';
 
 enum HkSpeedMapSource { standard, enhancedExperiment }
 
@@ -39,11 +40,10 @@ class HkSpeedMapTileLayer extends StatelessWidget {
     this.panBuffer = 0,
   });
 
-  static const String _baseUrl =
-      'https://www.hkemobility.gov.hk/api/drss/layer/map?';
+  static const String _baseUrl = ApiConfig.hkemobilitySpeedMapUrl;
   static const Map<String, String> _headers = {
-    'Referer': 'https://www.hkemobility.gov.hk/tc/route-search/pt',
-    'Origin': 'https://www.hkemobility.gov.hk',
+    'Referer': ApiConfig.hkemobilityRouteReferer,
+    'Origin': ApiConfig.hkemobilityBase,
     'User-Agent':
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
         '(KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
